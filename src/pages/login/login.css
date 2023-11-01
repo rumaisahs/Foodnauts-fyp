@@ -1,0 +1,65 @@
+  .btn-outline-orange{
+    border-color: #F2752F !important;
+  }
+  
+  .btn-outline-orange:hover{
+    background-color: #F2752F !important;
+    color: white !important;
+  }
+  
+  input {
+    padding: 5px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-color: gray;
+    border-style: solid;
+    border-width: thin;
+    border-radius:5px;
+  }
+  
+  label{
+    padding-bottom: 5px;
+    padding-top: 10px;
+  }
+  
+  .border-orange{
+    border: solid;
+    /* border-color: #F2752F !important; */
+  }
+  
+  .login-btn{
+    background-color: #F2752F !important;
+  }
+  
+  .nav-btn{
+    background-color: transparent;
+    color: #F2752F;
+    border: solid 1.5px #F2752F ;
+    line-height:25px;
+    padding:2px;
+  }
+  
+  .register{
+    color: #F2752F !important;
+    font-size: 12px;
+  }
+  
+  .search-orange{
+    color: #F2752F !important;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .hidden-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .border-b-orange{
+    border-bottom: solid 3px #F2752F !important;
+  }
+  
