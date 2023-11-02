@@ -8,7 +8,7 @@ import "./login.css";
 import axios from "axios";
 import { Register } from "../../services/auth/auth";
 
-export default SignUp = () => {
+const SignUp = () => {
   const [name, setNamel] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -186,3 +186,5 @@ export default SignUp = () => {
     </>
   );
 };
+
+export default SignUp
