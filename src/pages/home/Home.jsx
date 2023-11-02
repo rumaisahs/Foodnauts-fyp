@@ -9,6 +9,8 @@ import CarouselImg1 from "../../images/espresso.jpg";
 import CarouselImg2 from "../../images/xanders.jpg";
 import CarouselImg3 from "../../images/colette.jpg";
 import "./home.css";
+import RecMod from "./RecMod";
+
 
 const Home = () => {
   return (
@@ -79,9 +81,10 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <button className="btn bg-orange shadow rounded-1 justify-content-center d-flex mx-auto align-items-center position-absolute z-1 w-25" style={{top:'473px'}}>
+          <RecMod></RecMod>
+          {/* <button className="btn bg-orange shadow rounded-1 justify-content-center d-flex mx-auto align-items-center position-absolute z-1 w-25" style={{top:'473px'}}>
           <h6 className="pt-2 text-white">Let Us Recommend</h6>
-        </button>
+        </button> */}
         </div>
         
           
