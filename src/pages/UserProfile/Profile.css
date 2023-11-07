@@ -1,0 +1,9 @@
+.btn-orange-profile{
+    background-color: transparent !important;
+    color: #F2752F !important;
+    border-color: #F2752F !important;
+}
+.btn-orange-profile:hover{
+    background-color: #F2752F !important;
+    color: white !important;
+  }

@@ -13,6 +13,7 @@ import List from "./pages/link/List";
 // import SideBar from "./components/sidebar/SideBar";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/login/SignUp";
+import Profile from "./pages/UserProfile/Profile";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         {/* <Route  path="/sidebar" element={<SideBar/>}/> */}
         <Route  path="/login" element={<Login/>}/>
         <Route  path="/signup" element={<SignUp/>}/>
+        <Route  path="/ownprofile" element={<Profile/>}/>
 
 
       </Routes>

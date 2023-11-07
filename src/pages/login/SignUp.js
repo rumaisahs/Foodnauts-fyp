@@ -10,13 +10,16 @@ import { Register } from "../../services/auth/auth";
 
 const SignUp = () => {
   const [name, setNamel] = useState("");
+  const [username, setUserNamel] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  const register = async () => {
+  const register = async (e) => {
+    e.preventDefault()
     try {
       const res = await Register({
         name: name,
+        username:username,
         // username: "azhan",
         // cnic: "4229167519861",
         // phone: "021379421088",
@@ -105,10 +108,10 @@ const SignUp = () => {
         </div>
         <div className="border-1 border-orange m-5 rounded-4 p-4 p-sm-5">
           <h1 className="text-center pb-3">Register</h1>
-          <form method="/login" action="POST">
+          <form >
             <table style={{ width: "250px" }}>
               <td>
-                <label>Username</label>
+                <label>Name</label>
                 <br />
                 <input
                   onChange={(e) => setNamel(e.target.value)}
@@ -118,6 +121,14 @@ const SignUp = () => {
                   name="name"
                   className="w-100"
                 />
+                <br />
+                <label>Username</label>
+                <br />
+                <input  onChange={(e) => setUserNamel(e.target.value)}
+                  required
+                  type="text"
+                  id="username"
+                  name="name"className="w-100" />
                 <br />
                 <label>Email</label>
                 <br />
@@ -152,10 +163,7 @@ const SignUp = () => {
                   className="w-100"
                 />
                 <br />
-                <label>CNIC</label>
-                <br />
-                <input className="w-100" />
-                <br />
+             
                 <label>Phone No.</label>
                 <br />
                 <input className="w-100" />
@@ -166,7 +174,7 @@ const SignUp = () => {
             /> */}
                 <p className="pt-4 text-center">
                   <button
-                    onClick={register}
+                     type="submit" onClick={register}
                     className="btn text-white login-btn"
                   >
                     Register
