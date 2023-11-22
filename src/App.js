@@ -14,13 +14,14 @@ import List from "./pages/link/List";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/login/SignUp";
 import Profile from "./pages/UserProfile/Profile";
-
+import ForgotPass from "./pages/forgotpass/forgotpass";
 
 function App() {
   return (
     <>
     <Router>
       <Routes>
+        
         <Route  path="/" element={<Home/>}/>
         <Route  path="/list" element={<List/>}/>
         <Route  path="/restaurants/:id" element={<Restaurant/>}/>
@@ -28,6 +29,7 @@ function App() {
         <Route  path="/login" element={<Login/>}/>
         <Route  path="/signup" element={<SignUp/>}/>
         <Route  path="/ownprofile" element={<Profile/>}/>
+        <Route  path="/forgotpass" element={<ForgotPass/>}/>
 
 
       </Routes>

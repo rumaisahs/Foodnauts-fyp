@@ -125,9 +125,10 @@ export const Profile = () => {
               </Link>
             </div>
           </div>
-          <div className={`pt-5 ${isReviewsVisible ? "d-block" : "d-none"}`}>
-            <div className="row pb-5 justify-content-start mx-auto row-gap-4">
-              <div className="col-lg-3 col-md-4 col-6">
+          <div className={`pt-5 row justify-content-start mx-auto row-gap-4`}>
+              <div className={`col-8 ${isReviewsVisible ? "d-block" : "d-none"}`}>
+              <div className="row">
+<div className="col-lg-3 col-md-4 col-6">
                 <div className="card shadow-sm">
                   <img
                     src={NZXT}
@@ -225,15 +226,9 @@ export const Profile = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div
-            className={`pt-5 row pb-5 ${
-              isReviewsVisible ? "d-none" : "d-block"
-            }`}
-          >
-            <div className="row">
-              <div className="col-8">
+              </div>
+              </div>
+              <div className={`col-8 ${isReviewsVisible ? "d-none" : "d-block"}`}>
                 <div className="row">
                   <div className="col-lg-3 col-sm-5 text-center">
                     <div
@@ -347,8 +342,7 @@ export const Profile = () => {
                   </div>
                   
                 </div>
-              </div>
-            </div>
+          </div>
           </div>
         </div>
       </body>

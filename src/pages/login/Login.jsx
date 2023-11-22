@@ -3,6 +3,9 @@ import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
 import { Link } from 'react-router-dom'
 import LoginImg from '../../images/login-img.png'
+import Google from '../../images/googlelogo.png'
+import Facebook from '../../images/facebook.png'
+
 import "./login.css"
 import { Signin } from '../../services/auth/auth'
 
@@ -45,8 +48,18 @@ console.log(e)
             <label>Password</label>
             <br/>
             <input onChange= {(e)=> setPassword(e.target.value)} required type="password" />
-            <p className='pt-4 text-center'>
-            <Link to="/ownprofile" className='text-decoration-none'><button onClick={login} className='btn text-white login-btn'>Log In</button></Link>
+            <Link to="/forgotpass"><p className='text-end'>forgot password?</p></Link>
+            <p className='pt-2 text-center'>
+            <Link to="/ownprofile" className='text-decoration-none'><button onClick={login} className='btn text-white login-btn px-4'>Log In</button></Link>
+            </p>
+            <div className='d-flex align-items-center pb-3'><div className='bg-dark w-50 ' style={{height:'1px '}}></div>
+            <div className='px-2 '>or </div> <div className=' bg-dark w-50 ' style={{height:'1px '}}></div></div>
+            <p className='pt-1 text-center'>
+            <Link to="/" className='text-decoration-none'><button  className='btn rounded-5  w-100 border-dark'><img src={Google} className=' pe-2 ' style={{height:"22px"}}/>Login with Google </button></Link>
+            </p>
+            
+            <p className='pt-1 text-center'>
+            <Link to="/" className='text-decoration-none'><button  className='btn rounded-5  w-100  text-white bg-primary'><img src={Facebook} className=' pe-2 ' style={{height:"22px"}}/>Login with Facebook </button></Link>
             </p>
             <Link to="/signup" className='text-decoration-none'><p className='text-center register'>Don't have an account? Register</p></Link>
             
