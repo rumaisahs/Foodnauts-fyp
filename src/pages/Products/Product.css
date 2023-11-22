@@ -1,0 +1,199 @@
+
+.section-title{
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  
+  /*need to change this*/
+  .prod-img{
+    height: 700px;
+  }
+  
+  
+  
+  
+  
+  /* Important Features Section */
+  
+  .imp-features-container{
+
+    align-items: center;
+  }
+  
+  .highlighted-box{
+    margin-top: 2%;
+    background-color: grey;
+    border-radius: 100px;
+    color: white;
+  }
+  
+  #prod-price-box{
+    margin-right:0;
+    background-color: #700dfb;
+  }
+  
+  #prod-condition-box{
+    margin-left: 1%;
+    background-color: grey;
+  }
+  
+  .share-save-icon{
+    text-align: right;
+  }
+  
+  
+  /* Product Title and Location Section */
+  
+  #seller-location{
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  
+  .section-container{
+    padding: 2% 7%;
+    margin-top: 2%;
+    border-radius: 20px;
+  }
+  
+  .section-content{
+    display: inline-flex;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  
+  
+  /* Product Details Section */
+  .details-items{
+    font-weight: bold;
+  }
+  
+  
+   /* Product Description Section */
+  
+  #prod-desc-section{
+    background-color: rgb(198, 192, 255);
+  }
+  
+  
+  
+  /* Seller Info Section */
+  
+  .seller-img{
+    width: 150px;
+    height: 150px;
+  }
+  
+  .verification-tag{
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  
+  
+  
+  /* Seller Contact Buttons Section */
+  
+  .btn.btn-primary{
+    background-color: #700dfb;
+    align-items: center;
+    border-color: transparent;
+    box-shadow: 2px 2px 3px rgb(104, 104, 104);
+  }
+  
+  .btn-icon{
+    width:25px;
+    margin-right: 10px;
+    filter: invert(100%);
+  }
+  
+  
+  .img-thumbnail{
+    width: 6rem !important;
+    height:6rem !important;
+    background-repeat: no-repeat;
+    object-fit:cover;
+    border: solid #6A00FF 2px !important;
+  }
+  
+  .carousel-indicators-product {
+    bottom: -170px !important;
+    position: static !important;
+    
+  }
+  
+  .card{
+    border:none;
+    font-size:15px;
+    min-height:80px;
+  }
+  
+  .card-body{
+    min-height: 70px;
+    font-size:15px;
+  }
+  
+  .card-title{
+    font-size:15px;
+  }
+  
+  
+  .scrollable-div::after {
+    content: '';
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 40px;
+    height: calc(100% - 20px);
+    right: 0;
+    position: absolute;
+    z-index: 9999999;
+    margin-left: auto;
+    top: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, .5) 40%, #fff 100%);
+  }
+  .scrollable-div{
+  position: relative;
+    width: 75%;
+  }
+  .card-img-top{
+    height:220px;
+    object-fit: cover;
+  }
+
+  .product-carousel-img{
+    height:550px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .product-carousel-img{
+      height:300px;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+
+  .img-thumbnail {
+    min-height: 7rem;
+    min-width: 7rem;
+    background-size: contain !important;
+    background: none !important;
+  }
+
+  .carousel-indicators-product {
+    flex-direction: column;
+  }
+
+  .carousel-indicators-product {
+    position: static !important;
+    justify-content: center;
+    padding: 0;
+    list-style: none;
+    margin-top: 20%;
+  }
+
+}

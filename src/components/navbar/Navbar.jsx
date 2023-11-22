@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="collapse navbar-collapse p-2 p-lg-0" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
           <li className="nav-item">
-            <Link to='/' className='text-decoration-none nav-link active'>Community</Link>
+            <Link to='/foodCommunity' className='text-decoration-none nav-link active'>Community</Link>
           </li>
           <li className="nav-item">
             <Link to='/add_product' className='text-decoration-none nav-link active'>Let Us Recommend</Link>

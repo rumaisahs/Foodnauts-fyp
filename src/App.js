@@ -14,8 +14,8 @@ import List from "./pages/link/List";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/login/SignUp";
 import Profile from "./pages/UserProfile/Profile";
-
-
+import FoodCommunity from "./pages/foodCommunity/foodCommunity";
+import EditProfile from "./pages/EditProfile/EditProfile"
 function App() {
   return (
     <>
@@ -28,6 +28,8 @@ function App() {
         <Route  path="/login" element={<Login/>}/>
         <Route  path="/signup" element={<SignUp/>}/>
         <Route  path="/ownprofile" element={<Profile/>}/>
+        <Route  path="/foodCommunity" element={<FoodCommunity/>}/>
+        <Route  path="/editProfile" element={<EditProfile/>}/>
 
 
       </Routes>

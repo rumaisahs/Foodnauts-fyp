@@ -9,6 +9,7 @@ import Influencer from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import "../UserProfile/Profile.css"
+import EditProfile from '../EditProfile/EditProfile';
 export const Profile = () => {
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
@@ -41,7 +42,7 @@ export const Profile = () => {
   return (
     <>
             <Navbar />
-      <body className="min-vh-100 py-5">
+      <body className="min-vh-100 py-5 container">
         <div className="row px-3">
           <div className="col-2">
             <h6 className="align-items-center d-flex justify-content-center">
@@ -85,9 +86,11 @@ export const Profile = () => {
             </div>
           </div>
           <div className="col-2 text-center">
+            <Link to="/editProfile">
             <button className="btn btn-orange-profile mb-2">
               Edit Profile
             </button>
+            </Link>
             <h6>1M Followers</h6>
             <p>Member Since 2023</p>
           </div>
@@ -227,11 +230,7 @@ export const Profile = () => {
               </div>
             </div>
           </div>
-          <div
-            className={`pt-5 row pb-5 ${
-              isReviewsVisible ? "d-none" : "d-block"
-            }`}
-          >
+          <div className={`pt-5 row pb-5 ${ isReviewsVisible ? "d-none" : "d-block" }`}>
             <div className="row">
               <div className="col-8">
                 <div className="row">
@@ -303,7 +302,7 @@ export const Profile = () => {
                 </div>
                 <p className="text-orange text-center fs-5 pt-4">See More</p>
               </div>
-              <div className="col-4">
+              {/* <div className="col-4">
                 <div
                   className="bg-light shadow border rounded-4 ms-auto"
                   style={{ height: "500px", width:"350px"}}
@@ -347,7 +346,7 @@ export const Profile = () => {
                   </div>
                   
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
