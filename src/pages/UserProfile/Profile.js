@@ -9,14 +9,12 @@ import Influencer from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import "../UserProfile/Profile.css"
-<<<<<<< HEAD
 import { getAllBlogs } from '../../services/profile';
 
-=======
 import EditProfile from '../EditProfile/EditProfile';
 import SideBar from '../../components/sideBar/SideBar';
 import Blog from '../../components/blog/blog';
->>>>>>> main
+
 export const Profile = () => {
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
