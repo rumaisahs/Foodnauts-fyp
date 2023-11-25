@@ -1,6 +1,7 @@
 import "./navbar.css"
 import { Link } from 'react-router-dom';
 import Logo from "../../images/foodnauts 2.png"
+
 const Navbar = () => {
     return (
       <nav className="navbar navbar-expand-lg bg-white sticky-top py-2 shadow mx-auto">
@@ -14,15 +15,16 @@ const Navbar = () => {
       <div className="collapse navbar-collapse p-2 p-lg-0" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
           <li className="nav-item">
-            <Link to='/' className='text-decoration-none nav-link active'>Community</Link>
+            <Link to='/community' className='text-decoration-none nav-link active'><i class="fs-2 bi bi-people"></i></Link>
           </li>
           <li className="nav-item">
-            <Link to='/add_product' className='text-decoration-none nav-link active'>Let Us Recommend</Link>
+            <Link to='/market' className='text-decoration-none nav-link active'><i class="fs-2 bi bi-shop-window"></i>
+</Link>
           </li>
         </ul>
         <form className="d-flex align-items-center d-flex" role="search">
           <input className="form-control rounded-5" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="border-0 bg-transparent position-absolute" style={{right:"4%"}} type="submit"><icon className="bi-search text-orange"/></button>
+          <Link to='/list'  className="border-0 bg-transparent position-absolute" style={{right:"4%"}} ><icon className="bi-search text-orange"/></Link>
         </form>
         
         <Link to="/login" className='text-decoration-none d-none d-lg-flex'><i className="bi bi-person-fill ps-2 fs-2" style={{color: "#F2752F"}}></i></Link>

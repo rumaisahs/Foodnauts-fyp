@@ -25,8 +25,9 @@ const FeaturedProperties = () => {
           className="fpImg"
         />
         <span className="fpName">Yum By Amna</span>
-        <span className="fpCity">Cafe</span>
-        <span className="fpPrice">Starting from $120</span>
+        <span className="fpAddress">Tipu Sultan, Karachi</span>
+        <span className="fpAmbience">Cafe</span>
+        <span className="fpPrice">$$$</span>
         <div className="fpRating">
           <button>8.9</button>
           <span>Reviews (81)</span>
@@ -42,8 +43,9 @@ const FeaturedProperties = () => {
           src={Espresso} alt="" className="fpImg"
         />
         <span className="fpName">Espresso</span>
-        <span className="fpCity">Cafe</span>
-        <span className="fpPrice">Starting from $120</span>
+        <span className="fpAddress">Tipu Sultan, Karachi</span>
+        <span className="fpAmbience">Cafe</span>
+        <span className="fpPrice">$$$</span>
         <div className="fpRating">
           <button>8.9</button>
           <span>Reviews (81)</span>
@@ -78,7 +80,8 @@ const FeaturedProperties = () => {
           className="fpImg"
         />
         <span className="fpName">Pauls</span>
-        <span className="fpCity">Bakery</span>
+        <span className="fpName">Xanders</span>
+        <span className="fpCity">Fine-Dine</span>
         <span className="fpPrice">Starting from $120</span>
         <div className="fpRating">
           <button>8.9</button>
@@ -96,6 +99,7 @@ const FeaturedProperties = () => {
           className="fpImg"
         />
         <span className="fpName">Pomo</span>
+        <span className="fpName">Xanders</span>
         <span className="fpCity">Fine-Dine</span>
         <span className="fpPrice">Starting from $120</span>
         <div className="fpRating">
@@ -114,6 +118,7 @@ const FeaturedProperties = () => {
           className="fpImg"
         />
         <span className="fpName">Colette</span>
+        <span className="fpName">Xanders</span>
         <span className="fpCity">Fine-Dine</span>
         <span className="fpPrice">Starting from $120</span>
         <div className="fpRating">
@@ -133,7 +138,8 @@ const FeaturedProperties = () => {
           className="fpImg"
         />
         <span className="fpName">Yum By Amna</span>
-        <span className="fpCity">Cafe</span>
+        <span className="fpName">Xanders</span>
+        <span className="fpCity">Fine-Dine</span>
         <span className="fpPrice">Starting from $120</span>
         <div className="fpRating">
           <button>8.9</button>
@@ -150,7 +156,8 @@ const FeaturedProperties = () => {
           src={Espresso} alt="" className="fpImg"
         />
         <span className="fpName">Espresso</span>
-        <span className="fpCity">Cafe</span>
+        <span className="fpName">Xanders</span>
+        <span className="fpCity">Fine-Dine</span>
         <span className="fpPrice">Starting from $120</span>
         <div className="fpRating">
           <button>8.9</button>
@@ -167,6 +174,7 @@ const FeaturedProperties = () => {
           alt=""
           className="fpImg"
         />
+        <span className="fpName">Xanders</span>
         <span className="fpName">Xanders</span>
         <span className="fpCity">Fine-Dine</span>
         <span className="fpPrice">Starting from $120</span>
