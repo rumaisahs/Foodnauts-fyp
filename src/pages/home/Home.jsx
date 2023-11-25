@@ -10,7 +10,7 @@ import CarouselImg2 from "../../images/xanders.jpg";
 import CarouselImg3 from "../../images/colette.jpg";
 import "./home.css";
 import RecMod from "./RecMod";
-
+import BloggerIcon from "../../components/bloggerIcon/bloggerIcon";
 
 const Home = () => {
   return (
@@ -94,6 +94,19 @@ const Home = () => {
         <h1 className="homeTitle">Locations</h1>
       <Featured/>
       <FeaturedProperties/>
+         </div>
+      <div className="container pb-5">
+        <h3>Famous Food Bloggers</h3>
+        <div className="d-flex flex-row flex-nowrap gap-4 overflow-x-auto pe-4 py-5 hidden-scrollbar">
+        <BloggerIcon />
+        <BloggerIcon />
+        <BloggerIcon />
+        <BloggerIcon />
+        <BloggerIcon />
+        <BloggerIcon />
+        <BloggerIcon />
+        </div>
+     
       </div>
       <div className="row py-5 mb-5">
           <div className="h-auto col-xl-10 col-10 mx-auto rounded-4 bg-orange border border-1 shadow-sm">

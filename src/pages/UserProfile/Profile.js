@@ -9,6 +9,7 @@ import Influencer from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import "../UserProfile/Profile.css"
+import EditProfile from '../EditProfile/EditProfile';
 export const Profile = () => {
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
@@ -41,7 +42,7 @@ export const Profile = () => {
   return (
     <>
             <Navbar />
-      <body className="min-vh-100 py-5">
+      <body className="min-vh-100 py-5 container">
         <div className="row px-3">
           <div className="col-2">
             <h6 className="align-items-center d-flex justify-content-center">
@@ -72,7 +73,7 @@ export const Profile = () => {
               <h2>Arshan Khan</h2>
               <h6 className="fw-light">
                 @arshanistan
-                <i class="bi bi-patch-check-fill ps-2 text-purple"></i>
+                <i class="bi bi-patch-check-fill ps-2 text-orange"></i>
               </h6>
               <h6 className="fw-light p-4 px-5">
                 Qorem ipsum dolor sit amet, consectetur adipiscing elit. Qorem
@@ -85,9 +86,11 @@ export const Profile = () => {
             </div>
           </div>
           <div className="col-2 text-center">
+            <Link to="/editProfile">
             <button className="btn btn-orange-profile mb-2">
               Edit Profile
             </button>
+            </Link>
             <h6>1M Followers</h6>
             <p>Member Since 2023</p>
           </div>
@@ -97,7 +100,7 @@ export const Profile = () => {
           <div className="row mt-3 ps-0">
             <p
               className={`fs-5 col-4 col-sm-3 col-lg-1 py-2 ps-4 mb-0 text-start rounded-0 btn  ${
-                isReviewsColorVisible ? "border-b-purple" : ""
+                isReviewsColorVisible ? "border-b-orange" : ""
               }`}
               onClick={handleButtonClick}
             >
@@ -105,7 +108,7 @@ export const Profile = () => {
             </p>
             <p
               className={`fs-5 col-4 col-sm-3 col-lg-1 py-2 ps-4 mb-0 text-start rounded-0 btn ${
-                isReviewsColorVisible ? "" : "border-b-purple"
+                isReviewsColorVisible ? "" : "border-b-orange"
               }`}
               onClick={handleButtonClick}
             >
@@ -115,7 +118,7 @@ export const Profile = () => {
             <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-2">
               <Link to="/addreviews" className=" text-decoration-none">
                 <p
-                  className={`btn bg-purple text-white  add-review-btn ${
+                  className={`btn bg-orange text-white  add-review-btn ${
                     windowWidth >= 575 ? "rounded-5" : "rounded-circle"
                   } ${isReviewsColorVisible ? "d-none" : "d-block"}`}
                   onClick={handleButtonClick}
@@ -137,7 +140,7 @@ export const Profile = () => {
                   />
                   <div className="py-2 card-body">
                     <h5 className="card-title text-truncate fs-5">NZXT H510</h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
+                    <p className="card-text text-truncate mb-0 text-orange">
                       Rs. 45,000
                     </p>
                     <p className="card-text text-truncate mb-0 text-muted">
@@ -157,7 +160,7 @@ export const Profile = () => {
                     <h5 className="card-title text-truncate fs-5">
                       Razer Viper Ultimate Cyberpunk 2077 Edition Wireless
                     </h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
+                    <p className="card-text text-truncate mb-0 text-orange">
                       Rs. 45,000
                     </p>
                     <p className="card-text text-truncate mb-0 text-muted">
@@ -177,7 +180,7 @@ export const Profile = () => {
                     <h5 class="card-title text-truncate fs-5">
                       Asus TUF VG27AQ 27" IPS 165Hz Gaming Monitor
                     </h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
+                    <p className="card-text text-truncate mb-0 text-orange">
                       Rs. 45,000
                     </p>
                     <p className="card-text text-truncate mb-0 text-muted">
@@ -197,7 +200,7 @@ export const Profile = () => {
                     <h5 class="card-title text-truncate fs-5">
                       Dell Alienware AW988 Wireless Gaming Headset
                     </h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
+                    <p className="card-text text-truncate mb-0 text-orange">
                       Rs. 45,000
                     </p>
                     <p className="card-text text-truncate mb-0 text-muted">
@@ -217,7 +220,7 @@ export const Profile = () => {
                     <h5 class="card-title text-truncate fs-5">
                       Macbook Air Midnight Blue M2 13.6" 2TB SSD
                     </h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
+                    <p className="card-text text-truncate mb-0 text-orange">
                       Rs. 45,000
                     </p>
                     <p className="card-text text-truncate mb-0 text-muted">
@@ -226,9 +229,11 @@ export const Profile = () => {
                   </div>
                 </div>
               </div>
-              </div>
-              </div>
-              <div className={`col-8 ${isReviewsVisible ? "d-none" : "d-block"}`}>
+            </div>
+          </div>
+          <div className={`pt-5 row pb-5 ${ isReviewsVisible ? "d-none" : "d-block" }`}>
+            <div className="row">
+              <div className="col-8">
                 <div className="row">
                   <div className="col-lg-3 col-sm-5 text-center">
                     <div
@@ -298,7 +303,7 @@ export const Profile = () => {
                 </div>
                 <p className="text-orange text-center fs-5 pt-4">See More</p>
               </div>
-              <div className="col-4">
+              {/* <div className="col-4">
                 <div
                   className="bg-light shadow border rounded-4 ms-auto"
                   style={{ height: "500px", width:"350px"}}
@@ -342,9 +347,10 @@ export const Profile = () => {
                   </div>
                   
                 </div>
+              </div> */}
+            </div>
           </div>
-          </div>
-        </div>
+        </div></div>
       </body>
       <Footer />
     </>

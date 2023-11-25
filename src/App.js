@@ -13,9 +13,12 @@ import List from "./pages/link/List";
 // import SideBar from "./components/sidebar/SideBar";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/login/SignUp";
+import FoodCommunity from "./pages/foodCommunity/foodCommunity";
+import EditProfile from "./pages/EditProfile/EditProfile";
+import Market from "./pages/Market/Market";
+import Product from "./pages/Products/Product";
 import Profile from "./pages/UserProfile/Profile";
-import ForgotPass from "./pages/forgotpass/forgotpass";
-
+import ProdSearch from "./pages/ProdSearch/ProdSearch";
 function App() {
   return (
     <>
@@ -29,7 +32,12 @@ function App() {
         <Route  path="/login" element={<Login/>}/>
         <Route  path="/signup" element={<SignUp/>}/>
         <Route  path="/ownprofile" element={<Profile/>}/>
-        <Route  path="/forgotpass" element={<ForgotPass/>}/>
+        <Route  path="/community" element={<FoodCommunity/>}/>
+        <Route  path="/editProfile" element={<EditProfile/>}/>
+        <Route  path="/market" element={<Market/>}/>
+        <Route  path="/product" element={<Product/>}/>
+        <Route  path="/profile" element={<Profile/>}/>
+        <Route  path="/prodsearch" element={<ProdSearch/>}/>
 
 
       </Routes>
