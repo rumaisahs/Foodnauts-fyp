@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import "../UserProfile/Profile.css"
 import EditProfile from '../EditProfile/EditProfile';
 import SideBar from '../../components/sideBar/SideBar';
+import Blog from '../../components/blog/blog';
 export const Profile = () => {
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
@@ -114,7 +115,7 @@ export const Profile = () => {
               }`}
               onClick={handleButtonClick}
             >
-              Media
+              Collaborations
             </p>
             <p className="col-xl-6 col-lg-6 col-md-3 col-sm-2 col-2"></p>
             <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-2">
@@ -131,9 +132,12 @@ export const Profile = () => {
             </div>
           </div>
           <div className={`pt-5 row justify-content-start mx-auto row-gap-4`}>
-              <div className={`col-8 ${isReviewsVisible ? "d-block" : "d-none"}`}>
+              <div className={`col-10 ${isReviewsVisible ? "d-block" : "d-none"}`}>
               <div className="row">
-<div className="col-lg-3 col-md-4 col-6">
+                <Blog/>
+                <Blog/>
+
+{/* <div className="col-lg-3 col-md-4 col-6">
                 <div className="card shadow-sm">
                   <img
                     src={NZXT}
@@ -230,7 +234,7 @@ export const Profile = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className={`pt-5 row pb-5 ${ isReviewsVisible ? "d-none" : "d-block" }`}>

@@ -20,6 +20,8 @@ import Product from "./pages/Products/Product";
 import Profile from "./pages/UserProfile/Profile";
 import ProdSearch from "./pages/ProdSearch/ProdSearch";
 import MyBlogs from "./pages/myblogs/myblogs";
+import { AddProduct } from "./pages/AddProduct/addproduct";
+
 function App() {
   return (
     <>
@@ -40,6 +42,7 @@ function App() {
         <Route  path="/profile" element={<Profile/>}/>
         <Route  path="/prodsearch" element={<ProdSearch/>}/>
         <Route  path="/myblog" element={<MyBlogs/>}/>
+        <Route  path="/addrestaurant" element={<AddProduct/>}/>
 
 
       </Routes>
