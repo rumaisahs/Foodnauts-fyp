@@ -12,10 +12,6 @@ const SearchItem = () => {
       <div className="siDesc">
         <h1 className="siTitle">Xanders</h1>
         <span className="siDistance">Tipu Sultan / E st / Bukhari</span>
-        <span className="siTaxiOp">Something</span>
-        <span className="siSubtitle">
-         Ihave no idea what to write here
-        </span>
         <span className="siFeatures">
           Cafe • Bakery • Fine-Dine
         </span>

@@ -24,7 +24,7 @@ const Navbar = () => {
         </ul>
         <form className="d-flex align-items-center d-flex" role="search">
           <input className="form-control rounded-5" type="search" placeholder="Search" aria-label="Search"/>
-          <Link to='/prodsearch'  className="border-0 bg-transparent position-absolute" style={{right:"4%"}} ><icon className="bi-search text-orange"/></Link>
+          <Link to='/list'  className="border-0 bg-transparent position-absolute" style={{right:"4%"}} ><icon className="bi-search text-orange"/></Link>
         </form>
         
         <Link to="/login" className='text-decoration-none d-none d-lg-flex'><i className="bi bi-person-fill ps-2 fs-2" style={{color: "#F2752F"}}></i></Link>

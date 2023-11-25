@@ -10,6 +10,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import "../UserProfile/Profile.css"
 import EditProfile from '../EditProfile/EditProfile';
+import SideBar from '../../components/sideBar/SideBar';
 export const Profile = () => {
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
@@ -27,13 +28,13 @@ export const Profile = () => {
       setWindowWidth(window.innerWidth);
 
       // Update the text based on the window width
-      setDisplayText(window.innerWidth <= 575 ? '+' : 'Add Review +');
+      setDisplayText(window.innerWidth <= 575 ? '+' : 'Post Blog');
     };
 
     window.addEventListener('resize', handleResize);
 
     // Initial setup
-    setDisplayText(window.innerWidth <= 575 ? '+' : 'Add Review +');
+    setDisplayText(window.innerWidth <= 575 ? '+' : 'Post Blog');
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -42,6 +43,7 @@ export const Profile = () => {
   return (
     <>
             <Navbar />
+            <SideBar/>
       <body className="min-vh-100 py-5 container">
         <div className="row px-3">
           <div className="col-2">
