@@ -9,6 +9,8 @@ import Influencer from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import "../UserProfile/Profile.css"
+import { getAllBlogs } from '../../services/profile';
+
 export const Profile = () => {
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
@@ -20,7 +22,7 @@ export const Profile = () => {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [displayText, setDisplayText] = useState(''); // Initial text
-
+  const [blogData, setBlogData] = useState([])
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -38,14 +40,30 @@ export const Profile = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+
+  useEffect(() => {
+    GetBlogs()
+  }, [])
+
+  const GetBlogs = async (data) => {
+    const params = {
+      paginate: true,
+      sort: 'asc',
+      sortBy: 'sortBy'
+    }
+    const res = await getAllBlogs(params)
+    setBlogData(res?.data?.data)
+  }
+
+
   return (
     <>
-            <Navbar />
+      <Navbar />
       <body className="min-vh-100 py-5">
         <div className="row px-3">
           <div className="col-2">
             <h6 className="align-items-center d-flex justify-content-center">
-              {" "}
               <icon className="bi-youtube text-orange fs-2 pe-2" /> 1M Followers
             </h6>
             <hr />
@@ -96,17 +114,15 @@ export const Profile = () => {
         <div className="ps-5">
           <div className="row mt-3 ps-0">
             <p
-              className={`fs-5 col-4 col-sm-3 col-lg-1 py-2 ps-4 mb-0 text-start rounded-0 btn  ${
-                isReviewsColorVisible ? "border-b-purple" : ""
-              }`}
+              className={`fs-5 col-4 col-sm-3 col-lg-1 py-2 ps-4 mb-0 text-start rounded-0 btn  ${isReviewsColorVisible ? "border-b-purple" : ""
+                }`}
               onClick={handleButtonClick}
             >
               Blogs
             </p>
             <p
-              className={`fs-5 col-4 col-sm-3 col-lg-1 py-2 ps-4 mb-0 text-start rounded-0 btn ${
-                isReviewsColorVisible ? "" : "border-b-purple"
-              }`}
+              className={`fs-5 col-4 col-sm-3 col-lg-1 py-2 ps-4 mb-0 text-start rounded-0 btn ${isReviewsColorVisible ? "" : "border-b-purple"
+                }`}
               onClick={handleButtonClick}
             >
               Media
@@ -115,9 +131,8 @@ export const Profile = () => {
             <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-2">
               <Link to="/addreviews" className=" text-decoration-none">
                 <p
-                  className={`btn bg-purple text-white  add-review-btn ${
-                    windowWidth >= 575 ? "rounded-5" : "rounded-circle"
-                  } ${isReviewsColorVisible ? "d-none" : "d-block"}`}
+                  className={`btn bg-purple text-white  add-review-btn ${windowWidth >= 575 ? "rounded-5" : "rounded-circle"
+                    } ${isReviewsColorVisible ? "d-none" : "d-block"}`}
                   onClick={handleButtonClick}
                 >
                   {displayText}
@@ -125,112 +140,39 @@ export const Profile = () => {
               </Link>
             </div>
           </div>
+
+          {/* BLOGS */}
           <div className={`pt-5 ${isReviewsVisible ? "d-block" : "d-none"}`}>
             <div className="row pb-5 justify-content-start mx-auto row-gap-4">
-              <div className="col-lg-3 col-md-4 col-6">
-                <div className="card shadow-sm">
-                  <img
-                    src={NZXT}
-                    className="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div className="py-2 card-body">
-                    <h5 className="card-title text-truncate fs-5">NZXT H510</h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-6">
-                <div className="card shadow-sm ">
-                  <img
-                    src={Viper}
-                    className="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div className="py-2 card-body">
-                    <h5 className="card-title text-truncate fs-5">
-                      Razer Viper Ultimate Cyberpunk 2077 Edition Wireless
-                    </h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-6">
-                <div class="card shadow-sm">
-                  <img
-                    src={Product04}
-                    class="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div class="py-2 card-body">
-                    <h5 class="card-title text-truncate fs-5">
-                      Asus TUF VG27AQ 27" IPS 165Hz Gaming Monitor
-                    </h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-6">
-                <div class="card shadow-sm">
-                  <img
-                    src={Product05}
-                    class="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div class="py-2 card-body">
-                    <h5 class="card-title text-truncate fs-5">
-                      Dell Alienware AW988 Wireless Gaming Headset
-                    </h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-6">
-                <div class="card shadow-sm">
-                  <img
-                    src={Product06}
-                    class="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div class="py-2 card-body">
-                    <h5 class="card-title text-truncate fs-5">
-                      Macbook Air Midnight Blue M2 13.6" 2TB SSD
-                    </h5>
-                    <p className="card-text text-truncate mb-0 text-purple">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              {blogData.map((dt) => {
+                return (
+                  <>
+                    < div className="col-lg-3 col-md-4 col-6" key={dt?._id}>
+                      <div className="card shadow-sm">
+                        <img
+                          src={dt?.images[0]}
+                          className="card-img-top r-card-height"
+                          alt="img-name"
+                        />
+                        <div className="py-2 card-body">
+                          <h5 className="card-title text-truncate fs-5">{dt?.title}</h5>
+                          <p className="card-text text-truncate mb-0 text-purple">
+                            Rs. 45,000
+                          </p>
+                          <p className="card-text text-truncate mb-0 text-muted">
+                            Karachi, Sindh <icon className=" bi-geo-alt-fill" />
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )
+              })
+              }            </div>
           </div>
           <div
-            className={`pt-5 row pb-5 ${
-              isReviewsVisible ? "d-none" : "d-block"
-            }`}
+            className={`pt-5 row pb-5 ${isReviewsVisible ? "d-none" : "d-block"
+              }`}
           >
             <div className="row">
               <div className="col-8">
@@ -306,52 +248,52 @@ export const Profile = () => {
               <div className="col-4">
                 <div
                   className="bg-light shadow border rounded-4 ms-auto"
-                  style={{ height: "500px", width:"350px"}}
+                  style={{ height: "500px", width: "350px" }}
                 >
                   <h4 className="ps-4 pt-5 pb-3">Popular Bloggers</h4>
                   <div className="row ps-4 pb-3 align-items-center d-flex">
                     <div className="col-3">
-                        <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
+                      <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
                     </div>
                     <div className="col-6">
-                        <h6>Arshan Khan</h6>
-                        <p>@arshanistan</p>
+                      <h6>Arshan Khan</h6>
+                      <p>@arshanistan</p>
                     </div>
                   </div>
                   <div className="row ps-4 pb-3 align-items-center d-flex">
                     <div className="col-3">
-                        <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
+                      <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
                     </div>
                     <div className="col-6">
-                        <h6>Arshan Khan</h6>
-                        <p>@arshanistan</p>
+                      <h6>Arshan Khan</h6>
+                      <p>@arshanistan</p>
                     </div>
                   </div>
                   <div className="row ps-4 pb-3 align-items-center d-flex">
                     <div className="col-3">
-                        <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
+                      <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
                     </div>
                     <div className="col-6">
-                        <h6>Arshan Khan</h6>
-                        <p>@arshanistan</p>
+                      <h6>Arshan Khan</h6>
+                      <p>@arshanistan</p>
                     </div>
                   </div>
                   <div className="row ps-4 pb-3 align-items-center d-flex">
                     <div className="col-3">
-                        <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
+                      <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
                     </div>
                     <div className="col-6">
-                        <h6>Arshan Khan</h6>
-                        <p>@arshanistan</p>
+                      <h6>Arshan Khan</h6>
+                      <p>@arshanistan</p>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </body>
+      </body >
       <Footer />
     </>
   );
