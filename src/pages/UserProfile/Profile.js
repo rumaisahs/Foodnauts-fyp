@@ -16,7 +16,7 @@ import EditProfile from '../EditProfile/EditProfile';
 import SideBar from '../../components/sideBar/SideBar';
 import Blog from '../../components/blog/blog';
 import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
-import { GetSingleUser } from '../../services/user/user';
+import { GetSingleUser, UserFollowers } from '../../services/user/user';
 import { GetAllMedia } from '../../services/media/media';
 
 export const Profile = () => {
@@ -34,6 +34,7 @@ export const Profile = () => {
   const [displayText, setDisplayText] = useState(''); // Initial text
   const [blogData, setBlogData] = useState([])
   const [mediaData, setMediaData] = useState([])
+  const [followers, setFollowers] = useState([])
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,7 +55,7 @@ export const Profile = () => {
   }, [])
 
   useEffect(() => {
-    const getAllBlogs = async (data) => {
+    const getAllBlogs = async () => {
       const params = {
         user: authUser._id,
         paginate: false,
@@ -65,12 +66,12 @@ export const Profile = () => {
       setBlogData(res?.data?.data)
     }
 
-    const getSingleUser = async (data) => {
+    const getSingleUser = async () => {
       const res = await GetSingleUser(authUser._id)
       setUser(res?.data?.data)
     }
 
-    const getAllMedia = async (data) => {
+    const getAllMedia = async () => {
       const params = {
         user: authUser._id,
         paginate: false,
@@ -81,9 +82,15 @@ export const Profile = () => {
       setMediaData(res?.data?.data)
     }
 
+    const userFollowers = async () => {
+      const res = await UserFollowers(authUser?._id)
+      setFollowers(res?.data?.data)
+    }
+
     getSingleUser()
     getAllBlogs()
     getAllMedia()
+    userFollowers()
 
   }, [])
 
@@ -95,17 +102,17 @@ export const Profile = () => {
         <div className="row px-3">
           <div className="col-2">
             <h6 className="align-items-center d-flex justify-content-center">
-              <icon className="bi-youtube text-orange fs-2 pe-2" /> 1M Followers
+              <icon className="bi-youtube text-orange fs-2 pe-2" /> {followers?.length} Followers
             </h6>
             <hr />
             <h6 className="align-items-center d-flex justify-content-center">
               {" "}
-              <icon className="bi-tiktok text-orange fs-2 pe-2" /> 1M Followers
+              <icon className="bi-tiktok text-orange fs-2 pe-2" /> {followers?.length} Followers
             </h6>
             <hr />
             <h6 className="align-items-center d-flex justify-content-center">
               {" "}
-              <icon className="bi-instagram text-orange fs-2 pe-2" /> 1M
+              <icon className="bi-instagram text-orange fs-2 pe-2" /> {followers?.length}
               Followers
             </h6>
           </div>
@@ -134,7 +141,7 @@ export const Profile = () => {
                 Edit Profile
               </button>
             </Link>
-            <h6>1M Followers</h6>
+            <h6>{followers?.length} Followers</h6>
             <p>Member Since {moment(user?.createdAt).format('YYYY')}</p>
           </div>
         </div>

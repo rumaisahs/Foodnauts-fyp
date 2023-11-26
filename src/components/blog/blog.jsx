@@ -8,7 +8,6 @@ import Influencer from "../../images/influence.jpeg"
 import moment from 'moment';
 
 function blog({ data }) {
-  console.log(data)
   return (
     <>
       <div className='container mx-auto row border rounded-3 border-black border-1 p-3'>

@@ -16,6 +16,7 @@ export const apiUrl = {
     ambience: '/ambience',
     user: "/user",
     blogs: 'blog',
-    media: "/media"
+    media: "/media",
+    userFollowers: "/user/followers"
 }
 
