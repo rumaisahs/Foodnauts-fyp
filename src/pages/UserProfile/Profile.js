@@ -9,15 +9,21 @@ import Influencer from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import "../UserProfile/Profile.css"
-import { getAllBlogs } from '../../services/profile';
+import { GetAllBlogs } from '../../services/blog/blog';
+import moment from 'moment';
 
 import EditProfile from '../EditProfile/EditProfile';
 import SideBar from '../../components/sideBar/SideBar';
 import Blog from '../../components/blog/blog';
+import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
+import { GetSingleUser } from '../../services/user/user';
+import { GetAllMedia } from '../../services/media/media';
 
 export const Profile = () => {
+  const authUser = GetAuthUserLocalStorage()
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
+  const [user, setUser] = useState(null)
 
   const handleButtonClick = () => {
     setisReviewsVisible(!isReviewsVisible);
@@ -27,6 +33,8 @@ export const Profile = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [displayText, setDisplayText] = useState(''); // Initial text
   const [blogData, setBlogData] = useState([])
+  const [mediaData, setMediaData] = useState([])
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -43,23 +51,41 @@ export const Profile = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
-
-
-  useEffect(() => {
-    GetBlogs()
   }, [])
 
-  const GetBlogs = async (data) => {
-    const params = {
-      paginate: true,
-      sort: 'asc',
-      sortBy: 'sortBy'
+  useEffect(() => {
+    const getAllBlogs = async (data) => {
+      const params = {
+        user: authUser._id,
+        paginate: false,
+        sort: 'desc',
+        sortBy: 'createdAt',
+      }
+      const res = await GetAllBlogs(params)
+      setBlogData(res?.data?.data)
     }
-    const res = await getAllBlogs(params)
-    setBlogData(res?.data?.data)
-  }
 
+    const getSingleUser = async (data) => {
+      const res = await GetSingleUser(authUser._id)
+      setUser(res?.data?.data)
+    }
+
+    const getAllMedia = async (data) => {
+      const params = {
+        user: authUser._id,
+        paginate: false,
+        sort: 'desc',
+        sortBy: 'createdAt',
+      }
+      const res = await GetAllMedia(params)
+      setMediaData(res?.data?.data)
+    }
+
+    getSingleUser()
+    getAllBlogs()
+    getAllMedia()
+
+  }, [])
 
   return (
     <>
@@ -92,18 +118,13 @@ export const Profile = () => {
               />
             </div>
             <div className="col-12 text-center">
-              <h2>Arshan Khan</h2>
-              <h6 className="fw-light">
-                @arshanistan
+              <h2>{user?.name}</h2>
+              <h6 className="fw-light text-lowercase">
+                @{user?.name}
                 <i class="bi bi-patch-check-fill ps-2 text-orange"></i>
               </h6>
               <h6 className="fw-light p-4 px-5">
-                Qorem ipsum dolor sit amet, consectetur adipiscing elit. Qorem
-                ipsum dolor sit amet, consectetur adipiscing elit.Qorem ipsum
-                dolor sit amet, consectetur adipiscing elit. Qorem ipsum dolor
-                sit amet, consectetur adipiscing elit.Qorem ipsum dolor sit
-                amet, consectetur adipiscing elit. Qorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
+                {user?.bio}
               </h6>
             </div>
           </div>
@@ -114,7 +135,7 @@ export const Profile = () => {
               </button>
             </Link>
             <h6>1M Followers</h6>
-            <p>Member Since 2023</p>
+            <p>Member Since {moment(user?.createdAt).format('YYYY')}</p>
           </div>
         </div>
 
@@ -150,9 +171,11 @@ export const Profile = () => {
           <div className={`pt-5 row justify-content-start mx-auto row-gap-4`}>
             <div className={`col-10 ${isReviewsVisible ? "d-block" : "d-none"}`}>
               <div className="row">
-                <Blog />
-                <Blog />
-
+                {
+                  blogData?.map((item, index) => (
+                    <Blog data={item} key={index} />
+                  ))
+                }
                 {/* <div className="col-lg-3 col-md-4 col-6">
                 <div className="card shadow-sm">
                   <img
@@ -266,62 +289,21 @@ export const Profile = () => {
                         <p>Add New</p>
                       </div>
                     </div>
-                    <div className="col-lg-3 col-sm-5 text-center">
-                      <img
-                        src={Viper}
-                        className="object-fit-cover mb-2 rounded-4"
-                        style={{ height: "230px", width: "180px" }}
-                      />
-                      <p>Title</p>
-                    </div>
-                    <div className="col-lg-3 col-sm-5 text-center">
-                      <img
-                        src={Viper}
-                        className="object-fit-cover mb-2 rounded-4"
-                        style={{ height: "230px", width: "180px" }}
-                      />
-                      <p>Title</p>
-                    </div>
-                    <div className="col-lg-3 col-sm-5 text-center">
-                      <img
-                        src={Viper}
-                        className="object-fit-cover mb-2 rounded-4"
-                        style={{ height: "230px", width: "180px" }}
-                      />
-                      <p>Title</p>
-                    </div>
-                    <div className="col-lg-3 col-sm-5 text-center">
-                      <img
-                        src={Viper}
-                        className="object-fit-cover mb-2 rounded-4"
-                        style={{ height: "230px", width: "180px" }}
-                      />
-                      <p>Title</p>
-                    </div>
-                    <div className="col-lg-3 col-sm-5 text-center">
-                      <img
-                        src={Viper}
-                        className="object-fit-cover mb-2 rounded-4"
-                        style={{ height: "230px", width: "180px" }}
-                      />
-                      <p>Title</p>
-                    </div>
-                    <div className="col-lg-3 col-sm-5 text-center">
-                      <img
-                        src={Viper}
-                        className="object-fit-cover mb-2 rounded-4"
-                        style={{ height: "230px", width: "180px" }}
-                      />
-                      <p>Title</p>
-                    </div>
-                    <div className="col-lg-3 col-sm-5 text-center">
-                      <img
-                        src={Viper}
-                        className="object-fit-cover mb-2 rounded-4"
-                        style={{ height: "230px", width: "180px" }}
-                      />
-                      <p>Title</p>
-                    </div>
+                    {
+                      mediaData?.map((item, index) => (
+                        <div key={index} className="col-lg-3 col-sm-5 text-center">
+                          {
+                            item?.media_type == "image" &&
+                            <img
+                              src={item?.url}
+                              className="object-fit-cover mb-2 rounded-4"
+                              style={{ height: "230px", width: "180px" }}
+                            />
+                          }
+                          <p>{item?.title}</p>
+                        </div>
+                      ))
+                    }
                   </div>
                   <p className="text-orange text-center fs-5 pt-4">See More</p>
                 </div>

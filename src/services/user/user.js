@@ -1,5 +1,5 @@
-import { apiUrl } from '../utils/constants'
-import api from './index'
+import { apiUrl } from '../../utils/constants'
+import api from '../index'
 
 export const CreateUser = async (data) => await api.post(`${apiUrl.user}`, data)
 export const GetAllUser = async (params) => await api.get(`${apiUrl.user}`, { params })

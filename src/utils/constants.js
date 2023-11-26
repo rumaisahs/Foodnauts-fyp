@@ -14,7 +14,8 @@ export const apiUrl = {
     signup: '/register',
     socialLogin: '/social-login',
     ambience: '/ambience',
-
+    user: "/user",
     blogs: 'blog',
+    media: "/media"
 }
 

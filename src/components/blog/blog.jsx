@@ -1,27 +1,31 @@
 import React from 'react'
-import  '../../pages/restaurant/restaurant.css';
+import '../../pages/restaurant/restaurant.css';
 
 import ReviewImg1 from "../../images/review-img-1.png"
 import ReviewImg2 from "../../images/review-img-2.png"
 import ReviewImg3 from "../../images/review-img-3.png"
 import Influencer from "../../images/influence.jpeg"
-function blog() {
+import moment from 'moment';
+
+function blog({ data }) {
+  console.log(data)
   return (
     <>
-    <div className= 'container mx-auto row border rounded-3 border-black border-1 p-3'>
+      <div className='container mx-auto row border rounded-3 border-black border-1 p-3'>
         <div className='col-xl-1 col-sm-2 col-3'>
           <img className='rounded-circle' src={Influencer} alt="" height={100} />
         </div>
         <div className='col-7'>
-          <p className='mb-0'>@arshanistan</p>
-          <p className=''>Reviewed on 11 june, 2023</p>
+          <p className='mb-0 text-lowercase'>@{data?.user?.name}</p>
+          {/* <p className=''>Published on {moment(data?.createdAt)}</p> */}
           <p>
-          Qorem ipsum dolor sit amet, consectetur adipiscing elit. Qorem ipsum dolor sit amet, consectetur
-adipiscing elit.Qorem ipsum dolor sit amet, consectetur adipiscing elit. Qorem ipsum dolor.
+            {data?.description}
           </p>
-          <img className='pe-2 object-fit-contain' src={ReviewImg1} height={130} alt="" />
-          <img className='pe-2 object-fit-contain' src={ReviewImg2} height={130} alt="" />
-          <img className='pe-2 object-fit-contain' src={ReviewImg3} height={130} alt="" />
+          {
+            data?.images?.map((item, index) => (
+              <img kye={index} className='pe-2 object-fit-contain' src={item} height={130} alt="" />
+            ))
+          }
         </div>
         <div className='col-3 justify-content-end d-flex'>
           {/* <div>
@@ -37,22 +41,22 @@ adipiscing elit.Qorem ipsum dolor sit amet, consectetur adipiscing elit. Qorem i
           <p className='mb-0'><icon className="bi-check2 pe-2"/>Value</p>
           <p className='mb-0'><icon className="bi-check2 pe-2"/>Service</p>
           </div> */}
-          
+
         </div >
         {/* <div className='mt-auto' > */}
-        <div className='justify-content-end d-flex ms-auto'> 
-        <icon className="pe-2 bi bi-share-fill" />
+        <div className='justify-content-end d-flex ms-auto'>
+          <icon className="pe-2 bi bi-share-fill" />
           <icon className="pe-2 bi-hand-thumbs-up" />
-          <p>256</p>
+          <p>{data?.likes?.length}</p>
           <icon className="pe-2 ps-3 bi-hand-thumbs-down" />
-          <p>256</p>
+          <p>{data?.dislikes?.length}</p>
         </div>
         <div className='justify-content-start d-flex me-auto'>
-        <icon className="pe-2 bi bi-chat-dots" />
+          <icon className="pe-2 bi bi-chat-dots" />
           <p>Comments</p>
 
-        {/* </div> */}
-    </div></div>
+          {/* </div> */}
+        </div></div>
     </>
   )
 }
