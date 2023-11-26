@@ -1,10 +1,6 @@
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
-import NZXT from "../../images/ad2.jpg";
 import Viper from "../../images/ad-1.jpg";
-import Product04 from "../../images/bloggers.png";
-import Product05 from "../../images/influence.jpeg";
-import Product06 from "../../images/influence.jpeg";
 import Influencer from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
@@ -12,6 +8,7 @@ import "../UserProfile/Profile.css"
 import EditProfile from '../EditProfile/EditProfile';
 import SideBar from '../../components/sideBar/SideBar';
 import Blog from '../../components/blog/blog';
+import BlogModal from '../../components/blogmodal/BlogModal';
 export const Profile = () => {
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
@@ -50,18 +47,17 @@ export const Profile = () => {
           <div className="col-2">
             <h6 className="align-items-center d-flex justify-content-center">
               {" "}
-              <icon className="bi-youtube text-orange fs-2 pe-2" /> 1M Followers
+              <icon className="bi-youtube text-orange fs-2 pe-2" /> 
             </h6>
             <hr />
             <h6 className="align-items-center d-flex justify-content-center">
               {" "}
-              <icon className="bi-tiktok text-orange fs-2 pe-2" /> 1M Followers
+              <icon className="bi-tiktok text-orange fs-2 pe-2" /> 
             </h6>
             <hr />
             <h6 className="align-items-center d-flex justify-content-center">
               {" "}
-              <icon className="bi-instagram text-orange fs-2 pe-2" /> 1M
-              Followers
+              <icon className="bi-instagram text-orange fs-2 pe-2" /> 
             </h6>
           </div>
           <div className="col-8 row">
@@ -110,7 +106,7 @@ export const Profile = () => {
               Blogs
             </p>
             <p
-              className={`fs-5 col-4 col-sm-3 col-lg-1 py-2 ps-4 mb-0 text-start rounded-0 btn ${
+              className={`fs-5 col-4 col-sm-3 col-lg-2 py-2 ps-4 mb-0 text-start rounded-0 btn ${
                 isReviewsColorVisible ? "" : "border-b-orange"
               }`}
               onClick={handleButtonClick}
@@ -118,7 +114,7 @@ export const Profile = () => {
               Collaborations
             </p>
             <p className="col-xl-6 col-lg-6 col-md-3 col-sm-2 col-2"></p>
-            <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-2">
+            {/* <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-2">
               <Link to="/addreviews" className=" text-decoration-none">
                 <p
                   className={`btn bg-orange text-white  add-review-btn ${
@@ -129,11 +125,13 @@ export const Profile = () => {
                   {displayText}
                 </p>
               </Link>
-            </div>
+            </div> */}
           </div>
           <div className={`pt-5 row justify-content-start mx-auto row-gap-4`}>
               <div className={`col-10 ${isReviewsVisible ? "d-block" : "d-none"}`}>
               <div className="row">
+              <BlogModal/>
+
                 <Blog/>
                 <Blog/>
 
