@@ -7,27 +7,28 @@ import "./login.css";
 //import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import { Register } from "../../services/auth/auth";
+import { toast, ToastContainer } from "react-toastify";
 
 const SignUp = () => {
   const [name, setNamel] = useState("");
   const [username, setUserNamel] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate()
 
-  const register = async (e) => {
-    e.preventDefault()
+  const register = async (data) => {
+    data.preventDefault()
     try {
       const res = await Register({
         name: name,
-        username:username,
-        // username: "azhan",
-        // cnic: "4229167519861",
-        // phone: "021379421088",
+        username: username,
         email: email,
         password: password,
       });
+      navigate('/login')
+      // toast.success(res?.data?.message)
     } catch (e) {
-      console.log(e);
+      // toast.error(e);
     }
   };
   // const [captchaValue, setCaptchaValue] = useState(null);
@@ -124,11 +125,11 @@ const SignUp = () => {
                 <br />
                 <label>Username</label>
                 <br />
-                <input  onChange={(e) => setUserNamel(e.target.value)}
+                <input onChange={(e) => setUserNamel(e.target.value)}
                   required
                   type="text"
                   id="username"
-                  name="name"className="w-100" />
+                  name="name" className="w-100" />
                 <br />
                 <label>Email</label>
                 <br />
@@ -163,7 +164,7 @@ const SignUp = () => {
                   className="w-100"
                 />
                 <br />
-             
+
                 <label>Phone No.</label>
                 <br />
                 <input className="w-100" />
@@ -174,7 +175,7 @@ const SignUp = () => {
             /> */}
                 <p className="pt-4 text-center">
                   <button
-                     type="submit" onClick={register}
+                    type="submit" onClick={register}
                     className="btn text-white login-btn"
                   >
                     Register
@@ -190,6 +191,8 @@ const SignUp = () => {
           </form>
         </div>
       </body>
+      <ToastContainer />
+
       <Footer />
     </>
   );

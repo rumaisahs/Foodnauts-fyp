@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import LoginImg from '../../images/login-img.png'
 import Google from '../../images/googlelogo.png'
 import Facebook from '../../images/facebook.png'
@@ -11,17 +11,21 @@ import { Signin } from '../../services/auth/auth'
 import { SetAuthUserLocalStorage, SetTokenLocalStorage } from '../../services/localStorage/localStorage'
 
 export const Login = () => {
+  const navigate = useNavigate()
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
 
   const login = async () => {
     try {
-      const res = await Signin({
-        email: email,
-        password: password
-      })
-      SetAuthUserLocalStorage(res.data.data.user)
-      SetTokenLocalStorage(res.data.data.token)
+      const res = await Signin(
+        {
+          email: email,
+          password: password
+        }
+      )
+      navigate("/ownprofile")
+      SetAuthUserLocalStorage(res?.data?.data?.user)
+      SetTokenLocalStorage(res?.data?.data?.token)
     }
     catch (e) {
       console.log(e)
@@ -48,7 +52,7 @@ export const Login = () => {
               <input onChange={(e) => setPassword(e.target.value)} required type="password" />
               <Link to="/forgotpass"><p className='text-end'>forgot password?</p></Link>
               <p className='pt-2 text-center'>
-                <Link to="/ownprofile" className='text-decoration-none'><button onClick={login} className='btn text-white login-btn px-4'>Log In</button></Link>
+                <Link className='text-decoration-none'><button onClick={login} className='btn text-white login-btn px-4'>Log In</button></Link>
               </p>
               <div className='d-flex align-items-center pb-3'><div className='bg-dark w-50 ' style={{ height: '1px ' }}></div>
                 <div className='px-2 '>or </div> <div className=' bg-dark w-50 ' style={{ height: '1px ' }}></div></div>

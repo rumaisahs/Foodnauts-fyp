@@ -11,8 +11,10 @@ export const constant = {
 
 export const apiUrl = {
     login: '/login',
-    signup:'/register',
-    socialLogin:'/social-login',
-    ambience:'/ambience'
+    signup: '/register',
+    socialLogin: '/social-login',
+    ambience: '/ambience',
+
+    blogs: 'blog',
 }
 
