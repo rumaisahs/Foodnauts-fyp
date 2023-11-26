@@ -7,7 +7,7 @@ function myblogs() {
   return (
     <div>
     <Navbar/>
-    <h1 className='my-3'><icon className="bi-chat-square-dots pe-2"/>Blogs</h1>
+    <h1 className='my-3'>My Blogs</h1>
 
     <Blog/>
     <Footer/> </div>
