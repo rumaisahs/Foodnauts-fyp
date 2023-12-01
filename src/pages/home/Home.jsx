@@ -11,130 +11,144 @@ import CarouselImg3 from "../../images/colette.jpg";
 import "./home.css";
 import RecMod from "./RecMod";
 import BloggerIcon from "../../components/bloggerIcon/bloggerIcon";
+import { useEffect } from "react";
+import { GetAllRestaurants, getAllRestaurants } from "../../services/restaurants";
+import { useState } from "react";
 
 const Home = () => {
+  const [resData, setRestData] = useState([])
+  resData.length = 10
+
+  useEffect(() => {
+    GetRestaurants()
+  }, [])
+
+  const GetRestaurants = async () => {
+    const res = await getAllRestaurants()
+    setRestData(res?.data?.data);
+  }
   return (
     <div>
       <Navbar />
 
-        {/* Main Carousel */}
-        <div className="row justify-content-center d-flex pt-5 position-relative">
-          <div className="col-10">
-            <div
-              id="mainCarousel"
-              className="carousel slide carousel-fade"
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <div className="image-overlay">
-                    <img
-                      src={CarouselImg1}
-                      className="d-block w-100 rounded-5 object-fit-cover main-carousel-img"
-                      alt="gpu-img"
-                    />
-                  </div>
-                </div>
-
-                <div className="carousel-item">
+      {/* Main Carousel */}
+      <div className="row justify-content-center d-flex pt-5 position-relative">
+        <div className="col-10">
+          <div
+            id="mainCarousel"
+            className="carousel slide carousel-fade"
+            data-bs-ride="carousel"
+          >
+            <div className="carousel-inner">
+              <div className="carousel-item active">
                 <div className="image-overlay">
-                    <img
-                      src={CarouselImg2}
-                      className="d-block w-100 rounded-5 object-fit-cover main-carousel-img"
-                      alt="gpu-img"
-                    />
-                  </div>
-                </div>
-                <div className="carousel-item">
-                <div className="image-overlay">
-                    <img
-                      src={CarouselImg3}
-                      className="d-block w-100 rounded-5 object-fit-cover main-carousel-img"
-                      alt="gpu-img"
-                    />
-                  </div>
+                  <img
+                    src={CarouselImg1}
+                    className="d-block w-100 rounded-5 object-fit-cover main-carousel-img"
+                    alt="gpu-img"
+                  />
                 </div>
               </div>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#mainCarousel"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#mainCarousel"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
+
+              <div className="carousel-item">
+                <div className="image-overlay">
+                  <img
+                    src={CarouselImg2}
+                    className="d-block w-100 rounded-5 object-fit-cover main-carousel-img"
+                    alt="gpu-img"
+                  />
+                </div>
+              </div>
+              <div className="carousel-item">
+                <div className="image-overlay">
+                  <img
+                    src={CarouselImg3}
+                    className="d-block w-100 rounded-5 object-fit-cover main-carousel-img"
+                    alt="gpu-img"
+                  />
+                </div>
+              </div>
             </div>
+            <button
+              className="carousel-control-prev"
+              type="button"
+              data-bs-target="#mainCarousel"
+              data-bs-slide="prev"
+            >
+              <span
+                className="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button
+              className="carousel-control-next"
+              type="button"
+              data-bs-target="#mainCarousel"
+              data-bs-slide="next"
+            >
+              <span
+                className="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Next</span>
+            </button>
           </div>
-          <RecMod></RecMod>
-          {/* <button className="btn bg-orange shadow rounded-1 justify-content-center d-flex mx-auto align-items-center position-absolute z-1 w-25" style={{top:'473px'}}>
+        </div>
+        <RecMod></RecMod>
+        {/* <button className="btn bg-orange shadow rounded-1 justify-content-center d-flex mx-auto align-items-center position-absolute z-1 w-25" style={{top:'473px'}}>
           <h6 className="pt-2 text-white">Let Us Recommend</h6>
         </button> */}
-        </div>
-        
-          
-      
+      </div>
+
+
+
       <div className="homeContainer">
-     
+
         <h1 className="homeTitle">Locations</h1>
-      <Featured/>
-      <FeaturedProperties/>
-         </div>
+        <Featured />
+        <FeaturedProperties defaultData={resData} />
+      </div>
       <div className="container pb-5">
         <h3>Famous Food Bloggers</h3>
         <div className="d-flex flex-row flex-nowrap gap-4 overflow-x-auto pe-4 py-5 hidden-scrollbar">
-        <BloggerIcon />
-        <BloggerIcon />
-        <BloggerIcon />
-        <BloggerIcon />
-        <BloggerIcon />
-        <BloggerIcon />
-        <BloggerIcon />
+          <BloggerIcon />
+          <BloggerIcon />
+          <BloggerIcon />
+          <BloggerIcon />
+          <BloggerIcon />
+          <BloggerIcon />
+          <BloggerIcon />
         </div>
-     
+
       </div>
       <div className="row py-5 mb-5">
-          <div className="h-auto col-xl-10 col-10 mx-auto rounded-4 bg-orange border border-1 shadow-sm">
-            <div className="p-5 row position-relative">
-              <div className="col-lg-7 col-12">
-                <h1 className=" fs-1 fw-bold">Want To Become A Food Blogger?</h1>
-                <p className="pt-4 fs-3">
+        <div className="h-auto col-xl-10 col-10 mx-auto rounded-4 bg-orange border border-1 shadow-sm">
+          <div className="p-5 row position-relative">
+            <div className="col-lg-7 col-12">
+              <h1 className=" fs-1 fw-bold">Want To Become A Food Blogger?</h1>
+              <p className="pt-4 fs-3">
                 Share your wonderful experiences and health tips with other foodies
-                </p>
-                <button className="btn bg-black text-white fs-4">SIGN UP NOW</button>
-              </div>
-              <div className="col-lg-5 col-12 justify-content-center d-lg-flex d-none">
-                <img
-                  src={Blogger}
-                  className="position-absolute"
-                  style={{
-                    height: "124%",
-                    top: -80,
-                    zIndex: 1,
-                  }}
-                />
-              </div>
+              </p>
+              <button className="btn bg-black text-white fs-4">SIGN UP NOW</button>
+            </div>
+            <div className="col-lg-5 col-12 justify-content-center d-lg-flex d-none">
+              <img
+                src={Blogger}
+                className="position-absolute"
+                style={{
+                  height: "124%",
+                  top: -80,
+                  zIndex: 1,
+                }}
+              />
             </div>
           </div>
         </div>
-        <MailList/>
-        <Footer/>
-      
+      </div>
+      <MailList />
+      <Footer />
+
     </div>
   );
 };

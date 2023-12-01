@@ -56,6 +56,7 @@ export const Profile = () => {
     setBlogData(res?.data?.data)
   }
 
+  console.log(blogData, 'blogData');
 
   return (
     <>
@@ -131,124 +132,19 @@ export const Profile = () => {
               Collaborations
             </p>
             <p className="col-xl-6 col-lg-6 col-md-3 col-sm-2 col-2"></p>
-            {/* <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-2">
-              <Link to="/addreviews" className=" text-decoration-none">
-                <p
-                  className={`btn bg-orange text-white  add-review-btn ${windowWidth >= 575 ? "rounded-5" : "rounded-circle"
-                    } ${isReviewsColorVisible ? "d-none" : "d-block"}`}
-                  onClick={handleButtonClick}
-                >
-                  {displayText}
-                </p>
-              </Link>
-            </div> */}
           </div>
           <div className={`pt-5 row justify-content-start mx-auto row-gap-4`}>
             <div className={`col-10 ${isReviewsVisible ? "d-block" : "d-none"}`}>
               <div className="row">
                 <BlogModal />
+                {
+                  blogData.length > 0 ?
+                    <Blog
+                      setState={blogData}
+                    />
+                    : ''
+                }
 
-                <Blog />
-                <Blog />
-
-                {/* <div className="col-lg-3 col-md-4 col-6">
-                <div className="card shadow-sm">
-                  <img
-                    src={NZXT}
-                    className="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div className="py-2 card-body">
-                    <h5 className="card-title text-truncate fs-5">NZXT H510</h5>
-                    <p className="card-text text-truncate mb-0 text-orange">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-6">
-                <div className="card shadow-sm ">
-                  <img
-                    src={Viper}
-                    className="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div className="py-2 card-body">
-                    <h5 className="card-title text-truncate fs-5">
-                      Razer Viper Ultimate Cyberpunk 2077 Edition Wireless
-                    </h5>
-                    <p className="card-text text-truncate mb-0 text-orange">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-6">
-                <div class="card shadow-sm">
-                  <img
-                    src={Product04}
-                    class="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div class="py-2 card-body">
-                    <h5 class="card-title text-truncate fs-5">
-                      Asus TUF VG27AQ 27" IPS 165Hz Gaming Monitor
-                    </h5>
-                    <p className="card-text text-truncate mb-0 text-orange">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-6">
-                <div class="card shadow-sm">
-                  <img
-                    src={Product05}
-                    class="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div class="py-2 card-body">
-                    <h5 class="card-title text-truncate fs-5">
-                      Dell Alienware AW988 Wireless Gaming Headset
-                    </h5>
-                    <p className="card-text text-truncate mb-0 text-orange">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-md-4 col-6">
-                <div class="card shadow-sm">
-                  <img
-                    src={Product06}
-                    class="card-img-top r-card-height"
-                    alt="img-name"
-                  />
-                  <div class="py-2 card-body">
-                    <h5 class="card-title text-truncate fs-5">
-                      Macbook Air Midnight Blue M2 13.6" 2TB SSD
-                    </h5>
-                    <p className="card-text text-truncate mb-0 text-orange">
-                      Rs. 45,000
-                    </p>
-                    <p className="card-text text-truncate mb-0 text-muted">
-                      Karachi, Sindh <icon className=" bi-geo-alt-fill" />
-                    </p>
-                  </div>
-                </div>
-              </div> */}
               </div>
             </div>
             <div className={`pt-5 row pb-5 ${isReviewsVisible ? "d-none" : "d-block"}`}>
@@ -323,51 +219,6 @@ export const Profile = () => {
                   </div>
                   <p className="text-orange text-center fs-5 pt-4">See More</p>
                 </div>
-                {/* <div className="col-4">
-                <div
-                  className="bg-light shadow border rounded-4 ms-auto"
-                  style={{ height: "500px", width: "350px" }}
-                >
-                  <h4 className="ps-4 pt-5 pb-3">Popular Bloggers</h4>
-                  <div className="row ps-4 pb-3 align-items-center d-flex">
-                    <div className="col-3">
-                      <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
-                    </div>
-                    <div className="col-6">
-                      <h6>Arshan Khan</h6>
-                      <p>@arshanistan</p>
-                    </div>
-                  </div>
-                  <div className="row ps-4 pb-3 align-items-center d-flex">
-                    <div className="col-3">
-                      <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
-                    </div>
-                    <div className="col-6">
-                      <h6>Arshan Khan</h6>
-                      <p>@arshanistan</p>
-                    </div>
-                  </div>
-                  <div className="row ps-4 pb-3 align-items-center d-flex">
-                    <div className="col-3">
-                      <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
-                    </div>
-                    <div className="col-6">
-                      <h6>Arshan Khan</h6>
-                      <p>@arshanistan</p>
-                    </div>
-                  </div>
-                  <div className="row ps-4 pb-3 align-items-center d-flex">
-                    <div className="col-3">
-                      <img src={Influencer} className="rounded-circle" height={"70px"} width={"70px"} />
-                    </div>
-                    <div className="col-6">
-                      <h6>Arshan Khan</h6>
-                      <p>@arshanistan</p>
-                    </div>
-                  </div>
-
-                </div>
-              </div> */}
               </div>
             </div>
           </div></div>

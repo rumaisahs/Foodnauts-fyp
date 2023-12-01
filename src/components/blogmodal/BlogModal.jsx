@@ -13,7 +13,8 @@ function BlogModal() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-Post Blog  </Button>
+        Post Blog
+      </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -21,7 +22,7 @@ Post Blog  </Button>
         </Modal.Header>
         <Modal.Body>
           <Form>
-     
+
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
@@ -31,14 +32,14 @@ Post Blog  </Button>
             </Form.Group>
           </Form>
           <div>
-          <i class="fs-3 bi bi-image"></i>
-          <i class="fs-3 px-3 bi bi-link-45deg"></i>
+            <i class="fs-3 bi bi-image"></i>
+            <i class="fs-3 px-3 bi bi-link-45deg"></i>
           </div>
         </Modal.Body>
         <Modal.Footer>
-        
+
           <Button variant="primary" onClick={handleClose}>
-           Post
+            Post
           </Button>
         </Modal.Footer>
       </Modal>

@@ -16,5 +16,6 @@ export const apiUrl = {
     ambience: '/ambience',
 
     blogs: 'blog',
+    restaurant: 'restaurant',
 }
 
