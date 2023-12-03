@@ -23,7 +23,7 @@ const FeaturedProperties = (props) => {
                   <>
                     <div className="col-lg-3 col-md-4 col-6" key={dt?._id}>
                       <div className=" card shadow-sm card-aspect">
-                        <Link to="/restaurants/:id" className="text-decoration-none">
+                        <Link to={`/restaurants/${dt?._id}`} className="text-decoration-none">
                           <div className="fpItem">
                             <img
                               src={dt?.images[0]}

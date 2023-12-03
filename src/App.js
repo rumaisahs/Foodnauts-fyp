@@ -3,9 +3,13 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 
 import {
-   BrowserRouter as Router,
-  Routes, 
-  Route 
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  Navigate,
+  Outlet,
+  BrowserRouter
 } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Restaurant from "./pages/restaurant/Restaurant";
@@ -21,32 +25,50 @@ import Profile from "./pages/UserProfile/Profile";
 import ProdSearch from "./pages/ProdSearch/ProdSearch";
 import MyBlogs from "./pages/myblogs/myblogs";
 import { AddProduct } from "./pages/AddProduct/addproduct";
+import { GetTokenLocalStorage } from "./services/localStorage/localStorage";
 
 function App() {
+
+  const token = GetTokenLocalStorage()
+
+  const AuthRoute = () => {
+    return (
+      token ? <Navigate to='/' /> : <Outlet />
+    )
+  }
+
+  const ProtectedRoute = () => {
+    return (
+      token ? <Outlet /> : <Navigate to='login' />
+    )
+  }
+
   return (
     <>
-    <Router>
-      <Routes>
-        
-        <Route  path="/" element={<Home/>}/>
-        <Route  path="/list" element={<List/>}/>
-        <Route  path="/restaurants/:id" element={<Restaurant/>}/>
-        {/* <Route  path="/sidebar" element={<SideBar/>}/> */}
-        <Route  path="/login" element={<Login/>}/>
-        <Route  path="/signup" element={<SignUp/>}/>
-        <Route  path="/ownprofile" element={<Profile/>}/>
-        <Route  path="/community" element={<FoodCommunity/>}/>
-        <Route  path="/editProfile" element={<EditProfile/>}/>
-        <Route  path="/market" element={<Market/>}/>
-        <Route  path="/product" element={<Product/>}/>
-        <Route  path="/profile" element={<Profile/>}/>
-        <Route  path="/prodsearch" element={<ProdSearch/>}/>
-        <Route  path="/myblog" element={<MyBlogs/>}/>
-        <Route  path="/addrestaurant" element={<AddProduct/>}/>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AuthRoute />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+          </Route>
 
-
-      </Routes>
-    </Router>
+          <Route path="/" element={<Home />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/list" element={<List />} />
+            <Route path="/restaurants/:id" element={<Restaurant />} />
+            {/* <Route  path="/sidebar" element={<SideBar/>}/> */}
+            <Route path="/ownprofile" element={<Profile />} />
+            <Route path="/community" element={<FoodCommunity />} />
+            <Route path="/editProfile" element={<EditProfile />} />
+            <Route path="/market" element={<Market />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/prodsearch" element={<ProdSearch />} />
+            <Route path="/myblog" element={<MyBlogs />} />
+            <Route path="/addrestaurant" element={<AddProduct />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

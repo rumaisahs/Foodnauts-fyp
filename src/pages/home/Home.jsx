@@ -14,18 +14,30 @@ import BloggerIcon from "../../components/bloggerIcon/bloggerIcon";
 import { useEffect } from "react";
 import { GetAllRestaurants, getAllRestaurants } from "../../services/restaurants";
 import { useState } from "react";
+import { getAllUser } from "../../services/user/user";
 
 const Home = () => {
   const [resData, setRestData] = useState([])
   resData.length = 10
+  const [blogerData, setBloggerData] = useState([])
+  blogerData.length = 5
 
   useEffect(() => {
     GetRestaurants()
+    GetAllUser()
   }, [])
 
   const GetRestaurants = async () => {
     const res = await getAllRestaurants()
     setRestData(res?.data?.data);
+  }
+
+  const GetAllUser = async () => {
+    const params = {
+      paginate: true,
+    }
+    const res = await getAllUser(params)
+    setBloggerData(res?.data?.data)
   }
   return (
     <div>
@@ -112,13 +124,7 @@ const Home = () => {
       <div className="container pb-5">
         <h3>Famous Food Bloggers</h3>
         <div className="d-flex flex-row flex-nowrap gap-4 overflow-x-auto pe-4 py-5 hidden-scrollbar">
-          <BloggerIcon />
-          <BloggerIcon />
-          <BloggerIcon />
-          <BloggerIcon />
-          <BloggerIcon />
-          <BloggerIcon />
-          <BloggerIcon />
+          <BloggerIcon defaultData={blogerData} />
         </div>
 
       </div>
