@@ -68,7 +68,7 @@
   
   .siRating{
     display: flex;
-    justify-content: space-between
+    justify-content: start
   }
   
   .siRating>span{
@@ -98,12 +98,10 @@
     color: gray;
   }
   
-  .siCheckButton{
-    background-color: #0071c2;
-    color: white;
-    font-weight: bold;
-    padding: 10px 5px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
+.border-orange{
+  border-color:#f2752f
+}
+
+.text-grey{
+  color:#989898
+}

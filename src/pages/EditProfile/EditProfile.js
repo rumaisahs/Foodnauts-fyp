@@ -1,19 +1,69 @@
-import MKBHD from "../../images/influence.jpeg";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
+import React, { useState, useRef } from 'react';
 
 export const EditProfile = () => {
+  const [userImage, setUserImage] = useState('path-to-default-image.jpg');
+  const fileInputRef = useRef(null);
+
+  // Function to handle image change
+  const handleImageChange = (event) => {
+    const selectedFile = event.target.files[0];
+
+    // Assuming you're using FileReader to convert the selected file to base64
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const base64Image = reader.result;
+      setUserImage(base64Image);
+    };
+
+    if (selectedFile) {
+      reader.readAsDataURL(selectedFile);
+    }
+  };
+
   return (
     <>
       <Navbar />
       <body className="row mx-auto min-vh-100 pt-5 mb-5">
+
         <div className="col-10 row mx-auto bg-light rounded-5 py-5 my-4">
+       
         <div className="col-12 col-md-4">
-            <div className="row justify-content-center">
-                <img src={MKBHD} className="h-100 rounded-circle" style={{ height: "250px", width: "250px" }}/>
-            </div>
-            <div className="row justify-content-center pt-3 pb-5">
-                <btn className="btn bg-orange text-white d-block" style={{width:"150px"}}>Change</btn>
+        <div>
+      {/* Circle div with user image */}
+      <div
+        style={{
+          width: '200px',
+          height: '200px',
+          borderRadius: '50%',
+          overflow: 'hidden',
+          background: 'white',
+          border:'solid'
+        }}
+      >
+        <img
+          src={userImage}
+          alt="User"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </div>
+
+      {/* Input for changing image */}
+      <div>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          style={{ display: 'none' }}
+          ref={fileInputRef}
+        />
+        {/* <button >Change Image</button> */}
+      </div>
+    </div>
+            <div className="row justify-content-center pt-3 pb-5 border-solid">
+                <btn onClick={() => fileInputRef.current.click()} className="btn bg-orange text-white d-block" style={{width:"150px"}}>Change</btn>
             </div>
         </div>
         <div className="col-12 col-md-8 col-lg-6">

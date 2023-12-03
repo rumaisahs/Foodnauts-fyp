@@ -11,6 +11,9 @@ function RecMod() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [selectedOptions, setSelectedOptions] = useState();
+  const [selectedOptions1, setSelectedOptions1] = useState();
+  const [selectedOptions2, setSelectedOptions2] = useState();
+
   const AmbeinceList = [
     { value: "Fancy", label: "Fancy" },
     { value: "Casual", label: "Casual" },
@@ -35,6 +38,12 @@ function RecMod() {
   function handleSelect(data) {
     setSelectedOptions(data);
   }
+  function handleSelect1(data) {
+    setSelectedOptions1(data);
+  }
+  function handleSelect2(data) {
+    setSelectedOptions2(data);
+  }
   return (
     <>
       <Button className="btn bg-orange shadow rounded-1 justify-content-center d-flex mx-auto align-items-center position-absolute z-1 w-25" style={{top:'473px'}} onClick={handleShow}>
@@ -48,6 +57,8 @@ function RecMod() {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label for="customRange2" class="form-label">Budget/person</Form.Label>
+<input type="range" className="form-range border-0" min="0" max="5" id="customRange2"/>
               <Form.Label>Ambience</Form.Label>
               <Select
           options={AmbeinceList }
@@ -61,8 +72,8 @@ function RecMod() {
               <Select
           options={CuisineList}
           placeholder="Select cuisine type"
-          value={selectedOptions}
-          onChange={handleSelect}
+          value={selectedOptions1}
+          onChange={handleSelect1}
           isSearchable={true}
           isMulti
         />
@@ -70,8 +81,8 @@ function RecMod() {
               <Select
           options={LocationList}
           placeholder="Select color"
-          value={selectedOptions}
-          onChange={handleSelect}
+          value={selectedOptions2}
+          onChange={handleSelect2}
           isSearchable={true}
           isMulti
         />
@@ -88,6 +99,7 @@ function RecMod() {
               <Form.Label>Additional Instructions</Form.Label>
               <Form.Control as="textarea" rows={3} />
             </Form.Group>
+         
           </Form>
         </Modal.Body>
         <Modal.Footer>

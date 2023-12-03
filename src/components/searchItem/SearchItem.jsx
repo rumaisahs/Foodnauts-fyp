@@ -10,24 +10,27 @@ const SearchItem = () => {
         className="siImg"
       />
       <div className="siDesc">
-        <h1 className="siTitle">Xanders</h1>
+        <h1 className="fs-3">Xanders</h1>
         <span className="siDistance">Tipu Sultan / E st / Bukhari</span>
         <span className="siFeatures">
           Cafe • Bakery • Fine-Dine
         </span>
+        <span className="siFeatures">
+          $$$
+        </span>
         <span className="siCancelOpSubtitle">
           Discounts on Visa Card
-        </span>
+        </span> 
+        <div className="siRating">
+        <span><i className="bi bi-star-fill text-warning pe-1"></i>4.2</span>
+<span className="px-2 text-grey">|</span>
+          <span className="text-grey">81 Reviews</span>
+        </div>
       </div>
       <div className="siDetails">
-        <div className="siRating">
-          <span>Reviews (80)</span>
-          <button>8.9</button>
-        </div>
+       
         <div className="siDetailTexts">
-          <span className="siPrice">Rs. 1000 - 2000</span>
-          <span className="siTaxOp">Inclusive of taxes</span>
-          <button className="siCheckButton">View Details</button>
+          <button className="border-orange border-1 py-4 px-0 rounded-pill bg-transparent" style={{width:'55px'}}><i className="bi bi-chevron-right text-orange fs-1 px-0"></i></button>
         </div>
       </div>
     </div>

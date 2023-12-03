@@ -4,6 +4,7 @@ import desktop from "../../images/yumbyamna.jpg"
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import SearchItem from "../../components/searchItem/SearchItem";
+
 import "./prodsearch.css"
 
 export const ProdSearch = () => {
@@ -170,34 +171,8 @@ export const ProdSearch = () => {
                       </div>
                   </div>
                   <div className="row justify-content-center p-lg-4 pt-lg-0 pb-3">
-                  <div className="col-4 col-sm-3 col-md-3 p-md-0 pe-0 rounded-start-4 ">
-                        <img src={desktop} className="rounded-start-4 object-fit-cover h-100 w-100 border-start border-bottom border-top border-black border-1" />
-                      </div>
-                      <div className="col-8 d-flex flex-column justify-content-between rounded-end-4 bg-light border-end border-bottom border-top border-black border-1">
-                      <div className="siDesc">
-        <h1 className="siTitle">Xanders</h1>
-        <span className="siDistance">Tipu Sultan / E st / Bukhari</span>
-        <span className="siFeatures">
-          Cafe • Bakery • Fine-Dine
-        </span>
-        <span className="siCancelOpSubtitle">
-          Discounts on Visa Card
-        </span>
-      </div>
-      <div className="siDetails">
-        <div className="siRating">
-          <span>Reviews (80)</span>
-          
-          <button>8.9</button>
-          
-        </div>
-        <div className="siDetailTexts">
-          <span className="siPrice">Rs. 1000 - 2000/per</span>
-          <span className="siTaxOp">Inclusive of taxes</span>
-          <button className="siCheckButton w-50">View Details</button>
-        </div>
-      </div>
-                      </div>
+                  <SearchItem />
+
                   </div>
                   <div className="row justify-content-center p-lg-4 pt-lg-0 pb-3">
                   <div className="col-4 col-sm-3 col-md-3 p-md-0 pe-0 rounded-start-4 ">

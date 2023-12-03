@@ -18,8 +18,32 @@ import ReviewImg3 from "../../images/review-img-3.png"
 import Influencer from "../../images/influence.jpeg"
 const Restaurant = () => {
   const [slideNumber, setSlideNumber] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); 
+   const [displayedImageIndex, setDisplayedImageIndex] = useState(0);
 
+
+  const [selectedImages, setSelectedImages] = useState(Array(10).fill(null));
+  const handleRemoveImage = (index) => {
+    const updatedImages = [...selectedImages];
+    updatedImages[index] = null;
+    setSelectedImages(updatedImages);
+  };
+
+  
+  const handleImageChange = (e, index) => {
+    const file = e.target.files[0]; // Get the selected file
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const updatedImages = [...selectedImages];
+        updatedImages[index] = e.target.result;
+        setSelectedImages(updatedImages);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
   const photos = [
     {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -40,7 +64,28 @@ const Restaurant = () => {
       src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707389.jpg?k=52156673f9eb6d5d99d3eed9386491a0465ce6f3b995f005ac71abc192dd5827&o=&hp=1",
     },
   ];
+  const [rating, setRatingExp] = useState(null);
+  const [rating1, setRatingVal] = useState(null);
+  const [rating2, setRatingSer] = useState(null);
 
+  const [rating3, setRatingHyg] = useState(null);
+
+  const handleStarClick = (index) => {
+    // Set the rating to the clicked star's index + 1
+    setRatingExp(index + 1);
+  };
+  const handleStarClick1 = (index) => {
+    // Set the rating to the clicked star's index + 1
+    setRatingVal(index + 1);
+  };
+  const handleStarClick2 = (index) => {
+    // Set the rating to the clicked star's index + 1
+    setRatingSer(index + 1);
+    
+  };const handleStarClick3 = (index) => {
+      // Set the rating to the clicked star's index + 1
+      setRatingHyg(index + 1);
+    };
   const handleOpen = (i) => {
     setSlideNumber(i);
     setOpen(true);
@@ -260,13 +305,15 @@ const Restaurant = () => {
           <div className='row bg-light w-100 mx-auto mt-3 p-3'>
               <div className='col-4'>
                 <h4>Rate Your <p className='fs-6 mb-0'>Experience</p></h4>
-                <span>
-                  <icon className="bi-star" />
-                <icon className="bi-star" />
-                <icon className="bi-star" />
-                <icon className="bi-star" />
-                <icon className="bi-star" />
-                </span>
+                <div className="col-12 col-sm-12 justify-content-center d-flex pb-3">
+                {[1, 2, 3, 4, 5].map((value, index) => (
+                    <i
+                    key={index}
+                    className={`fs-5 pb-1 ms-1 bi-star${rating >= value ? '-fill' : ''} text-orange`}
+                    onClick={() => handleStarClick(index)}
+                    />
+                ))}
+            </div>
                 
 
                 <h5 className='pt-3 mb-0'>Favourite Dish</h5>
@@ -276,17 +323,83 @@ const Restaurant = () => {
               </div>
               <div className='col-4'>
                 <h5 className='mb-0'>Upload Image</h5>
-                <input className='rounded-5 border-0 shadow-sm' type="img" placeholder='png, jpeg, jpg' />
+                <div class="row justify-content-center">
+              {[0, 1, 2, 3, 4].map((index) => (
+                  <div className="col-2 col-lg-2 position-relative" key={index}>
+                  <div className="image-upload bg-light rounded-4 align-items-center d-flex justify-content-center h-100 w-100 card-aspect">
+                      {selectedImages[index] ? (
+                      <>
+                          <img
+                          src={selectedImages[index]}
+                          alt="Selected"
+                          className="img-fluid"
+                          style={{ maxHeight: '100%', maxWidth: '100%' }}
+                          />
+                          <button
+                          className="btn btn-sm btn-danger rounded-circle"
+                          onClick={() => handleRemoveImage(index)}
+                          style={{
+                              position: 'absolute',
+                              top: '-10px',
+                              right: '1px',
+                              padding: '4px',
+                          }}
+                          >
+                          <i className="bi bi-x" />
+                          </button>
+                      </>
+                      ) : (
+                      <>
+                          <label htmlFor={`file-input-${index}`}>
+                          <i className="input bi-upload fs-5 btn" />
+                          </label>
+                          <input
+                          className="d-none"
+                          id={`file-input-${index}`}
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => handleImageChange(e, index)}
+                          />
+                      </>
+                      )}
+                  </div>
+                  </div>
+              ))}
+            </div>
                 <br />
                 <br />
-                <input className='' type="checkbox" />
                 <h5 className='d-inline ps-2'>Hygiene</h5>
+                <div className="col-12 col-sm-12 justify-content-center d-flex pb-3">
+                {[1, 2, 3, 4, 5].map((value, index) => (
+                    <i
+                    key={index}
+                    className={`fs-5 pb-1 ms-1 bi-star${rating1 >= value ? '-fill' : ''} text-orange`}
+                    onClick={() => handleStarClick1(index)}
+                    />
+                ))}
+            </div>
                 <br />
-                <input className='' type="checkbox" />
                 <h5 className='d-inline ps-2'>Value</h5>
+                <div className="col-12 col-sm-12 justify-content-center d-flex pb-3">
+                {[1, 2, 3, 4, 5].map((value, index) => (
+                    <i
+                    key={index}
+                    className={`fs-5 pb-1 ms-1 bi-star${rating2 >= value ? '-fill' : ''} text-orange`}
+                    onClick={() => handleStarClick2(index)}
+                    />
+                ))}
+            </div>
                 <br />
-                <input className='' type="checkbox" />
                 <h5 className='d-inline ps-2'>Service</h5>
+                <div className="col-12 col-sm-12 justify-content-center d-flex pb-3">
+                {[1, 2, 3, 4, 5].map((value, index) => (
+                    <i
+                    key={index}
+                    className={`fs-5 pb-1 ms-1 bi-star${rating3 >= value ? '-fill' : ''} text-orange`}
+                    onClick={() => handleStarClick3(index)}
+                    />
+                ))}
+            </div>
                 <h5 className='pt-3'>Would You Visit Again</h5>
                 <input type="radio" name="" id="" />
                 <p className='d-inline ps-1 pe-3'>Yes</p>

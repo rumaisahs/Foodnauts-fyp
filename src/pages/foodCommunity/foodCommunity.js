@@ -1,7 +1,7 @@
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import BloggerIcon from "../../components/bloggerIcon/bloggerIcon";
-
+import Blog from "../../components/blog/blog";
 const FoodCommunity = () => {
   return (
     <>
@@ -18,7 +18,15 @@ const FoodCommunity = () => {
         <BloggerIcon />
         <BloggerIcon />
         </div>
-        
+        <h3 className="text-center py-5">Recent blogs</h3>
+
+        <Blog/>
+        <Blog/>
+        <Blog/>
+        <Blog/>
+        <Blog/>
+        <Blog/>
+
       </div>
       <Footer />
     </>

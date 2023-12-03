@@ -43,6 +43,9 @@ export const AddProduct = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [selectedOptions, setSelectedOptions] = useState();
+  const [selectedOptions1, setSelectedOptions1] = useState();
+  const [selectedOptions2, setSelectedOptions2] = useState();
+
   const AmbeinceList = [
     { value: "Fancy", label: "Fancy" },
     { value: "Casual", label: "Casual" },
@@ -67,13 +70,19 @@ export const AddProduct = () => {
   function handleSelect(data) {
     setSelectedOptions(data);
   }
+  function handleSelect1(data) {
+    setSelectedOptions1(data);
+  }
+  function handleSelect2(data) {
+    setSelectedOptions2(data);
+  }
   return (
     <>
       <Navbar />
       <body>
         <div class="row container mx-auto py-5">
           <div class="col-12 col-lg-6 text-center h-100">
-            <h1>Add Products</h1>
+            <h1>Add Restaurant</h1>
             <div className="w-50 mx-auto my-5 align-items-center d-flex justify-content-center bg-light rounded-4 card-aspect">
               <div class="image-upload">
                 <label for="file-input">
@@ -183,8 +192,8 @@ export const AddProduct = () => {
               <Select
           options={CuisineList}
           placeholder="Select cuisine type"
-          value={selectedOptions}
-          onChange={handleSelect}
+          value={selectedOptions1}
+          onChange={handleSelect1}
           isSearchable={true}
           isMulti
         />
@@ -192,8 +201,8 @@ export const AddProduct = () => {
               <Select
           options={LocationList}
           placeholder="Select color"
-          value={selectedOptions}
-          onChange={handleSelect}
+          value={selectedOptions2}
+          onChange={handleSelect2}
           isSearchable={true}
           isMulti
         />
@@ -215,7 +224,7 @@ export const AddProduct = () => {
 
           <div class="col-12 col-lg-6 pt-5">
             <form class="row container-fluid" ref={formRef}>
-              <div className="col-6">
+              <div className="col-12">
                 <label for="prod">Restaurant Name</label>
                 <input
                   type="text"
@@ -224,14 +233,9 @@ export const AddProduct = () => {
                   className=" form-control"
                 />
               </div>
-              <div className="col-6">
+              <div className="col-12">
                 <label for="cond">Menu Images</label>
-                <input
-                  type="text"
-                  id="cond"
-                  name="cond"
-                  className=" form-control"
-                />
+                
                  <div class="row justify-content-center">
               {[0, 1, 2, 3, 4].map((index) => (
                   <div className="col-2 col-lg-2 position-relative" key={index}>
@@ -277,16 +281,11 @@ export const AddProduct = () => {
             </div>
               </div>
             
-              <div className="col-6">
-                <label for="price">Price</label>
-                <input
-                  type="checkbox"
-                  id="price"
-                  name="price"
-                  className=" form-control"
-                />
+              <div className="col-12">
+                <label for="customRange2" class="form-label">Price</label>
+<input type="range" className="form-range border-0" min="0" max="5" id="customRange2"/>
               </div>
-              <div className="col-6">
+              <div className="col-12">
                 <label for="catefory">Popular dishes</label>
                 <input
                   type="text"
