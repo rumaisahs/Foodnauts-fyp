@@ -18,6 +18,7 @@ import ReviewImg3 from "../../images/review-img-3.png"
 import Influencer from "../../images/influence.jpeg"
 import { getSingleAmbiance, getSingleCuisine, getSingleRestaurant, getSingleReview } from '../../services/restaurants';
 import { NavLink, useParams } from 'react-router-dom';
+import ImageUploadComp from '../../components/uploadImage';
 const Restaurant = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
@@ -360,8 +361,7 @@ const Restaurant = () => {
               <input className=' border-0 shadow-sm' type='text' placeholder='Type your review here...' />
             </div>
             <div className='col-4'>
-              <h5 className='mb-0'>Upload Image</h5>
-              <input className='rounded-5 border-0 shadow-sm' type="img" placeholder='png, jpeg, jpg' />
+              <ImageUploadComp heading={'Upload Image'} />
               <br />
               <br />
               <input className='' type="checkbox" />

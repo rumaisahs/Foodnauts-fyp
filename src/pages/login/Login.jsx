@@ -11,9 +11,10 @@ import { Signin } from '../../services/auth/auth'
 import { SetAuthUserLocalStorage, SetTokenLocalStorage } from '../../services/localStorage/localStorage'
 
 export const Login = () => {
-  const navigate = useNavigate()
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
+  const navigate = useNavigate()
+
 
   const login = async () => {
     try {
@@ -23,9 +24,9 @@ export const Login = () => {
           password: password
         }
       )
-      navigate("/ownprofile")
       SetAuthUserLocalStorage(res?.data?.data?.user)
       SetTokenLocalStorage(res?.data?.data?.token)
+      navigate("/ownprofile")
     }
     catch (e) {
       console.log(e)

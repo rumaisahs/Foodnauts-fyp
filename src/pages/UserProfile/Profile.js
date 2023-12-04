@@ -23,6 +23,7 @@ export const Profile = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [displayText, setDisplayText] = useState(''); // Initial text
   const [blogData, setBlogData] = useState([])
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);

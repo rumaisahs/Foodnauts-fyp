@@ -26,20 +26,24 @@ import ProdSearch from "./pages/ProdSearch/ProdSearch";
 import MyBlogs from "./pages/myblogs/myblogs";
 import { AddProduct } from "./pages/AddProduct/addproduct";
 import { GetTokenLocalStorage } from "./services/localStorage/localStorage";
+import SideBar from "./components/sideBar/SideBar";
 
 function App() {
 
-  const token = GetTokenLocalStorage()
 
   const AuthRoute = () => {
+    const token = GetTokenLocalStorage()
+
     return (
       token ? <Navigate to='/' /> : <Outlet />
     )
   }
 
   const ProtectedRoute = () => {
+    const token = GetTokenLocalStorage()
+
     return (
-      token ? <Outlet /> : <Navigate to='login' />
+      token ? <Outlet /> : <Navigate to='/' />
     )
   }
 
@@ -53,11 +57,12 @@ function App() {
           </Route>
 
           <Route path="/" element={<Home />} />
+          <Route path="/ownprofile" element={<Profile />} />
+
           <Route element={<ProtectedRoute />}>
             <Route path="/list" element={<List />} />
             <Route path="/restaurants/:id" element={<Restaurant />} />
-            {/* <Route  path="/sidebar" element={<SideBar/>}/> */}
-            <Route path="/ownprofile" element={<Profile />} />
+            {/* <Route path="/sidebar" element={<SideBar />} /> */}
             <Route path="/community" element={<FoodCommunity />} />
             <Route path="/editProfile" element={<EditProfile />} />
             <Route path="/market" element={<Market />} />

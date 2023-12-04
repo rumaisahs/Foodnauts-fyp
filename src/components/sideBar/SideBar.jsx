@@ -7,14 +7,16 @@ import {
   CDBSidebarMenu,
   CDBSidebarMenuItem
 } from "cdbreact";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { EmptyLocalStorage } from "../../services/localStorage/localStorage";
 
 const SideBar = () => {
+  const navigate = useNavigate()
   return (
     <div
-      style={{ display: "flex", height: "100vh", overflow: "scroll initial", position:"absolute" }}
+      style={{ display: "flex", height: "100vh", overflow: "scroll initial", position: "absolute" }}
     >
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
@@ -46,11 +48,13 @@ const SideBar = () => {
             </NavLink>
             <NavLink exact to="/settings" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Settings</CDBSidebarMenuItem>
-            </NavLink> 
-             <NavLink exact to="/logout" activeClassName="activeClicked">
+            </NavLink>
+            <NavLink exact to={'/login'} onClick={() => {
+              EmptyLocalStorage()
+            }} activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Logout</CDBSidebarMenuItem>
             </NavLink>
-            
+
           </CDBSidebarMenu>
         </CDBSidebarContent>
 
