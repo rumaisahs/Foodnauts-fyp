@@ -119,7 +119,9 @@ const Home = () => {
 
         <h1 className="homeTitle">Locations</h1>
         <Featured />
+        <div className=" justify-content-start d-flex container">
         <FeaturedProperties defaultData={resData} />
+        </div>
       </div>
       <div className="container pb-5">
         <h3>Famous Food Bloggers</h3>

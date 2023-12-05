@@ -82,49 +82,7 @@ export const AddProduct = () => {
                 <input className="d-none" id="file-input" type="file" />
               </div>
             </div>
-            <div class="row justify-content-center">
-              {[0, 1, 2, 3, 4].map((index) => (
-                  <div className="col-2 col-lg-2 position-relative" key={index}>
-                  <div className="image-upload bg-light rounded-4 align-items-center d-flex justify-content-center h-100 w-100 card-aspect">
-                      {selectedImages[index] ? (
-                      <>
-                          <img
-                          src={selectedImages[index]}
-                          alt="Selected"
-                          className="img-fluid"
-                          style={{ maxHeight: '100%', maxWidth: '100%' }}
-                          />
-                          <button
-                          className="btn btn-sm btn-danger rounded-circle"
-                          onClick={() => handleRemoveImage(index)}
-                          style={{
-                              position: 'absolute',
-                              top: '-10px',
-                              right: '1px',
-                              padding: '4px',
-                          }}
-                          >
-                          <i className="bi bi-x" />
-                          </button>
-                      </>
-                      ) : (
-                      <>
-                          <label htmlFor={`file-input-${index}`}>
-                          <i className="input bi-upload fs-5 btn" />
-                          </label>
-                          <input
-                          className="d-none"
-                          id={`file-input-${index}`}
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) => handleImageChange(e, index)}
-                          />
-                      </>
-                      )}
-                  </div>
-                  </div>
-              ))}
-            </div>
+           
             <div class="row justify-content-center pt-3">
               {[5, 6, 7, 8, 9].map((index) => (
                   <div className="col-2 col-lg-2 position-relative" key={index}>

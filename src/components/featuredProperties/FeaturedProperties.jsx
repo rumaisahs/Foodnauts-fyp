@@ -16,32 +16,52 @@ const FeaturedProperties = (props) => {
       <div className="row justify-content-center py-5">
         <div className="col-10 bg-light rounded-3 p-4">
           <h1 className="text-black text-start pb-4 fs-3">Restaurants</h1>
-          <div className="d-flex flex-row flex-nowrap gap-4 overflow-x-auto hidden-scrollbar pb-1">
+          <div className="d-flex flex-row flex-nowrap gap-1 overflow-x-auto hidden-scrollbar pb-1" >
+           
             {
               defaultData.map((dt) => {
                 return (
                   <>
-                    <div className="col-lg-3 col-md-4 col-6" key={dt?._id}>
-                      <div className=" card shadow-sm card-aspect">
-                        <Link to={`/restaurants/${dt?._id}`} className="text-decoration-none">
-                          <div className="fpItem">
+                  <div className="row justify-content-start">
+                    <div className="col-lg-3 col-md-4 col-6 h-100" key={dt?._id}>
+                      <div class="card position-relative" style={{ width: "18rem", height:"20rem"}}>
+                        <Link to={`/restaurants/${dt?._id}`} >
+                     
                             <img
                               src={dt?.images[0]}
                               alt=""
-                              className="fpImg"
+                              class="rounded-5 card-img-top"
                             />
-                            <span className="fpName">{dt?.name}</span>
-                            <span className="fpAddress">{dt?.address}</span>
+                             <div
+                class="card-body position-absolute bg-light rounded-4 bg-opacity-75 border border-2 w-100 text-black"
+                style={{
+                  bottom: "0",
+                  left: "0",
+                  right: "0",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                }}
+              >
+                            <h5 class="card-title fs-5 ">{dt?.name}</h5>
+                            <p className="fpAddress text-grey"> <i className="bi bi-geo-alt-fill pe-1" />{dt?.address}
+                            </p>
                             {/* <span className="fpAmbience">Cafe</span> */}
-                            <span className="fpPrice">$$$</span>
-                            <div className="fpRating">
-                              <button>{defaultData[-2]?.rating}</button>
-                              <span>{`Reviews: ${(dt?.reviews?.length)}`}</span>
+                            <p className="fpAmbience d-inline pe-1 card-text text-grey">Ambience</p>
+                <p className="fpAmbience d-inline pe-1 card-text text-grey">.</p>
+                <p className="fpCuisine d-inline card-text text-grey">Cuisine type</p>
+                <p className="fpPrice d-inline card-text">$$$</p>
+                            <div className="fpRating mt-2">
+
+                            <p className=" d-inline pe-1">
+                    {" "}
+                    <i className="bi bi-star-fill me-1 text-warning" />4.0 {defaultData[-2]?.rating}
+                  </p>
+                              <span className="text-grey">{`Reviews: ${(dt?.reviews?.length)}`}</span>
                             </div>
                           </div>
                         </Link>
                       </div>
-                    </div>
+                    </div></div>
                   </>
                 )
               })

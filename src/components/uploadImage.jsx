@@ -10,10 +10,10 @@ const ImageUploadComp = (props) => {
 
     return (
         <>
-            <div className="App">
+            <div className="">
                 <h5 className='mb-0'>{props?.heading}</h5>
                 <input type="file" onChange={handleChange} />
-                <img src={file} />
+                <img style={{height:'100px'}} src={file} />
             </div>
         </>
     )

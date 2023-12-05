@@ -27,6 +27,7 @@ import MyBlogs from "./pages/myblogs/myblogs";
 import { AddProduct } from "./pages/AddProduct/addproduct";
 import { GetTokenLocalStorage } from "./services/localStorage/localStorage";
 import SideBar from "./components/sideBar/SideBar";
+import OwnProfileP from "./pages/prof/OwnProfilePage";
 
 function App() {
 
@@ -60,7 +61,7 @@ function App() {
           <Route path="/ownprofile" element={<Profile />} />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/list" element={<List />} />
+            <Route path="/listt" element={<List />} />
             <Route path="/restaurants/:id" element={<Restaurant />} />
             {/* <Route path="/sidebar" element={<SideBar />} /> */}
             <Route path="/community" element={<FoodCommunity />} />
@@ -68,9 +69,11 @@ function App() {
             <Route path="/market" element={<Market />} />
             <Route path="/product" element={<Product />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/prodsearch" element={<ProdSearch />} />
+            <Route path="/list" element={<ProdSearch />} />
             <Route path="/myblog" element={<MyBlogs />} />
             <Route path="/addrestaurant" element={<AddProduct />} />
+            <Route path="/prof" element={<OwnProfileP />} />
+
           </Route>
         </Routes>
       </BrowserRouter>

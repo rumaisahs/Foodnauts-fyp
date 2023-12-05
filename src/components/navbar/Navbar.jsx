@@ -8,7 +8,26 @@ const Navbar = () => {
       <div className="container-fluid">
         <img src={Logo} className='pe-2' style={{ height: "35px" }} />
         <Link to='/' className='text-decoration-none navbar-brand fw-medium fs-4 text-orange'>Foodnauts</Link>
-        <Link to="/login" className='text-decoration-none ms-auto pe-3 d-lg-none'><i className="bi bi-person-fill ps-2 fs-1" style={{ color: "#F2752F" }}></i></Link>
+        <div className="dropdown ms-auto">
+          <a href="#" className="text-decoration-none pe-2 d-lg-none" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              <i className="bi bi-person-fill fs-1 text-orange"></i>
+          </a>
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{ left: 'auto', right: '0' }}>
+            <li>
+              <Link className="dropdown-item">
+                <i className="bi bi-person-square pe-2 text-orange"></i>
+                My Profile
+              </Link>
+            </li>
+            <li>
+              <button className="dropdown-item btn">
+                <i className="bi bi-box-arrow-left pe-2 text-orange"></i>
+                Logout
+              </button>
+            </li>
+          </ul>
+
+        </div>
         <button className=" d-lg-none nav-btn rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="bi-list fs-3 justify-content-center d-flex"></span>
         </button>
@@ -26,9 +45,26 @@ const Navbar = () => {
             <input className="form-control rounded-5" type="search" placeholder="Search" aria-label="Search" />
             <Link to='/list' className="border-0 bg-transparent position-absolute" style={{ right: "4%" }} ><icon className="bi-search text-orange" /></Link>
           </form>
+          <div className="dropdown">
+          <a href="#" role="button" className="text-decoration-none d-none d-sm-none d-lg-flex" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" >
+              <i className="bi bi-person-fill ps-1 fs-1" style={{ color: '#6A00FF' }}></i>
+          </a>
 
-          <Link to="/login" className='text-decoration-none d-none d-lg-flex'><i className="bi bi-person-fill ps-2 fs-2" style={{ color: "#F2752F" }}></i></Link>
-
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{ left: 'auto', right: '0' }}>
+            <li>
+              <Link to="/ownprofile" className="dropdown-item">
+                <i className="bi bi-person-square pe-2" style={{ color: '#6A00FF' }}></i>
+                My Profile
+              </Link>
+            </li>
+            <li>
+              <button className="dropdown-item" >
+                <i className="bi bi-box-arrow-left pe-2" style={{ color: '#6A00FF' }}></i>
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
         </div>
       </div>
     </nav>
