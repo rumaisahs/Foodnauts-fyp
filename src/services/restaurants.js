@@ -13,9 +13,9 @@ export const getSingleAmbiance = async (id) => await api.get(`${apiUrl.ambience}
 
 // review
 export const getSingleReview = async (id) => await api.get(`${apiUrl.review}/${id}`)
+export const createReview = async (data) => await api.post(`${apiUrl.review}`, data)
 
 
-export const CreateUser = async (data) => await api.post(`${apiUrl.user}`, data)
 // export const GetSingleUser = async (id) => await api.get(`${apiUrl.user}/${id}`)
 export const UpdateUser = async (id, data) => await api.put(`${apiUrl.user}/${id}`, data)
 export const DeleteUser = async (id) => await api.delete(`${apiUrl.user}/${id}`)

@@ -9,8 +9,8 @@ import {
   faCircleArrowRight,
   faCircleXmark,
 
-} 
-from "@fortawesome/free-solid-svg-icons";
+}
+  from "@fortawesome/free-solid-svg-icons";
 import { Icon } from '@iconify/react';
 import { useState } from "react";
 import ReviewImg from "../../images/leave-a-review.png"
@@ -18,6 +18,7 @@ import Influencer from "../../images/influence.jpeg"
 import { getSingleAmbiance, getSingleCuisine, getSingleRestaurant, getSingleReview } from '../../services/restaurants';
 import { NavLink, useParams } from 'react-router-dom';
 import ImageUploadComp from '../../components/uploadImage';
+import PostForm from '../../components/PostForm';
 const Restaurant = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
@@ -59,11 +60,11 @@ const Restaurant = () => {
   const handleStarClick2 = (index) => {
     // Set the rating to the clicked star's index + 1
     setRatingSer(index + 1);
-    
-  };const handleStarClick3 = (index) => {
-      // Set the rating to the clicked star's index + 1
-      setRatingHyg(index + 1);
-    };
+
+  }; const handleStarClick3 = (index) => {
+    // Set the rating to the clicked star's index + 1
+    setRatingHyg(index + 1);
+  };
   const [data, setData] = useState([])
   const [cuisineType, setCuisineType] = useState([])
   const [ambianceType, setAmbianceType] = useState([])
@@ -139,7 +140,7 @@ const Restaurant = () => {
 
   return (
     <div>
-      
+
       <div className="hotelContainer">
         {open && (
           <div className="slider">
@@ -262,8 +263,8 @@ const Restaurant = () => {
               className="btn col-1 my-2"
             >
               <a class="align-items-center d-flex" href="https://www.foodpanda.pk/restaurant/p9ws/hongshao">
-                <Icon icon="simple-icons:foodpanda" style={{color: 'black'}}/>
-                </a>
+                <Icon icon="simple-icons:foodpanda" style={{ color: 'black' }} />
+              </a>
             </button>
 
           </div>
@@ -361,74 +362,7 @@ const Restaurant = () => {
             </div>
 
           </div>
-          <div className='row bg-light w-100 mx-auto mt-3 p-3'>
-          <div className='col-4'>
-                <h4>Rate Your <p className='fs-6 mb-0'>Experience</p></h4>
-                <div className="col-12 col-sm-12 justify-content-start d-flex pb-3">
-                {[1, 2, 3, 4, 5].map((value, index) => (
-                    <i
-                    key={index}
-                    className={`fs-5 pb-1 ms-1 bi-star${rating >= value ? '-fill' : ''} text-orange`}
-                    onClick={() => handleStarClick(index)}
-                    />
-                ))}
-            </div>
-
-
-              <h5 className='pt-3 mb-0'>Favourite Dish</h5>
-              <input className=' border-0 shadow-sm' placeholder='Type here...' />
-              <h5 className='pt-3 mb-0'>Type A Review</h5>
-              <textarea className=' border-0 shadow-sm' type='text-area' placeholder='Type your review here...' />
-            </div>
-            <div className='col-4'>
-              <ImageUploadComp heading={'Upload Image'} />
-              <br />
-              <br />
-              <h5 className='d-inline ps-2'>Hygiene</h5>
-                <div className="col-12 col-sm-12 justify-content-start d-flex pb-3">
-                {[1, 2, 3, 4, 5].map((value, index) => (
-                    <i
-                    key={index}
-                    className={`fs-5 pb-1 ms-1 bi-star${rating1 >= value ? '-fill' : ''} text-orange`}
-                    onClick={() => handleStarClick1(index)}
-                    />
-                ))}
-            </div>
-                <br />
-                <h5 className='d-inline ps-2'>Value</h5>
-                <div className="col-12 col-sm-12 justify-content-start d-flex pb-3">
-                {[1, 2, 3, 4, 5].map((value, index) => (
-                    <i
-                    key={index}
-                    className={`fs-5 pb-1 ms-1 bi-star${rating2 >= value ? '-fill' : ''} text-orange`}
-                    onClick={() => handleStarClick2(index)}
-                    />
-                ))}
-            </div>
-                <br />
-                <h5 className='d-inline ps-2'>Service</h5>
-                <div className="col-12 col-sm-12 justify-content-start d-flex pb-3">
-                {[1, 2, 3, 4, 5].map((value, index) => (
-                    <i
-                    key={index}
-                    className={`fs-5 pb-1 ms-1 bi-star${rating3 >= value ? '-fill' : ''} text-orange`}
-                    onClick={() => handleStarClick3(index)}
-                    />
-                ))}
-            </div>
-              <h5 className='pt-3'>Would You Visit Again</h5>
-              <input type="radio" name="" id="" />
-              <p className='d-inline ps-1 pe-3'>Yes</p>
-              <input type="radio" name="" id="" />
-              <p className='d-inline ps-1'>No</p>
-            </div>
-            <div className='col-4 text-center'>
-              <img className='w-75' src={ReviewImg} alt="leave-a-review.png" />
-              <button className='btn btn-dark rounded-4 w-50'>
-                Add a review
-              </button>
-            </div>
-          </div>
+          <PostForm />
           <h1 className='my-3'><icon className="bi-chat-square-dots pe-2" />Read Reviews</h1>
           <div className='row border rounded-3 border-black border-1 p-3'>
             <div className='col-xl-1 col-sm-2 col-3'>
