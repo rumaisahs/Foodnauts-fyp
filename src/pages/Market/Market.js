@@ -35,7 +35,7 @@ export const Home = () => {
 
   return (
     <>
-      <Navbar />
+      
       <body className=" min-vh-100 pt-0">
     
 

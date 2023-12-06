@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import { GetAllRestaurants, getAllRestaurants } from "../../services/restaurants";
 import { useState } from "react";
 import { getAllUser } from "../../services/user/user";
+import SideBar from "../../components/sideBar/SideBar";
 
 const Home = () => {
   const [resData, setRestData] = useState([])
@@ -40,11 +41,13 @@ const Home = () => {
     setBloggerData(res?.data?.data)
   }
   return (
-    <div>
-      <Navbar />
-
+    
+      <>
+      
+    <div className="container">
       {/* Main Carousel */}
-      <div className="row justify-content-center d-flex pt-5 position-relative">
+      <div className="row justify-content-center d-flex pt-5 position-relative" >
+      
         <div className="col-10">
           <div
             id="mainCarousel"
@@ -157,7 +160,7 @@ const Home = () => {
       <MailList />
       <Footer />
 
-    </div>
+    </div></>
   );
 };
 

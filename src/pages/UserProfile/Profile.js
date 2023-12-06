@@ -1,4 +1,3 @@
-import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
 import Viper from "../../images/ad-1.jpg";
 import Influencer from "../../images/influence.jpeg";
@@ -61,26 +60,14 @@ export const Profile = () => {
 
   return (
     <>
-      <Navbar />
-      <SideBar />
-      <body className="min-vh-100 py-5 container">
-        <div className="row px-3">
-          <div className="col-2">
-            <h6 className="align-items-center d-flex justify-content-center">
-              {" "}
-              <icon className="bi-youtube text-orange fs-2 pe-2" />
-            </h6>
-            <hr />
-            <h6 className="align-items-center d-flex justify-content-center">
-              {" "}
-              <icon className="bi-tiktok text-orange fs-2 pe-2" />
-            </h6>
-            <hr />
-            <h6 className="align-items-center d-flex justify-content-center">
-              {" "}
-              <icon className="bi-instagram text-orange fs-2 pe-2" />
-            </h6>
-          </div>
+      
+      <body className="min-vh-100 py-5 container-fluid">
+        <div className="row ">
+        <div
+          className="row pt-4 bg-light col-9 rounded-3 shadow-sm ms-auto justify-content-center align-items-center"
+          style={{ position: "relative", minHeight: "300px" }}
+        >
+          
           <div className="col-8 row">
             <div className="col-12 justify-content-center d-flex">
               <img
@@ -132,6 +119,7 @@ export const Profile = () => {
             >
               Collaborations
             </p>
+            </div>
             <p className="col-xl-6 col-lg-6 col-md-3 col-sm-2 col-2"></p>
           </div>
           <div className={`pt-5 row justify-content-start mx-auto row-gap-4`}>

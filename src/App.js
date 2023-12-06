@@ -13,7 +13,6 @@ import {
 } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Restaurant from "./pages/restaurant/Restaurant";
-import List from "./pages/link/List";
 // import SideBar from "./components/sidebar/SideBar";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/login/SignUp";
@@ -28,6 +27,7 @@ import { AddProduct } from "./pages/AddProduct/addproduct";
 import { GetTokenLocalStorage } from "./services/localStorage/localStorage";
 import SideBar from "./components/sideBar/SideBar";
 import OwnProfileP from "./pages/prof/OwnProfilePage";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
 
@@ -52,16 +52,19 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+        <Route  path="/" element={<><Navbar /><Outlet /></>}> 
+
+          <Route  path="/" element={<><SideBar /><Outlet /></>}> 
           <Route element={<AuthRoute />}>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
           </Route>
 
           <Route path="/" element={<Home />} />
-          <Route path="/ownprofile" element={<Profile />} />
+          <Route path="/prof" element={<Profile />} />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/listt" element={<List />} />
+            {/* <Route path="/listt" element={<List />} /> */}
             <Route path="/restaurants/:id" element={<Restaurant />} />
             {/* <Route path="/sidebar" element={<SideBar />} /> */}
             <Route path="/community" element={<FoodCommunity />} />
@@ -72,7 +75,9 @@ function App() {
             <Route path="/list" element={<ProdSearch />} />
             <Route path="/myblog" element={<MyBlogs />} />
             <Route path="/addrestaurant" element={<AddProduct />} />
-            <Route path="/prof" element={<OwnProfileP />} />
+            <Route path="/ownprofile" element={<OwnProfileP />} />
+            </Route>
+            </Route>
 
           </Route>
         </Routes>

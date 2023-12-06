@@ -37,7 +37,7 @@ export const Product = () => {
   };
   return (
     <>
-      <Navbar />
+      
       <body className="min-vh-100">
         {/*Product Images Carousel Section */}
         <div

@@ -12,8 +12,6 @@ import { Link } from "react-router-dom";
 import "../UserProfile/Profile.css"
 import { getAllBlogs } from '../../services/profile';
 
-import EditProfile from '../EditProfile/EditProfile';
-import SideBar from '../../components/sideBar/SideBar';
 import Blog from '../../components/blog/blog';
 import BlogModal from '../../components/blogmodal/BlogModal';
 export const OwnProfile = () => {
@@ -66,41 +64,53 @@ export const OwnProfile = () => {
 
   return (
     <>
-      <Navbar />
-      <SideBar/>
+      
       <body className="min-vh-100 py-5 container-fluid">
         <div className="row">
 <div
           className="row pt-4 bg-light col-9 rounded-3 shadow-sm ms-auto justify-content-center align-items-center"
           style={{ position: "relative", minHeight: "300px" }}
         >
-          <div
-            className="col-5 col-lg-3"
-            style={{ height: "150px", width: "150px" }}
-          >
-            <img src={Influencer} className="h-100 rounded-circle"/>
-          </div>
-          <div className="col-6 col-lg-9 ps-4 ">
-            <h2>Name</h2>
-             <h6 className="fw-light">@username</h6>
-            <h6 className="fw-light">
-              Verified
-              <i class="bi bi-patch-check-fill ps-2 text-orange"></i>
-            </h6>
-           
-            <Link to="/editprofile"><btn className="btn btn-outline-orange search-orange">Edit Profile</btn></Link>
-          </div>
-          <div className="row text-center mt-3">
-            <div className="col-6 col-md-3 lh-1">
-              <icon className="bi-youtube text-orange fs-2 pe-2" />
-              <div><h6  className="row pt-4 bg-light col-9 rounded-3 shadow-sm ms-auto justify-content-center align-items-center">
+         
+          
+          <div className="col-8 row">
+            <div className="col-12 justify-content-center d-flex">
+              <img
+                src={Influencer}
+                style={{ height: "170px", width: "170px" }}
+                className="rounded-circle"
+              />
+            </div>
+            <div className="col-12 text-center">
+              <h2>Arshan Khan</h2>
+              <h6 className="fw-light">
+                @arshanistan
+                <i class="bi bi-patch-check-fill ps-2 text-orange"></i>
+              </h6>
+              <h6 className="fw-light p-4 px-5">
                 Qorem ipsum dolor sit amet, consectetur adipiscing elit. Qorem
                 ipsum dolor sit amet, consectetur adipiscing elit.Qorem ipsum
                 dolor sit amet, consectetur adipiscing elit. Qorem ipsum dolor
                 sit amet, consectetur adipiscing elit.Qorem ipsum dolor sit
                 amet, consectetur adipiscing elit. Qorem ipsum dolor sit amet,
                 consectetur adipiscing elit.
-              </h6></div>
+              </h6>
+            </div>
+          </div>
+          <div className="col-2 text-center">
+            <Link to="/editProfile">
+              <button className="btn btn-orange-profile mb-2">
+                Edit Profile
+              </button>
+            </Link>
+            <h6>1M Followers</h6>
+            <p>Member Since 2023</p>
+          </div>
+        
+          <div className="row text-center mt-3">
+            <div className="col-6 col-md-3 lh-1">
+              <icon className="bi-youtube text-orange fs-2 pe-2" />
+              
             </div>
             <div className="col-6 col-md-3 lh-1">
             

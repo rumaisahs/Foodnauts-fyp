@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 const forgotpass = () => {
   return (
     <>
-    <Navbar/>
     <div>forgotpass</div>
     <Footer/>
     </>

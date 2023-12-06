@@ -139,7 +139,7 @@ const Restaurant = () => {
 
   return (
     <div>
-      <Navbar />
+      
       <div className="hotelContainer">
         {open && (
           <div className="slider">

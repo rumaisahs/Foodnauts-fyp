@@ -13,6 +13,7 @@ import { SetAuthUserLocalStorage, SetTokenLocalStorage } from '../../services/lo
 export const Login = () => {
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
+  const [error, setError] = useState('');
   const navigate = useNavigate()
 
 
@@ -24,12 +25,19 @@ export const Login = () => {
           password: password
         }
       )
+     
       SetAuthUserLocalStorage(res?.data?.data?.user)
       SetTokenLocalStorage(res?.data?.data?.token)
       navigate("/ownprofile")
     }
     catch (e) {
-      console.log(e)
+      if (email!=setEmail || password!=setPassword) {
+        setError('Invalid credentials');
+      } 
+       else {
+        setError('An error occurred. Please try again later.');
+      }
+      console.error(e);
     }
   }
 
@@ -51,6 +59,7 @@ export const Login = () => {
               <label>Password</label>
               <br />
               <input onChange={(e) => setPassword(e.target.value)} required type="password" />
+              {error && <p className="text-danger">{error}</p>}
               <Link to="/forgotpass"><p className='text-end'>forgot password?</p></Link>
               <p className='pt-2 text-center'>
                 <Link className='text-decoration-none'><button onClick={login} className='btn text-white login-btn px-4'>Log In</button></Link>

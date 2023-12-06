@@ -6,7 +6,6 @@ import Blog from '../../components/blog/blog'
 function myblogs() {
   return (
     <div>
-    <Navbar/>
     <h1 className='my-3'>My Blogs</h1>
 
     <Blog/>

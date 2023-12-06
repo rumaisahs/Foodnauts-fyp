@@ -37,8 +37,7 @@ export const ProdSearch = () => {
 
   return (
     <>
-        <Navbar/>
-        <body className="min-vh-100">
+        <body className="container min-vh-100 ms-auto">
             <div className="row mt-4 mt-lg-5 ps-lg-5 container-lg-fluid justify-content-center">
               
               {/* Filter Button Toggle */}
@@ -145,7 +144,7 @@ export const ProdSearch = () => {
                     </p>
                     <p className="fpAmbience d-inline pe-1 text-grey">.</p>
                     <p className="fpCuisine d-inline text-grey">Cuisine type</p>
-                    <p className="fpPrice d-inline ">$$$</p>
+                    <p className="fpPrice  pe-1">$$$</p>
                     <div className="fpRating mt-2">
                       <p className=" d-inline pe-1">
                         {" "}

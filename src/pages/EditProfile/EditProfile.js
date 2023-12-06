@@ -1,11 +1,9 @@
 import MKBHD from "../../images/influence.jpeg";
-import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 
 export const EditProfile = () => {
   return (
     <>
-      <Navbar />
       <body className="row mx-auto min-vh-100 pt-5 mb-5">
         <div className="col-10 row mx-auto bg-light rounded-5 py-5 my-4">
         <div className="col-12 col-md-4">
