@@ -15,9 +15,11 @@ export const Blog = (props) => {
   const handleComment = () => {
     setShowComment(!showComment);
   };
- const handleReadMore = () => {
+
+  const handleReadMore = () => {
     setShowFullContent(true);
   };
+  
   return (
     <>
       {
@@ -102,7 +104,7 @@ export const Blog = (props) => {
           :
           'No Blogs'
       }
-      
+
     </>
   );
 };
