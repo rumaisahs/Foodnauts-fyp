@@ -75,7 +75,7 @@ function App() {
             <Route path="/list" element={<ProdSearch />} />
             <Route path="/myblog" element={<MyBlogs />} />
             <Route path="/addrestaurant" element={<AddProduct />} />
-            <Route path="/ownprofile" element={<OwnProfileP />} />
+            <Route path="/ownprofile/:id" element={<OwnProfileP />} />
             </Route>
             </Route>
 

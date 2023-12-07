@@ -5,6 +5,7 @@ import ReviewImg1 from "../../images/review-img-1.png";
 import ReviewImg2 from "../../images/review-img-2.png";
 import ReviewImg3 from "../../images/review-img-3.png";
 import Influencer from "../../images/influence.jpeg";
+
 export const Blog = (props) => {
   const [showComment, setShowComment] = useState(true);
   const [showFullContent, setShowFullContent] = useState(false);

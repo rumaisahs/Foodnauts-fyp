@@ -1,16 +1,15 @@
-import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import NZXT from "../../images/xanders.jpg";
 import Viper from "../../images/xanders.jpg";
 import Product04 from "../../images/xanders.jpg";
 import Product05 from "../../images/xanders.jpg";
 import Product06 from "../../images/xanders.jpg";
-import MKBHD from "../../images/xanders.jpg";
 import Influencer from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import "../UserProfile/Profile.css"
 import { getAllBlogs } from '../../services/profile';
+// import {GetSingleUser}from '../../services/user/user';
 
 import Blog from '../../components/blog/blog';
 import BlogModal from '../../components/blogmodal/BlogModal';
@@ -18,6 +17,16 @@ export const OwnProfile = () => {
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
 
+  // const[userData, setUserData]=useState([])
+  // const { id } = useParams()
+  // useEffect(() => {
+  //   console.log(id,'id')
+  //   GetSingleUser()
+  // }, [id])
+  // const GetSingleUser = async () => {
+  //   const res = await GetSingleUser(id)
+  //   setUserData(res?.data?.data)
+  // }
   const handleButtonClick = () => {
     setisReviewsVisible(!isReviewsVisible);
     setisReviewsColorVisible(!isReviewsColorVisible);
@@ -123,11 +132,11 @@ export const OwnProfile = () => {
             <icon className="bi-instagram text-orange fs-2 pe-2" />
             </div>
           </div>
-          <div className="bg-orange text-white text-center py-5 my-3">
+          {/* <div className="bg-orange text-white text-center py-5 my-3">
             <h5>LOOKING FOR STARTING A BUSINESS?</h5>
             <h1 className="fw-bold mb-4">BECOME A SELLER</h1>
             <Link to="/profile_verification" className=" text-decoration-none"><btn className="bg-white text-orange fs-4 p-2 px-3 rounded-1">Register</btn></Link>
-        </div>
+        </div> */}
           <div className="row mt-3 ps-0">
             <p className={`fs-5 col-4 col-sm-3 col-lg-2 py-2 ps-4 mb-0 text-start rounded-0 btn  ${isReviewsColorVisible ? 'border-b-orange' : ''}`} onClick={handleButtonClick}>
             Collaborations

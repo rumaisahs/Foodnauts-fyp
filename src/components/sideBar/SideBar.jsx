@@ -85,7 +85,7 @@ useEffect(() => {
 //             <NavLink exact to="/addrestaurant" activeClassName="activeClicked">
 //               <CDBSidebarMenuItem icon="table">Add Restaurant</CDBSidebarMenuItem>
 //             </NavLink>
-//             <NavLink exact to="/myblog" activeClassName="activeClicked">
+//             <NavLink exact to="Link" activeClassName="activeClicked">
 //               <CDBSidebarMenuItem icon="chart-line"> My Blogs</CDBSidebarMenuItem>
 //             </NavLink>
 //             <NavLink exact to="/myrestaurants" activeClassName="activeClicked">
@@ -146,34 +146,34 @@ useEffect(() => {
         </li>
 
         <li>
-          <a>
+        <Link to="/community">
             <i className="bx bx-bar-chart-alt-2"></i>
             <span className="link_name">Community</span>
-          </a>
+          </Link>
           <span className="tooltip">Community</span>
         </li>
 
         <li>
-          <a>
+        <Link to="/restaurants">
             <i className="bx bxs-slideshow"></i>
             <span className="link_name">Restaurants</span>
-          </a>
+          </Link>
           <span className="tooltip">Restaurants</span>
         </li>
 
         <li>
-          <a>
+        <Link to="/">
             <i className="bx bxs-contact"></i>
             <span className="link_name">Notifications</span>
-          </a>
+          </Link>
           <span className="tooltip">Notifications</span>
         </li>
 
         <li>
-          <a>
+        <Link to="/myblog">
             <i className="bx bx-edit"></i>
             <span className="link_name">My Blogs</span>
-          </a>
+          </Link>
           <span className="tooltip">Blogs</span>
         </li>
 
@@ -205,7 +205,7 @@ useEffect(() => {
 
         <li>
         <p className='ps'>x</p>
-        <Link to="/ownprofile">
+        <Link to="ownprofile/:id">
             <i className="bx bxs-chevrons-left"></i>
             <span className="link_name">Profile</span>
           </Link>
@@ -213,10 +213,10 @@ useEffect(() => {
         </li>
         <p className='ps'>x</p>
         <li>
-          <a>
+        <Link to="/editProfile">
             <i className="bx bxs-user-detail"></i>
             <span className="link_name">Settings</span>
-          </a>
+            </Link>
           <span className="tooltip"> Setting</span>
         </li>
 
