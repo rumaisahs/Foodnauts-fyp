@@ -22,8 +22,8 @@ api.interceptors.response.use(
     error => {
         if (error.response.status === 401) {
             setTimeout(() => {
-                EmptyLocalStorage()
-                window.location.href = '/login';
+                // EmptyLocalStorage()
+                // window.location.href = '/login';
             }, 1500)
         }
         return Promise.reject(error);
