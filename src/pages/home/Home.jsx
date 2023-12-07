@@ -23,16 +23,16 @@ const Home = () => {
   blogerData.length = 5
 
   useEffect(() => {
-    GetRestaurants()
-    GetAllUser()
+    getRestaurants()
+    getAllUser()
   }, [])
 
-  const GetRestaurants = async () => {
+  const getRestaurants = async () => {
     const res = await getAllRestaurants()
     setRestData(res?.data?.data);
   }
 
-  const GetAllUser = async () => {
+  const getAllUser = async () => {
     const params = {
       paginate: true,
     }
