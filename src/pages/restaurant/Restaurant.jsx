@@ -138,9 +138,10 @@ const Restaurant = () => {
   });
 
   return (
-    <div>
+    <>
+    <div className="  row justify-content-end">
       
-      <div className="hotelContainer">
+      <div className="hotelContainer col-10">
         {open && (
           <div className="slider">
             <FontAwesomeIcon
@@ -469,8 +470,8 @@ const Restaurant = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+   
+    </div>   <Footer /></>
   )
 }
 

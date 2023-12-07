@@ -43,7 +43,7 @@ export const Login = () => {
 
   return (
     <>
-      <Navbar />
+      
       <body className='container-fluid justify-content-center align-items-center d-flex overflow-hidden p-5'>
         <div className='d-lg-block d-none'>
           <img src={LoginImg} className=' rounded-5 shadow' style={{ height: "580px" }} />

@@ -15,8 +15,7 @@ import { useEffect } from "react";
 import { GetAllRestaurants, getAllRestaurants } from "../../services/restaurants";
 import { useState } from "react";
 import { getAllUser } from "../../services/user/user";
-import SideBar from "../../components/sideBar/SideBar";
-
+import FullBlogModal from "../../components/fullblogmodal/FullBlogModal";
 const Home = () => {
   const [resData, setRestData] = useState([])
   resData.length = 10
@@ -43,12 +42,12 @@ const Home = () => {
   return (
     
       <>
-      
-    <div className="container">
+      <div className="row justify-content-end">
+    <div className=" col-10">
       {/* Main Carousel */}
       <div className="row justify-content-center d-flex pt-5 position-relative" >
       
-        <div className="col-10">
+        <div className="col-11">
           <div
             id="mainCarousel"
             className="carousel slide carousel-fade"
@@ -111,6 +110,7 @@ const Home = () => {
           </div>
         </div>
         <RecMod></RecMod>
+        <FullBlogModal></FullBlogModal>
         {/* <button className="btn bg-orange shadow rounded-1 justify-content-center d-flex mx-auto align-items-center position-absolute z-1 w-25" style={{top:'473px'}}>
           <h6 className="pt-2 text-white">Let Us Recommend</h6>
         </button> */}
@@ -160,7 +160,7 @@ const Home = () => {
       <MailList />
       <Footer />
 
-    </div></>
+    </div></div></>
   );
 };
 

@@ -14,16 +14,16 @@ const FeaturedProperties = (props) => {
   return (
     <body className=' min-vh-100'>
       <div className="row justify-content-center py-5">
-        <div className="col-10 bg-light rounded-3 p-4">
+        <div className="col-12 bg-light rounded-3 p-4">
           <h1 className="text-black text-start pb-4 fs-3">Restaurants</h1>
-          <div className="d-flex flex-row flex-nowrap gap-1 overflow-x-auto hidden-scrollbar pb-1" >
+          <div className="d-flex flex-row flex-nowrap gap-1 overflow-x-auto hidden-scrollbar pb-1 justify-content-start" >
            
             {
               defaultData.map((dt) => {
                 return (
                   <>
                   <div className="row justify-content-start">
-                    <div className="col-lg-3 col-md-4 col-6 h-100" key={dt?._id}>
+                    <div className="col-lg-3 col-md-4 col-6 h-100 pe-4" key={dt?._id}>
                       <div class="card position-relative" style={{ width: "18rem", height:"20rem"}}>
                         <Link to={`/restaurants/${dt?._id}`} >
                      

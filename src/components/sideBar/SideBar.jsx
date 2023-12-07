@@ -15,6 +15,8 @@ import React, { useState, useEffect } from 'react';
 import logoImage from"../../images/colette.jpg";
 import userIcon from"../../images/colette.jpg";
 import Home from '../../pages/home/Home';
+import { Link } from 'react-router-dom';
+
 
 import './sidebar.css';
 const SideBar = () => {
@@ -136,10 +138,10 @@ useEffect(() => {
        
         <p className='ps'>x</p>
         <li>
-          <a>
+        <Link to="/">
             <i className="bx bx-home-alt-2"></i>
             <span className="link_name">Home</span>
-          </a>
+            </Link>
           <span className="tooltip">Home</span>
         </li>
 
@@ -203,10 +205,10 @@ useEffect(() => {
 
         <li>
         <p className='ps'>x</p>
-          <a>
+        <Link to="/ownprofile">
             <i className="bx bxs-chevrons-left"></i>
             <span className="link_name">Profile</span>
-          </a>
+          </Link>
           <span className="tooltip">Profile</span>
         </li>
         <p className='ps'>x</p>
@@ -219,10 +221,12 @@ useEffect(() => {
         </li>
 
         <li>
-          <a>
+        <NavLink exact to={'/login'} onClick={() => {
+             EmptyLocalStorage()
+           }} activeClassName="activeClicked">
             <i className="bx bx-arrow-to-left"></i>
             <span className="link_name">Logout</span>
-          </a>
+          </NavLink>
           <span className="tooltip">Logout</span>
         </li>
         <li>
