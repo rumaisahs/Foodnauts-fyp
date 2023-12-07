@@ -28,7 +28,7 @@ export const Login = () => {
 
       SetAuthUserLocalStorage(res?.data?.data?.user)
       SetTokenLocalStorage(res?.data?.data?.token)
-      navigate("/ownprofile/:id")
+      navigate("/ownprofile")
     }
     catch (e) {
       if (email != setEmail || password != setPassword) {

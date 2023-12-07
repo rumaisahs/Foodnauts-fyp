@@ -5,6 +5,7 @@ import ReviewImg1 from "../../images/review-img-1.png";
 import ReviewImg2 from "../../images/review-img-2.png";
 import ReviewImg3 from "../../images/review-img-3.png";
 import Influencer from "../../images/influence.jpeg";
+import moment from 'moment';
 
 export const Blog = (props) => {
   const [showComment, setShowComment] = useState(true);
@@ -70,9 +71,9 @@ export const Blog = (props) => {
                   <div className=" col-6 justify-content-end d-flex ">
                     <icon className="pe-4 bi bi-share-fill text-orange" />
                     <icon className="pe-2 bi-hand-thumbs-up text-orange" />
-                    <p >256</p>
+                    <p >{dt?.likes?.length}</p>
                     <icon className=" pe-2 ps-3 bi-hand-thumbs-down text-orange" />
-                    <p>256</p>
+                    <p>{dt?.dislikes?.length}</p>
                   </div>
                 </div>
                 <div className={`row ${showComment ? "" : "d-none"}`}>

@@ -7,26 +7,23 @@ import Product06 from "../../images/xanders.jpg";
 import Influencer from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
 import { Link,useParams } from "react-router-dom";
-import "../UserProfile/Profile.css"
-import { getAllBlogs } from '../../services/profile';
-// import {GetSingleUser}from '../../services/user/user';
-
+import "./OwnProfilePage.css"
+import { GetAllBlogs } from '../../services/blog/blog';
+import moment from 'moment';
+import EditProfile from '../EditProfile/EditProfile';
+import SideBar from '../../components/sideBar/SideBar';
 import Blog from '../../components/blog/blog';
+import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
+import { GetSingleUser, UserFollowers } from '../../services/user/user';
+import { GetAllMedia } from '../../services/media/media';
+// import {GetSingleUser}from '../../services/user/user';
 import BlogModal from '../../components/blogmodal/BlogModal';
 export const OwnProfile = () => {
+  const authUser = GetAuthUserLocalStorage()
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
+  const [user, setUser] = useState(null)
 
-  // const[userData, setUserData]=useState([])
-  // const { id } = useParams()
-  // useEffect(() => {
-  //   console.log(id,'id')
-  //   GetSingleUser()
-  // }, [id])
-  // const GetSingleUser = async () => {
-  //   const res = await GetSingleUser(id)
-  //   setUserData(res?.data?.data)
-  // }
   const handleButtonClick = () => {
     setisReviewsVisible(!isReviewsVisible);
     setisReviewsColorVisible(!isReviewsColorVisible);
@@ -35,6 +32,8 @@ export const OwnProfile = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [displayText, setDisplayText] = useState(''); // Initial text
   const [blogData, setBlogData] = useState([])
+  const [mediaData, setMediaData] = useState([])
+  const [followers, setFollowers] = useState([])
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,21 +54,47 @@ export const OwnProfile = () => {
   }, []);
 
 
+  
   useEffect(() => {
-    GetBlogs()
+    const getAllBlogs = async () => {
+      const params = {
+        user: authUser._id,
+        paginate: false,
+        sort: 'desc',
+        sortBy: 'createdAt',
+      }
+      const res = await GetAllBlogs(params)
+      setBlogData(res?.data?.data)
+    }
+
+    const getSingleUser = async () => {
+      const res = await GetSingleUser(authUser._id)
+      setUser(res?.data?.data)
+    }
+
+    const getAllMedia = async () => {
+      const params = {
+        user: authUser._id,
+        paginate: false,
+        sort: 'desc',
+        sortBy: 'createdAt',
+      }
+      const res = await GetAllMedia(params)
+      setMediaData(res?.data?.data)
+    }
+
+    const userFollowers = async () => {
+      const res = await UserFollowers(authUser?._id)
+      setFollowers(res?.data?.data)
+    }
+
+    getSingleUser()
+    getAllBlogs()
+    getAllMedia()
+    userFollowers()
+
   }, [])
 
-  const GetBlogs = async (data) => {
-    const params = {
-      paginate: true,
-      sort: 'asc',
-      sortBy: 'sortBy'
-    }
-    const res = await getAllBlogs(params)
-    setBlogData(res?.data?.data)
-  }
-
-  console.log(blogData, 'blogData');
 
   return (
     <>
@@ -91,18 +116,13 @@ export const OwnProfile = () => {
               />
             </div>
             <div className="col-12 text-center">
-              <h2>Arshan Khan</h2>
+              <h2>{user?.name}</h2>
               <h6 className="fw-light">
-                @arshanistan
+              @{user?.name}
                 <i class="bi bi-patch-check-fill ps-2 text-orange"></i>
               </h6>
               <h6 className="fw-light p-4 px-5">
-                Qorem ipsum dolor sit amet, consectetur adipiscing elit. Qorem
-                ipsum dolor sit amet, consectetur adipiscing elit.Qorem ipsum
-                dolor sit amet, consectetur adipiscing elit. Qorem ipsum dolor
-                sit amet, consectetur adipiscing elit.Qorem ipsum dolor sit
-                amet, consectetur adipiscing elit. Qorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
+              {user?.bio}
               </h6>
             </div>
           </div>
@@ -112,8 +132,8 @@ export const OwnProfile = () => {
                 Edit Profile
               </button>
             </Link>
-            <h6>1M Followers</h6>
-            <p>Member Since 2023</p>
+            <h6>{followers?.length} Followers</h6>
+            <p>Member Since {moment(user?.createdAt).format('YYYY')}</p>
           </div>
         
           <div className="row text-center mt-3">
@@ -262,11 +282,9 @@ export const OwnProfile = () => {
                 <div className="row">
                 <BlogModal />
                 {
-                  blogData.length > 0 ?
-                    <Blog
-                      setState={blogData}
-                    />
-                    : ''
+                  blogData?.map((item, index) => (
+                    <Blog data={item} key={index} />
+                  ))
                 }
 
               </div>

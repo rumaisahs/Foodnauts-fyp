@@ -14,7 +14,7 @@ import BloggerIcon from "../../components/bloggerIcon/bloggerIcon";
 import { useEffect } from "react";
 import { GetAllRestaurants, getAllRestaurants } from "../../services/restaurants";
 import { useState } from "react";
-import { getAllUser } from "../../services/user/user";
+import { GetAllUser } from "../../services/user/user";
 import FullBlogModal from "../../components/fullblogmodal/FullBlogModal";
 const Home = () => {
   const [resData, setRestData] = useState([])
@@ -36,7 +36,7 @@ const Home = () => {
     const params = {
       paginate: true,
     }
-    const res = await getAllUser(params)
+    const res = await GetAllUser(params)
     setBloggerData(res?.data?.data)
   }
   return (
