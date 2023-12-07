@@ -20,5 +20,7 @@ export const apiUrl = {
     cuisine: 'cuisine',
     ambience: 'ambience',
     review: 'review',
+    media:"/media",
+    userFollowers:"/user/followers"
 }
 

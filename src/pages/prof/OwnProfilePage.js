@@ -282,9 +282,12 @@ export const OwnProfile = () => {
                     <div className="row">
                       <BlogModal />
                       {
-                        blogData?.map((item, index) => (
-                          <Blog data={item} key={index} />
-                        ))
+                        blogData?.length <= 0 ?
+                          "No blog found"
+                          :
+                          blogData?.map((item, index) => (
+                            <Blog data={item} key={index} />
+                          ))
                       }
 
                     </div>
