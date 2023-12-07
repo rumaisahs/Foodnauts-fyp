@@ -24,7 +24,7 @@
                 <div className="fpRating mt-2">
                   <p className=" d-inline pe-1">
                     {" "}
-                    <i className="bi bi-star-fill" />{defaultData[-2]?.rating}
+                    <i className="bi bi-star-fill" /> 4.0 |
                   </p>
                   <span>Reviews (81)</span>
                 </div>

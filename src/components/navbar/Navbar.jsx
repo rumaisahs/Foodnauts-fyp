@@ -16,13 +16,13 @@ const Navbar = () => {
             <li>
               <Link className="dropdown-item">
                 <i className="bi bi-person-square pe-2 text-orange"></i>
-                My Profile
+               Register
               </Link>
             </li>
             <li>
               <button className="dropdown-item btn">
                 <i className="bi bi-box-arrow-left pe-2 text-orange"></i>
-                Logout
+                Login
               </button>
             </li>
           </ul>
@@ -47,20 +47,20 @@ const Navbar = () => {
           </form>
           <div className="dropdown">
           <a href="#" role="button" className="text-decoration-none d-none d-sm-none d-lg-flex" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" >
-              <i className="bi bi-person-fill ps-1 fs-1" style={{ color: '#6A00FF' }}></i>
+              <i className="bi bi-person-fill ps-1 fs-1 text-orange" ></i>
           </a>
 
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{ left: 'auto', right: '0' }}>
             <li>
               <Link to="/ownprofile" className="dropdown-item">
-                <i className="bi bi-person-square pe-2" style={{ color: '#6A00FF' }}></i>
-                My Profile
+                <i className="bi bi-person-square pe-2 text-orange"></i>
+                Register
               </Link>
             </li>
             <li>
               <button className="dropdown-item" >
-                <i className="bi bi-box-arrow-left pe-2" style={{ color: '#6A00FF' }}></i>
-                Logout
+                <i className="bi bi-box-arrow-left pe-2 text-orange"></i>
+                Login
               </button>
             </li>
           </ul>

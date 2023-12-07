@@ -23,7 +23,7 @@ export const OwnProfile = () => {
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
   const [user, setUser] = useState(null)
-
+console.log(user,'user')
   const handleButtonClick = () => {
     setisReviewsVisible(!isReviewsVisible);
     setisReviewsColorVisible(!isReviewsColorVisible);
@@ -118,7 +118,7 @@ export const OwnProfile = () => {
               <div className="col-12 text-center">
                 <h2>{user?.name}</h2>
                 <h6 className="fw-light">
-                  @{user?.name}
+                  @{user?.username}
                   <i class="bi bi-patch-check-fill ps-2 text-orange"></i>
                 </h6>
                 <h6 className="fw-light p-4 px-5">

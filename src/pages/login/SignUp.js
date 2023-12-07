@@ -25,7 +25,8 @@ const SignUp = () => {
         email: email,
         password: password,
       });
-      navigate('/login')
+      navigate("/ownprofile")
+
       // toast.success(res?.data?.message)
     } catch (e) {
       // toast.error(e);
@@ -98,7 +99,7 @@ const SignUp = () => {
 
   return (
     <>
-      <Navbar />
+      
       <body className="container-fluid justify-content-center align-items-center d-flex overflow-hidden p-5">
         <div className="d-lg-block d-none">
           <img

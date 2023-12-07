@@ -14,8 +14,9 @@ import BloggerIcon from "../../components/bloggerIcon/bloggerIcon";
 import { useEffect } from "react";
 import { GetAllRestaurants, getAllRestaurants } from "../../services/restaurants";
 import { useState } from "react";
-import { GetAllUser } from "../../services/user/user";
 import FullBlogModal from "../../components/fullblogmodal/FullBlogModal";
+import { GetAllUser } from "../../services/user/user";
+
 const Home = () => {
   const [resData, setRestData] = useState([])
   resData.length = 10

@@ -69,7 +69,6 @@ export const AddProduct = () => {
   }
   return (
     <>
-      <Navbar />
       <body>
         <div class="row container mx-auto py-5">
           <div class="col-12 col-lg-6 text-center h-100">
