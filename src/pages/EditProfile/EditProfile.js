@@ -1,5 +1,8 @@
 import MKBHD from "../../images/influence.jpeg";
 import Footer from "../../components/footer/Footer";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+
 
 export const EditProfile = () => {
   return (
@@ -88,7 +91,9 @@ export const EditProfile = () => {
               <div className="justify-content-center justify-content-lg-end d-flex py-5">
                 <button className="btn bg-orange text-white" style={{width:"200px"}}>Change Password</button>
               </div>
-              
+              <Link to="/verify">
+              <button className="btn bg-orange text-white" style={{width:"200px"}}>Become Verified User</button>
+</Link>
         </form>
 
         </div>

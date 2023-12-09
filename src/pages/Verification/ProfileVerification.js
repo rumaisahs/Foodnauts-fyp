@@ -1,11 +1,9 @@
-import MKBHD from "../../images/mkbhd-profile.webp";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
+import MKBHD from "../../images/influence.jpeg";
+import Footer from "../../components/footer/Footer";
 
 export const ProfileVerification = () => {
   return (
     <>
-      <Header />
       <body className="row mx-auto min-vh-100 pt-4 mb-5">
         <div className="col-10 row mx-auto rounded-5">
           <div className="section-container justify-content-center">

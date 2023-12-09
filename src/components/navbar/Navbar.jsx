@@ -1,8 +1,20 @@
 import "./navbar.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import Logo from "../../images/foodnauts 2.png"
+import api from '../../utils/mlapi';
+import fetchData from "../../utils/fetchData";
+
 
 const Navbar = () => {
+const navigate = useNavigate();
+const [searchQuery, setSearchQuery] = useState('');
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // Redirect to prodsearch page with the search query
+    navigate(`/list?query=${encodeURIComponent(searchQuery)}`);
+    window.location.reload();
+  };
   return (
     <nav className="navbar navbar-expand-lg bg-white sticky-top py-2 shadow mx-auto">
       <div className="container-fluid">
@@ -41,9 +53,14 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <form className="d-flex align-items-center d-flex" role="search">
-            <input className="form-control rounded-5" type="search" placeholder="Search" aria-label="Search" />
-            <Link to='/list' className="border-0 bg-transparent position-absolute" style={{ right: "4%" }} ><icon className="bi-search text-orange" /></Link>
+          <form className="d-flex align-items-center d-flex" role="search" onSubmit={handleSearch}>
+            <input className="form-control rounded-5" type="search"
+              placeholder="Search"
+              aria-label="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button  type="submit" className="border-0 bg-transparent position-absolute" style={{ right: "4%" }} ><icon className="bi-search text-orange" /></button>
           </form>
           <div className="dropdown">
           <a href="#" role="button" className="text-decoration-none d-none d-sm-none d-lg-flex" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -52,16 +69,16 @@ const Navbar = () => {
 
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{ left: 'auto', right: '0' }}>
             <li>
-              <Link to="/ownprofile" className="dropdown-item">
+              <Link to="/signup" className="dropdown-item">
                 <i className="bi bi-person-square pe-2 text-orange"></i>
                 Register
               </Link>
             </li>
             <li>
-              <button className="dropdown-item" >
+              <Link to="/login" className="dropdown-item" >
                 <i className="bi bi-box-arrow-left pe-2 text-orange"></i>
                 Login
-              </button>
+              </Link>
             </li>
           </ul>
         </div>

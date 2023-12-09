@@ -3,6 +3,37 @@ import Footer from '../../components/footer/Footer'
 import desktop from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import fetchData from "../../utils/fetchData";
+import axios from 'axios';
+
+// const [restaurants, setRestaurants] = useState([]);
+// const [loading, setLoading] = useState(true);
+
+// useEffect(() => {
+//   // Function to fetch data from the API
+//   const fetchData = async () => {
+//     try {
+//       const response = await axios.get('/api/searchRestaurants', {
+//         params: {
+//           name: 'YourRestaurantName', // Add your search parameters here
+//           // Other search parameters...
+//         },
+//       });
+
+//       setRestaurants(response.data.data);
+//       setLoading(false);
+//     } catch (error) {
+//       console.error('Error fetching data:', error);
+//     }
+//   };
+
+//   // Call the function to fetch data
+//   fetchData();
+// }, []); // The empty dependency array ensures the effect runs only once on mount
+
+// if (loading) {
+//   return <p>Loading...</p>;
+// };
 
 
 export const ProdSearch = () => {
@@ -31,6 +62,25 @@ export const ProdSearch = () => {
   }, []);
 
   const location = useLocation();
+ 
+  const searchQuery = new URLSearchParams(location.search).get('query');
+ 
+  const [searchResults, setSearchResults] = useState([]);
+ useEffect(() => {
+  const handleSearch = async () => {
+    try {
+      // Call the fetchData function with the searchQuery
+      const data = await fetchData(searchQuery);
+
+      // Update the state with the fetched data
+      setSearchResults(data);
+      console.log(searchResults)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  
+};handleSearch();
+},[]);
 
   // Access the state data
   const { pageTitle } = location.state || {};

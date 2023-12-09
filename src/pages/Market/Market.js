@@ -35,7 +35,7 @@ export const Home = () => {
 
   return (
     <>
-      
+      <div className="container">
       <body className=" min-vh-100 pt-0">
     
 
@@ -458,7 +458,7 @@ export const Home = () => {
        
 
    
-      </body>
+      </body></div>
       <Footer />
     </>
   );

@@ -46,7 +46,7 @@
 
 .name{
   cursor:default;
-  color: white;
+  color: #000000;
 }
 .ps{
   font-size: 5px;
@@ -97,9 +97,9 @@
 
 
 :root{
-  --color-default:#F2752F;
+  --color-default:#cecccb;
   --color-second:#0067ac;
-  --color-white:#ffffffbe;
+  --color-white:#e68c5a;
   --color-body:#e4e9f7;
   --color-body1:white;
   --color-light:#e0e0e0;
@@ -315,7 +315,7 @@
 }
 
 .sidebar li a .link_name{
-  color:var(--color-text);
+  color:#000000;
   font-size: 15px;
   font-weight: 400;
   white-space: nowrap;
@@ -344,70 +344,11 @@
   margin-right: 10px;
 }
 
-/* 
-.sidebar li.profile{
-  position: fixed;
-  height: 60px;
-  width: 78px;
-  left: 0;
-  
-  padding:10px 14px;
-  overflow: hidden;
-  transition: all .5s ease;
-  
+.sidebar-item {
+  border-bottom: 2px solid #b6b3b3f2; /* Add a border at the bottom of each sidebar item */
+  padding-top: 3px; 
+  padding-bottom: 2px;/* Add padding for better spacing */
 }
-
-.sidebar.open li.profile{
-  width: 250px;
-  margin-bottom: 20px;
-  font-size: 15px;
-}
-
-.sidebar .profile .profile_details{
-  display: flex;
-  align-items: center;
-  flex-wrap:  nowrap;
-  font-family: 'Poppins', sans-serif;
-}
-
-.sidebar li .user_image{
-  height: auto;
-  width: 40px;
-  object-fit: cover;
-  margin-left: 5px;
-  margin-right: 10px;
-  transition: all 0.5s ease;
-}
-
-.sidebar.open li .user_image{
-  height: auto;
-  width: 50px;
-  object-fit: cover;
-  margin-left: 2px;
-  margin-right: 10px;
-  transition: all 0.5s ease;
-}
-
-.sidebar li.profile .name{
-  font-size: 0px;
-}
-
-
-
-.sidebar.open li.profile .name,
-.sidebar.open li.profile .designation{
-  font-size: 15px;
-  font-weight: 400;
-  color:var(--color-text);
-  white-space: nowrap;
-  font-family: 'Poppins', sans-serif;
-}
-
-.sidebar li.profile .designation{
-  font-size: 12px;
-} */
-
-
 
 .sidebar .logo_details .logo_image {
     width: 0;

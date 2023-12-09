@@ -28,6 +28,8 @@ import { GetTokenLocalStorage } from "./services/localStorage/localStorage";
 import SideBar from "./components/sideBar/SideBar";
 import OwnProfileP from "./pages/prof/OwnProfilePage";
 import Navbar from "./components/navbar/Navbar";
+import AllRestaurants from "./pages/allrestaurants/AllRestaurants";
+import Verification from "./pages/Verification/ProfileVerification";
 
 function App() {
 
@@ -61,13 +63,14 @@ function App() {
           </Route>
 
           <Route path="/" element={<Home />} />
-          <Route path="/prof" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
 
           <Route element={<ProtectedRoute />}>
             {/* <Route path="/listt" element={<List />} /> */}
             <Route path="/restaurants/:id" element={<Restaurant />} />
             {/* <Route path="/sidebar" element={<SideBar />} /> */}
             <Route path="/community" element={<FoodCommunity />} />
+            <Route path="/allrest" element={<AllRestaurants />} />
             <Route path="/editProfile" element={<EditProfile />} />
             <Route path="/market" element={<Market />} />
             <Route path="/product" element={<Product />} />
@@ -76,6 +79,8 @@ function App() {
             <Route path="/myblog" element={<MyBlogs />} />
             <Route path="/addrestaurant" element={<AddProduct />} />
             <Route path="/ownprofile" element={<OwnProfileP />} />
+            <Route path="/verify" element={<Verification />} />
+
             </Route>
             </Route>
 

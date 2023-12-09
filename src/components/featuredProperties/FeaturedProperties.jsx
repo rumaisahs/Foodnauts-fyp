@@ -15,7 +15,6 @@ const FeaturedProperties = (props) => {
     <body className=' min-vh-100'>
       <div className="row justify-content-center py-5">
         <div className="col-12 bg-light rounded-3 p-4">
-          <h1 className="text-black text-start pb-4 fs-3">Restaurants</h1>
           <div className="d-flex flex-row flex-nowrap gap-1 overflow-x-auto hidden-scrollbar pb-1 justify-content-start" >
            
             {
@@ -61,7 +60,8 @@ const FeaturedProperties = (props) => {
                           </div>
                         </Link>
                       </div>
-                    </div></div>
+                    </div>
+                    </div>
                   </>
                 )
               })

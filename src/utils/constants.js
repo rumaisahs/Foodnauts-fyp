@@ -6,7 +6,8 @@ export const constant = {
     LOCAL_STORAGE_ROLE: "",
     BASE_URL: "http://localhost:4000/",
     IMAGE_DIR_NAME: "images",
-    VIDEO_DIR_NAME: "videos"
+    VIDEO_DIR_NAME: "videos",
+   
 }
 
 export const apiUrl = {

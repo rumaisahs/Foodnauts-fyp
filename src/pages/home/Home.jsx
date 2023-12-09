@@ -31,6 +31,8 @@ const Home = () => {
   const getRestaurants = async () => {
     const res = await getAllRestaurants()
     setRestData(res?.data?.data);
+    console.log(resData)
+
   }
 
   const getAllUser = async () => {
@@ -123,6 +125,9 @@ const Home = () => {
 
         <h1 className="homeTitle">Locations</h1>
         <Featured />
+
+        <h1 className="text-black text-start pb-4 fs-3">Restaurants</h1>
+
         <div className=" justify-content-start d-flex container">
         <FeaturedProperties defaultData={resData} />
         </div>
