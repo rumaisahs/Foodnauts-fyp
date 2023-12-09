@@ -18,6 +18,9 @@ import { GetSingleUser, UserFollowers } from '../../services/user/user';
 import { GetAllMedia } from '../../services/media/media';
 // import {GetSingleUser}from '../../services/user/user';
 import BlogModal from '../../components/blogmodal/BlogModal';
+import DefaultImage from "../../images/defaultimage.png"
+
+
 export const OwnProfile = () => {
   const authUser = GetAuthUserLocalStorage()
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
@@ -52,8 +55,6 @@ console.log(user,'user')
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-
 
   useEffect(() => {
     const getAllBlogs = async () => {
@@ -110,7 +111,7 @@ console.log(user,'user')
             <div className="col-8 row">
               <div className="col-12 justify-content-center d-flex">
                 <img
-                  src={Influencer}
+                  src={user?.profile_image || DefaultImage}
                   style={{ height: "170px", width: "170px" }}
                   className="rounded-circle"
                 />
