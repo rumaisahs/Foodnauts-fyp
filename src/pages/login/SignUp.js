@@ -3,6 +3,8 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import { useNavigate, Link } from "react-router-dom";
 import LoginImg from "../../images/login-img.png";
+import Google from '../../images/googlelogo.png'
+
 import "./login.css";
 //import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
@@ -32,70 +34,6 @@ const SignUp = () => {
       // toast.error(e);
     }
   };
-  // const [captchaValue, setCaptchaValue] = useState(null);
-
-  // const history = useNavigate();
-
-  // const [formData, setFormData] = useState({
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  //   cpassword: ''
-  // });
-
-  // const submit = async (e) => {
-  //   //to not run twice
-  //   e.preventDefault();
-  //  try {
-
-  //     if (formData.password != formData.cpassword) {
-  //       toast.error("Password does not match");
-  //     }
-  //     else if (formData.password.length < 6) {
-  //       toast.error("Password too short")
-
-  //     }
-  //     else if (!captchaValue) {
-  //       toast.error("Fill the Captcha");
-  //     }
-  //     else {
-
-  //       await axios.post("http://localhost:3000/signup", {
-  //         formData
-  //       })
-  //         .then(res => {
-  //           if (res.data == "exist") {
-  //             toast.error("Email is already registered");
-
-  //           }
-  //           else if (res.data == "notexist") {
-
-  //             Cookies.set("email", formData.email, { expires: 7 })
-  //             // if (Cookies.get("allProducts") != undefined || Cookies.get("allProducts") != null) {
-  //             //   Cookies.remove("allProducts")
-  //             // }
-
-  //             toast.success("Successfully Registered", {
-  //               autoClose: 1000
-  //             });
-  //             setTimeout(() => {
-  //               history("/login")
-  //             }, 2000)
-
-  //           }
-  //         })
-  //         .catch(e => {
-  //           toast.error("Somethig went wrong!");
-  //         })
-  //       }
-
-  //   }
-  //   catch (e) {
-  //       toast.error("Somethig went wrong!");
-
-  //   }
-
-  // }
 
   return (
     <>
@@ -182,6 +120,13 @@ const SignUp = () => {
                     Register
                   </button>
                 </p>
+                <div className='d-flex align-items-center pb-3'><div className='bg-dark w-50 ' style={{ height: '1px ' }}></div>
+                <div className='px-2 '>or </div> <div className=' bg-dark w-50 ' style={{ height: '1px ' }}></div></div>
+              <p className='pt-1 text-center'>
+                <Link to="/" className='text-decoration-none'><button className='btn rounded-5  w-100 border-dark'
+                 
+                ><img src={Google} className=' pe-2 ' style={{ height: "22px" }} />Signup with Google </button></Link>
+              </p>
                 <Link to="/login" className="text-decoration-none">
                   <p className="text-center register">
                     Already have an account? Login

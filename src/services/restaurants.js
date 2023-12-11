@@ -3,6 +3,7 @@ import api from './index'
 
 export const getAllRestaurants = async (params) => await api.get(`${apiUrl.restaurant}`, { params })
 export const getSingleRestaurant = async (id) => await api.get(`${apiUrl.restaurant}/${id}`)
+export const getRestaurant = async (params) => api.get(`restaurant/search`,{params})
 
 // cuisine
 export const getSingleCuisine = async (id) => await api.get(`${apiUrl.cuisine}/${id}`)

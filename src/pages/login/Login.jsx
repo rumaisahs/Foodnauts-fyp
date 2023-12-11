@@ -82,13 +82,13 @@ export const Login = () => {
                 ><img src={Google} className=' pe-2 ' style={{ height: "22px" }} />Login with Google </button></Link>
               </p>
 
-              <p className='pt-1 text-center'>
+              {/* <p className='pt-1 text-center'>
                 <Link to="/" className='text-decoration-none'><button className='btn rounded-5  w-100  text-white bg-primary'
 
 
 
                 ><img src={Facebook} className=' pe-2 ' style={{ height: "22px" }} />Login with Facebook </button></Link>
-              </p>
+              </p> */}
               <Link to="/signup" className='text-decoration-none'><p className='text-center register'>Don't have an account? Register</p></Link>
 
             </td>

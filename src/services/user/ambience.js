@@ -1,5 +1,5 @@
-import { apiUrl, constant } from "../../utils/constants";
-import api from "../index";
+import { apiUrl } from '../utils/constants'
+import api from './index'
 
 export const CreateAmbience = async (data) => await api.post(`${apiUrl.ambience}`, data)
 export const GetAllAmbience = async (params) => await api.get(`${apiUrl.ambience}`, { params })

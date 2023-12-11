@@ -1,0 +1,8 @@
+a.page-link{
+    color:#6900ff;
+}
+
+.page-link.next-page-btn{
+    background-color: #6900ff;
+    color: white;
+}

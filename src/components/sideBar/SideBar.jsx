@@ -1,24 +1,14 @@
-import {
-  CDBSidebar,
-  CDBSidebarContent,
-  CDBSidebarFooter,
-  CDBSidebarHeader,
-  CDBSidebarMenu,
-  CDBSidebarMenuItem,
-} from "cdbreact";
-import "./sidebar.css";
-import { NavLink, useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import { EmptyLocalStorage } from "../../services/localStorage/localStorage";
 import React, { useState, useEffect } from "react";
-import logoImage from "../../images/colette.jpg";
-import userIcon from "../../images/colette.jpg";
-import Home from "../../pages/home/Home";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { EmptyLocalStorage } from "../../services/localStorage/localStorage";
 
 import "./sidebar.css";
+
 const SideBar = () => {
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1200);
+
+  const sidebarClass = isSmallScreen ? "sidebar" : "sidebar open";
+
   const menuBtnChange = () => {
     const sidebar = document.querySelector(".sidebar");
     const closeBtn = document.querySelector("#btn");
@@ -29,6 +19,7 @@ const SideBar = () => {
       closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
     }
   };
+
   const handleSidebarToggle = () => {
     const sidebar = document.querySelector(".sidebar");
     const closeBtn = document.querySelector("#btn");
@@ -36,13 +27,12 @@ const SideBar = () => {
     sidebar.classList.toggle("open");
     menuBtnChange();
   };
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1200);
 
   // Function to handle window resize
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth <= 1200);
   };
-  const sidebarClass = isSmallScreen ? "sidebar" : "sidebar open";
+
   // Effect to add event listener for window resize
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -52,6 +42,7 @@ const SideBar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   useEffect(() => {
     const closeBtn = document.querySelector("#btn");
     closeBtn.addEventListener("click", handleSidebarToggle);
@@ -61,63 +52,8 @@ const SideBar = () => {
       closeBtn.removeEventListener("click", handleSidebarToggle);
     };
   }, []);
-  //   const navigate = useNavigate()
-  //   return (
-  //     <div className="sidebar-container">
 
-  //       <CDBSidebar textColor="#fff" backgroundColor="#333">
-  //         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-  //           <a
-  //             href="/"
-  //             className="text-decoration-none"
-  //             style={{ color: "inherit" }}
-  //           >
-  //             Sidebar
-  //           </a>
-  //         </CDBSidebarHeader>
 
-  //         <CDBSidebarContent className="sidebar-content">
-  //           <CDBSidebarMenu >
-  //             <NavLink exact to="/" activeClassName="activeClicked">
-  //               <CDBSidebarMenuItem icon="columns">Home</CDBSidebarMenuItem>
-  //             </NavLink>
-  //             <NavLink exact to="/addrestaurant" activeClassName="activeClicked">
-  //               <CDBSidebarMenuItem icon="table">Add Restaurant</CDBSidebarMenuItem>
-  //             </NavLink>
-  //             <NavLink exact to="Link" activeClassName="activeClicked">
-  //               <CDBSidebarMenuItem icon="chart-line"> My Blogs</CDBSidebarMenuItem>
-  //             </NavLink>
-  //             <NavLink exact to="/myrestaurants" activeClassName="activeClicked">
-  //               <CDBSidebarMenuItem icon="chart-line"> My Restaurants</CDBSidebarMenuItem>
-  //             </NavLink>
-  //             <NavLink exact to="/collaborations" activeClassName="activeClicked">
-  //               <CDBSidebarMenuItem icon="user">Collaborations</CDBSidebarMenuItem>
-  //             </NavLink>
-  //             <NavLink exact to="/settings" activeClassName="activeClicked">
-  //               <CDBSidebarMenuItem icon="user">Settings</CDBSidebarMenuItem>
-  //             </NavLink>
-  //             <NavLink exact to={'/login'} onClick={() => {
-  //               EmptyLocalStorage()
-  //             }} activeClassName="activeClicked">
-  //               <CDBSidebarMenuItem icon="user">Logout</CDBSidebarMenuItem>
-  //             </NavLink>
-
-  //           </CDBSidebarMenu>
-  //         </CDBSidebarContent>
-
-  //         <CDBSidebarFooter style={{ textAlign: "center" }}>
-  //           <div
-  //             style={{
-  //               padding: "20px 5px"
-  //             }}
-  //           >
-  //             Sidebar Footer
-  //           </div>
-  //         </CDBSidebarFooter>
-  //       </CDBSidebar>
-  //     </div>
-  //   );
-  // };
 
   return (
     <div className="">
@@ -130,7 +66,7 @@ const SideBar = () => {
         crossOrigin="anonymous"
       />
 
-      <div class={sidebarClass}>
+      <div className={sidebarClass}>
         <div className="logo_details">
           <i className="bx bx-menu" id="btn"></i>
         </div>
@@ -147,7 +83,7 @@ const SideBar = () => {
 
           <li className="sidebar-item">
             <Link to="/community">
-              <i className="bx bx-bar-chart-alt-2"></i>
+            <i class='bx bx-group'></i>
               <span className="link_name">Community</span>
             </Link>
             <span className="tooltip">Community</span>
@@ -155,85 +91,104 @@ const SideBar = () => {
 
           <li className="sidebar-item">
             <Link to="/allrest">
-              <i className="bx bxs-slideshow"></i>
+            <i class='bx bx-restaurant'></i>
               <span className="link_name">Restaurants</span>
             </Link>
             <span className="tooltip">Restaurants</span>
           </li>
-          <li className="sidebar-item">
-            <Link to="/">
-              <i className="bx bxs-contact"></i>
-              <span className="link_name">Notifications</span>
-            </Link>
-            <span className="tooltip">Notifications</span>
-          </li>
 
-          <li className="sidebar-item">
-            <Link to="/myblog">
-              <i className="bx bx-edit"></i>
-              <span className="link_name">My Blogs</span>
-            </Link>
-            <span className="tooltip">Blogs</span>
-          </li>
+       
+              {/* <li className="sidebar-item">
+                <Link to="/">
+                <i class='bx bxs-bell-ring' ></i>
+                  <span className="link_name">Notifications</span>
+                </Link>
+                <span className="tooltip">Notifications</span>
+              </li> */}
 
-          <li className="sidebar-item">
-            <a>
-              <i className="bx bx-edit"></i>
-              <span className="link_name">Post Collab</span>
-            </a>
-            <span className="tooltip">Post Collab</span>
-          </li>
+              <li className="sidebar-item">
+                <Link to="/myblog/mygigs">
+                  <i className="bx bx-edit"></i>
+                  <span className="link_name">Manage Blogs</span>
+                </Link>
+                <span className="tooltip">Manage Blogs</span>
+              </li>
 
-          <li className="sidebar-item">
-            <a>
-              <i className="bx bx-list-check"></i>
-              <span className="link_name">Manage Restaurants</span>
-            </a>
-            <span className="tooltip">Manage Restaurants</span>
-          </li>
+              <li className="sidebar-item">
+              <Link to="/mygigs">
+                <i class='bx bxs-dock-left' ></i>
+                  <span className="link_name">Manage Collab</span>
+                
+                <span className="tooltip">Manage Collab</span>
+              </Link> 
+</li>
+              <li className="sidebar-item">
+                <Link to="/managerest">
+                  <i className="bx bx-list-check"></i>
+                  <span className="link_name">Manage Restaurants</span>
+                </Link>
+                <span className="tooltip">Manage Restaurants</span>
+              </li>
 
-          <li className="sidebar-item">
-            <a>
-              <i className="bx bx-timer"></i>
-              <span className="link_name">My Seller Profile</span>
-            </a>
-            <span className="tooltip">My Seller Profile</span>
-          </li>
+               <li className="sidebar-item">
+                <a>
+                  <i className="bx bx-timer"></i>
+                  <span className="link_name">My Seller Profile</span>
+                </a>
+                <span className="tooltip">My Seller Profile</span>
+              </li> 
 
-          <li className="sidebar-item">
+           <li className="sidebar-item">
+                <p className="ps">x</p>
+                <Link to="ownprofile" className="sidebar-item">
+                <i class='bx bx-user-circle' ></i>
+                  <span className="link_name">Profile</span>
+                </Link>
+                <span className="tooltip">Profile</span>
+              </li> 
             <p className="ps">x</p>
-            <Link to="ownprofile" className="sidebar-item">
-              <i className="bx bxs-chevrons-left"></i>
-              <span className="link_name">Profile</span>
-            </Link>
-            <span className="tooltip">Profile</span>
-          </li>
-          <p className="ps">x</p>
-          <li className="sidebar-item">
-            <Link to="/editProfile">
-              <i className="bx bxs-user-detail"></i>
-              <span className="link_name">Settings</span>
-            </Link>
-            <span className="tooltip"> Setting</span>
-          </li>
+              <li className="sidebar-item">
+                <Link to="/editProfile">
+                <i class='bx bx-cog' ></i>
+                  <span className="link_name">Settings</span>
+                </Link>
+                <span className="tooltip"> Setting</span>
+              </li> 
+
+            <li className="sidebar-item">
+                <NavLink
+                  exact
+                  to={"/login"}
+                  onClick={() => {
+                    EmptyLocalStorage();
+                  }}
+                  activeClassName="activeClicked"
+                >
+               <i class='bx bx-log-out' ></i>
+                  <span className="link_name">Logout</span>
+                </NavLink>
+                <span className="tooltip">Logout</span>
+              </li>
+              {/* <li className="sidebar-item">
+                <Link to="/login">
+                <i class='bx bx-log-in' ></i>
+                  <span className="link_name">Login</span>
+                </Link>
+                <span className="tooltip"> Login</span>
+              </li> */}
+              {/* <li className="sidebar-item">
+                <Link to="/signup">
+                <i class='bx bxs-user-plus' ></i>
+                  <span className="link_name">Signup</span>
+                </Link>
+                <span className="tooltip"> SignUp</span>
+              </li> */}
+         
+        
 
           <li className="sidebar-item">
-            <NavLink
-              exact
-              to={"/login"}
-              onClick={() => {
-                EmptyLocalStorage();
-              }}
-              activeClassName="activeClicked"
-            >
-              <i className="bx bx-arrow-to-left"></i>
-              <span className="link_name">Logout</span>
-            </NavLink>
-            <span className="tooltip">Logout</span>
-          </li>
-          <li className="sidebar-item">
             <a>
-              <i className="bx bx-arrow-to-left"></i>
+            <i class='bx bx-support' ></i>
               <span className="link_name">Help Centre</span>
             </a>
             <span className="tooltip">Help Centre</span>

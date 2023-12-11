@@ -1,31 +1,25 @@
 import Footer from "../../components/footer/Footer";
 import NZXT from "../../images/xanders.jpg";
 import Viper from "../../images/xanders.jpg";
-import Product04 from "../../images/xanders.jpg";
-import Product05 from "../../images/xanders.jpg";
-import Product06 from "../../images/xanders.jpg";
-import Influencer from "../../images/influence.jpeg";
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./OwnProfilePage.css"
 import { GetAllBlogs } from '../../services/blog/blog';
 import moment from 'moment';
-import EditProfile from '../EditProfile/EditProfile';
-import SideBar from '../../components/sideBar/SideBar';
 import Blog from '../../components/blog/blog';
 import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
 import { GetSingleUser, UserFollowers } from '../../services/user/user';
 import { GetAllMedia } from '../../services/media/media';
-// import {GetSingleUser}from '../../services/user/user';
-import BlogModal from '../../components/blogmodal/BlogModal';
+import BlogModal from '../../components/blog/BlogModal';
 import DefaultImage from "../../images/defaultimage.png"
-
-
+import PostGigModal from "../../components/postgig/PostGigModal";
+import NoPost from  "../../images/noblog.jpg"
 export const OwnProfile = () => {
   const authUser = GetAuthUserLocalStorage()
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
+
 console.log(user,'user')
   const handleButtonClick = () => {
     setisReviewsVisible(!isReviewsVisible);
@@ -118,23 +112,23 @@ console.log(user,'user')
               </div>
               <div className="col-12 text-center">
                 <h2>{user?.name}</h2>
-                <h6 className="fw-light">
+                <h6 className="fw-light fs-3">
                   @{user?.username}
                   <i class="bi bi-patch-check-fill ps-2 text-orange"></i>
                 </h6>
-                <h6 className="fw-light p-4 px-5">
+                <h6 className="fw-light p-4 px-5 fs-5 fw-bold">
                   {user?.bio}
                 </h6>
               </div>
             </div>
             <div className="col-2 text-center">
               <Link to="/editProfile">
-                <button className="btn btn-orange-profile mb-2">
+                <button className="btn btn-orange-profile mb-2 fs-4">
                   Edit Profile
                 </button>
               </Link>
-              <h6>{followers?.length} Followers</h6>
-              <p>Member Since {moment(user?.createdAt).format('YYYY')}</p>
+              <h4>{followers?.length} Followers</h4>
+              <p>Member Since {moment(user?.createdAt).format('DD/MM/YYYY')}</p>
             </div>
 
             <div className="row text-center mt-3">
@@ -159,10 +153,10 @@ console.log(user,'user')
             <Link to="/profile_verification" className=" text-decoration-none"><btn className="bg-white text-orange fs-4 p-2 px-3 rounded-1">Register</btn></Link>
         </div> */}
             <div className="row mt-3 ps-0">
-              <p className={`fs-5 col-4 col-sm-3 col-lg-2 py-2 ps-4 mb-0 text-start rounded-0 btn  ${isReviewsColorVisible ? 'border-b-orange' : ''}`} onClick={handleButtonClick}>
+              <p className={`fw-bold fs-4 col-4 col-sm-3 col-lg-2 py-2 ps-4 mb-0 text-start rounded-0 btn  ${isReviewsColorVisible ? 'border-b-orange' : ''}`} onClick={handleButtonClick}>
                 Collaborations
               </p>
-              <p className={`fs-5 col-4 col-sm-4 col-lg-2  py-2 ps-4 mb-0 text-start rounded-0 btn ${isReviewsColorVisible ? '' : 'border-b-orange'}`} onClick={handleButtonClick}>
+              <p className={`fs-4 fw-bold col-4 col-sm-4 col-lg-2  py-2 ps-4 mb-0 text-start rounded-0 btn ${isReviewsColorVisible ? '' : 'border-b-orange'}`} onClick={handleButtonClick}>
                 Blogs
               </p>
             </div>
@@ -173,8 +167,15 @@ console.log(user,'user')
         <div className="row">
           <div className="row col-9 ms-auto justify-content-center align-items-center">
             <div className={`bg-white rounded-bottom-3 pt-5 ${isReviewsVisible ? 'd-block' : 'd-none'}`}>
+            {blogData.length === 0 ? (
+                <div className="text-center">
+                  <img src={NoPost} alt="No blogs found" className="mb-3" style={{ width: '400px', height: '400px' }} />
+                  <p className="fs-5 fw-bold">No blogs found</p>
+                </div>
+              ) : (
               <div className="row pb-5 justify-content-start mx-auto row-gap-4">
                 <div className="col-lg-3 col-md-4 col-6">
+                  <PostGigModal />
                   <Link to="/gig" className="text-decoration-none">
                     <div className="card shadow-sm">
                       <img
@@ -183,7 +184,7 @@ console.log(user,'user')
                         alt="img-name"
                       />
                       <div className="py-2 card-body">
-                        <h5 className="card-title text-truncate fs-5">NZXT H510</h5>
+                        <h5 className="card-title text-truncate fs-5">Weekly Marketing</h5>
                         <p className="card-text text-truncate mb-0 text-orange">
                           Rs. 45,000
                         </p>
@@ -203,78 +204,45 @@ console.log(user,'user')
                     />
                     <div className="py-2 card-body">
                       <h5 className="card-title text-truncate fs-5">
-                        Razer Viper Ultimate Cyberpunk 2077 Edition Wireless
+                      Social Daily Post
                       </h5>
                       <p className="card-text text-truncate mb-0 text-orange">
                         Rs. 45,000
                       </p>
-                      <p className="card-text text-truncate mb-0 text-muted">
-                        Karachi, Sindh <i className=" bi-geo-alt-fill" />
-                      </p>
+                      <button>Active</button>
+                    
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-4 col-6">
-                  <div class="card shadow-sm">
-                    <img
-                      src={Product04}
-                      class="card-img-top r-card-height"
-                      alt="img-name"
-                    />
-                    <div class="py-2 card-body">
-                      <h5 class="card-title text-truncate fs-5">
-                        Asus TUF VG27AQ 27" IPS 165Hz Gaming Monitor
-                      </h5>
-                      <p className="card-text text-truncate mb-0 text-orange">
-                        Rs. 45,000
-                      </p>
-                      <p className="card-text text-truncate mb-0 text-muted">
-                        Karachi, Sindh <i className=" bi-geo-alt-fill" />
-                      </p>
-                    </div>
+                <div className="row pb-5 justify-content-start mx-auto row-gap-4">
+            
+                  <div className="col-lg-3 col-md-4 col-6" >
+                   
+                      <div className="card shadow-sm ">
+                        <img
+                          src={NoPost}
+                          className="card-img-top r-card-height"
+                       
+                        />
+                        <div className="py-2 card-body">
+                          <h5 className="card-title text-truncate fs-5">
+                            title
+                          </h5>
+                          <p className="card-text text-truncate mb-0 text-purple">
+                            Rs. 8000
+                          </p>
+                          <p className="card-text text-truncate mb-0 text-muted">
+                         location{" "}
+                            <i className=" bi-geo-alt-fill" />
+                          </p>
+                        </div>
+                      </div>
+                  
                   </div>
-                </div>
-                <div className="col-lg-3 col-md-4 col-6">
-                  <div class="card shadow-sm">
-                    <img
-                      src={Product05}
-                      class="card-img-top r-card-height"
-                      alt="img-name"
-                    />
-                    <div class="py-2 card-body">
-                      <h5 class="card-title text-truncate fs-5">
-                        Dell Alienware AW988 Wireless Gaming Headset
-                      </h5>
-                      <p className="card-text text-truncate mb-0 text-orange">
-                        Rs. 45,000
-                      </p>
-                      <p className="card-text text-truncate mb-0 text-muted">
-                        Karachi, Sindh <i className=" bi-geo-alt-fill" />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-4 col-6">
-                  <div class="card shadow-sm">
-                    <img
-                      src={Product06}
-                      class="card-img-top r-card-height"
-                      alt="img-name"
-                    />
-                    <div class="py-2 card-body">
-                      <h5 class="card-title text-truncate fs-5">
-                        Macbook Air Midnight Blue M2 13.6" 2TB SSD
-                      </h5>
-                      <p className="card-text text-truncate mb-0 text-orange">
-                        Rs. 45,000
-                      </p>
-                      <p className="card-text text-truncate mb-0 text-muted">
-                        Karachi, Sindh <i className=" bi-geo-alt-fill" />
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              
               </div>
+              </div>
+               )}
             </div>
             <div className={`bg-white rounded-bottom-3 pt-5 ${isReviewsVisible ? 'd-none' : 'd-block'}`} >
               <div className="row pb-5 justify-content-start mx-auto gap-4">

@@ -2,7 +2,6 @@ import "./navbar.css"
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Logo from "../../images/foodnauts 2.png"
-import api from '../../utils/mlapi';
 import fetchData from "../../utils/fetchData";
 
 
@@ -43,13 +42,13 @@ const [searchQuery, setSearchQuery] = useState('');
         <button className=" d-lg-none nav-btn rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="bi-list fs-3 justify-content-center d-flex"></span>
         </button>
-        <div className="collapse navbar-collapse p-2 p-lg-0" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse p-3 p-lg-0" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
             <li className="nav-item">
-              <Link to='/community' className='text-decoration-none nav-link active'><i class="fs-2 bi bi-people"></i></Link>
+              <Link to='/community' className='text-decoration-none nav-link active'><i class="px-3 fs-2 bi bi-people"></i></Link>
             </li>
             <li className="nav-item">
-              <Link to='/market' className='text-decoration-none nav-link active'><i class="fs-2 bi bi-shop-window"></i>
+              <Link to='/market' className='text-decoration-none nav-link active'><i class="px-3 fs-2 bi bi-shop-window"></i>
               </Link>
             </li>
           </ul>

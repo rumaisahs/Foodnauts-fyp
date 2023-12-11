@@ -17,7 +17,7 @@ export const apiUrl = {
     ambience: '/ambience',
     user: 'user',
     blogs: 'blog',
-    restaurant: 'restaurant',
+    restaurant: '/restaurant',
     cuisine: 'cuisine',
     ambience: 'ambience',
     review: 'review',

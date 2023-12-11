@@ -1,45 +1,19 @@
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
-import desktop from "../../images/influence.jpeg";
+import desktop from "../../images/searchresult.png";
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import fetchData from "../../utils/fetchData";
 import axios from 'axios';
 
-// const [restaurants, setRestaurants] = useState([]);
-// const [loading, setLoading] = useState(true);
-
-// useEffect(() => {
-//   // Function to fetch data from the API
-//   const fetchData = async () => {
-//     try {
-//       const response = await axios.get('/api/searchRestaurants', {
-//         params: {
-//           name: 'YourRestaurantName', // Add your search parameters here
-//           // Other search parameters...
-//         },
-//       });
-
-//       setRestaurants(response.data.data);
-//       setLoading(false);
-//     } catch (error) {
-//       console.error('Error fetching data:', error);
-//     }
-//   };
-
-//   // Call the function to fetch data
-//   fetchData();
-// }, []); // The empty dependency array ensures the effect runs only once on mount
-
-// if (loading) {
-//   return <p>Loading...</p>;
-// };
 
 
 export const ProdSearch = () => {
   const [isDivVisible, setIsDivVisible] = useState(false);
   const [budgetMin, setBudgetMin] = useState(200);
   const [budgetMax, setBudgetMax] = useState(500);
+
+
   const handleButtonClick = () => {
     setIsDivVisible(!isDivVisible);
   };
@@ -78,12 +52,13 @@ export const ProdSearch = () => {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  
-};handleSearch();
-},[]);
+    };
+    if (searchQuery) {
+      handleSearch();
+    }
+  }, [searchQuery]);
 
-  // Access the state data
-  const { pageTitle } = location.state || {};
+
 
   return (
     <>
@@ -170,9 +145,10 @@ export const ProdSearch = () => {
               {/* Cards Section */}
               <div className="col-lg-9 col-10 col-sm-11 justify-content-center ps-0">
                 <div className="justify-content-center d-flex pb-4">
-                <h2 className="fw-light">Results for <h2 className="d-inline">"{pageTitle}"</h2></h2>
+                <h2 className="fw-light">Results for <h2 className="d-inline">"{searchQuery}"</h2></h2>
                 </div>
-                <div className="row justify-content-center  p-lg-4 pt-lg-0 pb-3">
+                {searchResults.slice(0, 10).map((restaurant) => (
+                <div key={restaurant.id} className="row justify-content-center  p-lg-4 pt-lg-0 pb-3">
               <div className="col-4 col-sm-3 col-md-3 p-md-0 pe-0 rounded-start-4">
                 <img
                   src={desktop}
@@ -182,24 +158,26 @@ export const ProdSearch = () => {
               <div className="col-8 d-flex p-4 flex-column  justify-content-center rounded-end-4 bg-light border-end border-bottom border-top border-black border-1">
                 <div className="row h-100 ">
                   <div className="col-10">
-                    <h5 class=" fs-4 ">Xanders</h5>
+                    <h5 class=" fs-4 ">{restaurant.name}</h5>
                     <p className="fpAddress text-grey">
                       {" "}
                       <i className="bi bi-geo-alt-fill pe-1" />
-                      Address
+                      {restaurant.location}
                     </p>
                     {/* <span className="fpAmbience">Cafe</span> */}
                     <p className="fpAmbience d-inline pe-1  text-grey">
-                      Ambience
+                    {restaurant.rest_type}
                     </p>
                     <p className="fpAmbience d-inline pe-1 text-grey">.</p>
-                    <p className="fpCuisine d-inline text-grey">Cuisine type</p>
+                    <p className="fpCuisine d-inline text-grey">{restaurant.cuisines}
+</p>
                     <p className="fpPrice  pe-1">$$$</p>
                     <div className="fpRating mt-2">
                       <p className=" d-inline pe-1">
                         {" "}
                         <i className="bi bi-star-fill me-1 text-warning" />
-                        4.0
+                        {restaurant.rate}
+
                       </p>
                       <span className="text-grey">Review</span>
                     </div>
@@ -211,8 +189,10 @@ export const ProdSearch = () => {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div>        
+
             </div>
+            ))}
                       </div>
                   </div>
                

@@ -23,13 +23,14 @@ import Product from "./pages/Products/Product";
 import Profile from "./pages/UserProfile/Profile";
 import ProdSearch from "./pages/ProdSearch/ProdSearch";
 import MyBlogs from "./pages/myblogs/myblogs";
-import { AddProduct } from "./pages/AddProduct/addproduct";
 import { GetTokenLocalStorage } from "./services/localStorage/localStorage";
 import SideBar from "./components/sideBar/SideBar";
 import OwnProfileP from "./pages/prof/OwnProfilePage";
 import Navbar from "./components/navbar/Navbar";
 import AllRestaurants from "./pages/allrestaurants/AllRestaurants";
 import Verification from "./pages/Verification/ProfileVerification";
+import ManageRest from "./pages/ManageRestaurant/ManageRest";
+import MyGigs from "./pages/MyGigis/MyGigs";
 
 function App() {
 
@@ -64,22 +65,24 @@ function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+            <Route path="/restaurants/:id" element={<Restaurant />} />
+            <Route path="/community" element={<FoodCommunity />} />
+            <Route path="/list" element={<ProdSearch />} />
+            <Route path="/market" element={<Market />} />
+            <Route path="/allrest" element={<AllRestaurants />} />
+
 
           <Route element={<ProtectedRoute />}>
             {/* <Route path="/listt" element={<List />} /> */}
-            <Route path="/restaurants/:id" element={<Restaurant />} />
             {/* <Route path="/sidebar" element={<SideBar />} /> */}
-            <Route path="/community" element={<FoodCommunity />} />
-            <Route path="/allrest" element={<AllRestaurants />} />
             <Route path="/editProfile" element={<EditProfile />} />
-            <Route path="/market" element={<Market />} />
             <Route path="/product" element={<Product />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/list" element={<ProdSearch />} />
             <Route path="/myblog" element={<MyBlogs />} />
-            <Route path="/addrestaurant" element={<AddProduct />} />
+            <Route path="/managerest" element={<ManageRest />} />
             <Route path="/ownprofile" element={<OwnProfileP />} />
             <Route path="/verify" element={<Verification />} />
+            <Route path="/mygigs" element={<MyGigs />} />
+
 
             </Route>
             </Route>

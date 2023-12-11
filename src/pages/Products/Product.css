@@ -99,6 +99,7 @@
   /* Seller Contact Buttons Section */
   
   .btn.btn-primary{
+    width: 250px;
     background-color:  #F2752F ;
     align-items: center;
     border-color: transparent;

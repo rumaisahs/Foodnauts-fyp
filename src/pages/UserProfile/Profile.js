@@ -17,7 +17,7 @@ import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorag
 import { GetSingleUser, UserFollowers } from '../../services/user/user';
 import { GetAllMedia } from '../../services/media/media';
 // import {GetSingleUser}from '../../services/user/user';
-import BlogModal from '../../components/blogmodal/BlogModal';
+import BlogModal from '../../components/blog/BlogModal';
 export const OwnProfile = () => {
   const authUser = GetAuthUserLocalStorage()
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);

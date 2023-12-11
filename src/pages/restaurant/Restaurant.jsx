@@ -218,13 +218,17 @@ const Restaurant = () => {
               type="button"
               className="btn col-3 col-sm-3 col-md-3 col-lg-2 mx-3 my-2"
             >
+              <NavLink
+                to={data?.social_links?.length > 0 ? data?.social_links[0]?.url : 'https://www.google.com/'
+                }>
               <icon className="bi-box-arrow-in-up-left pe-1" />
               <a
                 className=" text-decoration-none text-black"
-                href={`https://xanders.pk`}
+             
               >
                 Website
               </a>
+              </NavLink>
             </button>
             <button
               type="button"
@@ -243,7 +247,7 @@ const Restaurant = () => {
               className="btn col-1 my-2"
             >
               <NavLink
-                to={data?.social_links?.length > 0 ? data?.social_links[0]?.url : 'facebook.com'
+                to={data?.social_links?.length > 0 ? data?.social_links[1]?.url : 'https://www.facebook.com/'
                 }>
                 <icon className=" bi-facebook pe-1" />
               </NavLink>
@@ -251,21 +255,28 @@ const Restaurant = () => {
             <button
               type="button"
               className="btn col-1 my-2"
-            >
+            > 
+            <NavLink
+            to={data?.social_links?.length > 0 ? data?.social_links[2]?.url : 'https://www.instagram.com/'
+            }>
               <icon className=" bi-instagram pe-1" />
-              <a
+              {/* <a
                 className=" text-decoration-none text-black"
                 href={`https://www.instagram.com/xanderscafe/`}
               >
-              </a>
+              </a>  */}
+              </NavLink>
             </button>
             <button
               type="button"
               className="btn col-1 my-2"
             >
-              <a class="align-items-center d-flex" href="https://www.foodpanda.pk/restaurant/p9ws/hongshao">
+               <NavLink
+            to={data?.social_links?.length > 0 ? data?.social_links[3]?.url : 'https://www.foodpanda.pk/'
+            }>
+              
                 <Icon icon="simple-icons:foodpanda" style={{ color: 'black' }} />
-              </a>
+              </NavLink>
             </button>
 
           </div>
@@ -307,7 +318,7 @@ const Restaurant = () => {
                   <h5>
                     Budget
                   </h5>
-                  <p>{`${data?.rupees}$`}</p>
+                  <p>{`${data?.rupees} Rs./person`}</p>
                   <h5>
                     Discounts
                     <icon className="ps-2 bi-info-circle" />
@@ -370,10 +381,11 @@ const Restaurant = () => {
               <img className='rounded-circle' src={Influencer} alt="" height={100} />
             </div>
             <div className='col-7'>
-              <p className='mb-0'>@arshanistan</p>
+              <p className='mb-0'>@rumees</p>
               <p className=''>Reviewed on {formattedDate}</p>
               <p>
                 {review?.review}
+                Great experience the food was amazing 
               </p>
               {/* <img className='pe-2 object-fit-contain' src={ReviewImg1} height={130} alt="" />
               <img className='pe-2 object-fit-contain' src={ReviewImg2} height={130} alt="" />
@@ -381,13 +393,10 @@ const Restaurant = () => {
             </div>
             <div className='col-3 justify-content-end d-flex'>
               <div>
-                <p className='fs-5 fw-light d-inline pe-2'>{review?.rating}/5</p>
+                <p className='fs-5 fw-light d-inline pe-2'>{review?.rating}4/5</p>
                 <span>
                   <icon className="bi-star-fill text-warning" />
-                  <icon className="bi-star-fill text-warning" />
-                  <icon className="bi-star-fill text-warning" />
-                  <icon className="bi-star-fill text-warning" />
-                  <icon className="bi-star-half text-warning" />
+                 
                 </span>
                 <p className='mb-0'><icon className="bi-check2 pe-2" />Hygiene</p>
                 <p className='mb-0'><icon className="bi-check2 pe-2" />Value</p>
@@ -396,10 +405,10 @@ const Restaurant = () => {
 
             </div>
             <div className='justify-content-end d-flex'>
-              <icon className="pe-2 bi-hand-thumbs-up" />
-              <p>256</p>
-              <icon className="pe-2 ps-3 bi-hand-thumbs-down" />
-              <p>256</p>
+              <icon className="pe-2 bi-hand-thumbs-up text-orange" />
+              <p>0</p>
+              <icon className="pe-2 ps-3 bi-hand-thumbs-down text-orange" />
+              <p>0</p>
             </div>
           </div>
         </div>

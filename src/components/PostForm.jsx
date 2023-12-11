@@ -91,20 +91,23 @@ const PostForm = () => {
                         </div>
                         <br />
                         <br />
-                        <h5 className='d-inline ps-2'>Hygiene</h5>
-                        <div className="col-12 col-sm-12 justify-content-start d-flex pb-3">
-                            {[1, 2, 3, 4, 5].map((value, index) => (
-                                <i
-                                    key={index}
-                                    className={`fs-5 pb-1 ms-1 bi-star${rating1 >= value ? '-fill' : ''} text-orange`}
-                                    onClick={() => handleStarClick1(index)}
-                                    {...register('hygiene')}
-                                />
-                            ))}
-                        </div>
+                        <div className="d-flex align-items-center">
+    <h5 className='d-inline ps-2'>Hygiene</h5>
+    <div className="col-12 col-sm-12 justify-content-start d-flex px-2 pb-2 d-inline">
+        {[1, 2, 3, 4, 5].map((value, index) => (
+            <i
+                key={index}
+                className={`fs-5  ms-1 bi-star${rating1 >= value ? '-fill' : ''} text-orange`}
+                onClick={() => handleStarClick1(index)}
+                {...register('hygiene')}
+            />
+        ))}
+    </div>
+</div>
                         <br />
+                        <div className="d-flex align-items-center">
                         <h5 className='d-inline ps-2'>Value</h5>
-                        <div className="col-12 col-sm-12 justify-content-start d-flex pb-3">
+                        <div className="col-12 col-sm-12 justify-content-start d-flex px-2 pb-2 d-inline">
                             {[1, 2, 3, 4, 5].map((value, index) => (
                                 <i
                                     key={index}
@@ -113,10 +116,11 @@ const PostForm = () => {
                                     {...register('value')}
                                 />
                             ))}
-                        </div>
+                        </div></div>
                         <br />
+                        <div className="d-flex align-items-center">
                         <h5 className='d-inline ps-2'>Service</h5>
-                        <div className="col-12 col-sm-12 justify-content-start d-flex pb-3">
+                        <div className="col-12 col-sm-12 justify-content-start d-flex px-2 pb-2 d-inline">
                             {[1, 2, 3, 4, 5].map((value, index) => (
                                 <i
                                     key={index}
@@ -125,7 +129,7 @@ const PostForm = () => {
                                     {...register('service')}
                                 />
                             ))}
-                        </div>
+                        </div></div>
                         <h5 className='pt-3'>Would You Visit Again</h5>
                         <input type="radio" name="" id="" />
                         <p className='d-inline ps-1 pe-3'>Yes</p>

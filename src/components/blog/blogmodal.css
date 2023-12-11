@@ -1,0 +1,62 @@
+.custom-modal-width {
+    max-width: 800px; /* Adjust the width as needed */
+  }
+.blog-post-container {
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .quill {
+    height: 300px;
+    margin-bottom: 20px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .thumbnail {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .thumbnail img {
+    width: 100px; /* Adjust the width as needed */
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .remove-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: red;
+    font-size: 1.2em;
+  }
+  @media (min-width: 576px) {
+    .custom-modal {
+      max-width: 800px; /* Adjust the max-width as needed */
+    }
+  }
+  
+
+  
+  .remove-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: red;
+    font-size: 1.2em;
+  }

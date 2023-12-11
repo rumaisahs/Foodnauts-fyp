@@ -1,0 +1,17 @@
+
+h6{
+    white-space: nowrap;
+}
+
+th{
+    font-size: large;
+}
+
+.form-select.search-select{
+    width: 100%;
+}
+
+.title-column{
+    width: 300px !important;
+}
+

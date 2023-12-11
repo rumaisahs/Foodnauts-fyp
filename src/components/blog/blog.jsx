@@ -1,16 +1,29 @@
-import React, { useState } from "react";
 import "../../pages/restaurant/restaurant.css";
-
-import ReviewImg1 from "../../images/review-img-1.png";
-import ReviewImg2 from "../../images/review-img-2.png";
-import ReviewImg3 from "../../images/review-img-3.png";
-import Influencer from "../../images/influence.jpeg";
+import { GetSingleUser} from '../../services/user/user';
+import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
+import React, { useState, useEffect } from 'react';
+import './blog.css';
+// import ReviewImg1 from "../../images/review-img-1.png";
+// import ReviewImg2 from "../../images/review-img-2.png";
+// import ReviewImg3 from "../../images/review-img-3.png";
+// import Influencer from "../../images/influence.jpeg";
 import moment from 'moment';
 import DefaultImage from "../../images/defaultimage.png"
+import FullBlogModal from "../fullblogmodal/FullBlogModal";
 
 export const Blog = ({ data: dt }) => {
+  const authUser = GetAuthUserLocalStorage()
+  const [user, setUser] = useState(null)
+console.log(user,'user')
   const [showComment, setShowComment] = useState(true);
   const [showFullContent, setShowFullContent] = useState(false);
+  useEffect(() => {
+    const getSingleUser = async () => {
+      const res = await GetSingleUser(authUser._id)
+      setUser(res?.data?.data)
+    }
+     getSingleUser()
+  }, [])
 
   const handleComment = () => {
     setShowComment(!showComment);
@@ -23,7 +36,7 @@ export const Blog = ({ data: dt }) => {
   return (
     <div className="my-3 container mx-auto row border rounded-3 border-black border-1 p-3">
       <div className="col-xl-1 col-sm-2 col-3">
-        <img className="rounded-circle" src={Influencer} alt="" height={70} />
+        <img className="rounded-circle" src={user?.profile_image || DefaultImage} alt="" height={70} />
       </div>
       <div className="col-11">
         <h6 className="mb-0 ">{dt?.title}</h6>
@@ -32,29 +45,30 @@ export const Blog = ({ data: dt }) => {
         <p className="description">
           {showFullContent ? dt?.description : dt?.description.split('\n').slice(0, 1).join('\n')}
         </p>
-        {dt?.description.split('\n').length > 3 && (
-          <button className="read-more border-none" onClick={handleReadMore}>
-            Read More <span>&#8594;</span>
+    
+          <button className="read-more border-0 bg-transparent" >
+            <FullBlogModal/> 
           </button>
-        )}
-        {
+        
+        <div className="thumbnail-container">  {
           dt?.images && dt?.images.length > 0 ?
             dt?.images.map((img, index) => {
               return (
                 <>
+                 
                   <img
-                    className="pe-2 object-fit-contain"
+                    className="pe-2 object-fit-contain thumbnail"
                     key={index}
                     src={img}
-                    height={130}
                     alt=""
                   />
+           
 
                 </>
               )
             })
             : ''
-        }
+        }   </div>
       </div>
       <div className="col-3 justify-content-end d-flex">
       </div>
@@ -73,27 +87,27 @@ export const Blog = ({ data: dt }) => {
           <p>{dt?.dislikes?.length}</p>
         </div>
       </div>
-      <div className={`row ${showComment ? "" : "d-none"}`}>
+      <div style={{backgroundColor:'#d3d3d3', width:'85%'}} className={`row mx-auto border rounded-4 ${showComment ? "" : "d-none"}`}>
         {
           dt?.comments?.length <= 0 ?
             "No comments found"
             :
             dt?.comments?.map((item, index) => (
               <div className="row">
-                <div className="col-xl-2 col-sm-2 col-3  text-center">
+                <div className="col-xl-2 col-sm-2 col-3  justify-content-start ">
                   <img
                     className="rounded-circle"
                     src={item?.user?.profile_image || DefaultImage}
                     alt=""
-                    height={70}
+                    style={{height:50, width:50}}
                   />
                   <p className="mb-0">@{item?.user?.username}</p>
                 </div>
-                <div className="col-7">
-                  <p>
+                <div className="col-7  ">
+                  <p className=" justify-content-start">
                   {item?.comment}
                   </p>
-                  <p className="text-end">{moment(item?.comment?.createdAt).from(moment())}</p>
+                  <p className="text-start">{moment(item?.comment?.createdAt).from(moment())}</p>
                 </div>
               </div>
             ))
