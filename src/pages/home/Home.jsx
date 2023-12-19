@@ -17,9 +17,7 @@ import { GetAllUser } from "../../services/user/user";
 import { Link } from "react-router-dom";
 const Home = () => {
   const [resData, setRestData] = useState([])
-  resData.length = 10
   const [blogerData, setBloggerData] = useState([])
-  blogerData.length = 5
 
   useEffect(() => {
     getRestaurants()
@@ -29,8 +27,6 @@ const Home = () => {
   const getRestaurants = async () => {
     const res = await getAllRestaurants()
     setRestData(res?.data?.data);
-    console.log(resData)
-
   }
 
   const getAllUser = async () => {

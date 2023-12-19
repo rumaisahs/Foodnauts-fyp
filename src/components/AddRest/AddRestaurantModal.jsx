@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
+import { GetAllCuisine } from '../../services/cuisine';
+import { GetAllAmbience } from '../../services/ambience/ambience';
+import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
 
 const AddRestaurantModal = () => {
   const [show, setShow] = useState(false);
@@ -13,9 +16,11 @@ const AddRestaurantModal = () => {
   const [popularDishes, setPopularDishes] = useState('');
   const [longitude, setLongitude] = useState(0); // Set initial values as needed
   const [latitude, setLatitude] = useState(0);   // Set initial values as needed
-
+  const [allAmbience, setAllAmbience] = useState([]);
+  const [allCuisine, setAllCuisine] = useState([]);
   const [nameError, setNameError] = useState('');
   const [menuImagesError, setMenuImagesError] = useState('');
+  const user = GetAuthUserLocalStorage()
 
   const handleClose = () => {
     setShow(false);
@@ -33,26 +38,28 @@ const AddRestaurantModal = () => {
     setMeals(selectedMeals);
   };
 
+  console.log(user,'=-=-=-')
+
   const handleAddRestaurant = async () => {
     try {
       // Validate that longitude and latitude are numbers
-      if (isNaN(longitude) || isNaN(latitude)) {
-        console.error('Invalid longitude or latitude');
-        return;
-      }
+      // if (isNaN(longitude) || isNaN(latitude)) {
+      //   console.error('Invalid longitude or latitude');
+      //   return;
+      // }
 
       // Prepare form data
       const formData = {
         name,
-        ambienceType,
-        cuisineType,
-        location: {
-          coordinates: [parseFloat(longitude), parseFloat(latitude)],
-        },
+        ambience_type: ambienceType,
+        cuisine_type: cuisineType,
+        longitude: parseFloat(longitude),
+        latitude: parseFloat(longitude),
         address,
         meals,
-        menuImages,
-        popularDishes,
+        menu_images: menuImages,
+        popular_dishes: popularDishes,
+        created_by: user?._id
       };
 
       // Make a POST request to the backend endpoint
@@ -94,6 +101,21 @@ const AddRestaurantModal = () => {
     setMenuImagesError('');
   };
 
+  useEffect(() => {
+    const getCusines = async () => {
+      const res = await GetAllCuisine()
+      setAllCuisine(res?.data?.data)
+    }
+
+    const getAmbience = async () => {
+      const res = await GetAllAmbience()
+      setAllAmbience(res?.data?.data)
+    }
+
+    getCusines()
+    getAmbience()
+  }, [])
+
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -115,6 +137,26 @@ const AddRestaurantModal = () => {
             />
           </Form.Group>
 
+          <Form.Group controlId="latitude">
+            <Form.Label>latitude</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="Enter latitude..."
+              value={latitude}
+              onChange={(e) => setLatitude(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="longitude">
+            <Form.Label>longitude</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="Enter longitude..."
+              value={longitude}
+              onChange={(e) => setLongitude(e.target.value)}
+            />
+          </Form.Group>
+
           <Form.Group controlId="ambienceType">
             <Form.Label>Ambience Type</Form.Label>
             <Form.Control
@@ -122,10 +164,12 @@ const AddRestaurantModal = () => {
               value={ambienceType}
               onChange={(e) => setAmbienceType(e.target.value)}
             >
-              <option value="">--Select--</option>
-              <option value="casual">Casual</option>
-              <option value="formal">Formal</option>
-              <option value="outdoor">Outdoor</option>
+              <option value="" selected>--Select--</option>
+              {
+                allAmbience?.map((item, index) => (
+                  <option key={index} value={item?._id}>{item?.name}</option>
+                ))
+              }
             </Form.Control>
           </Form.Group>
 
@@ -137,13 +181,15 @@ const AddRestaurantModal = () => {
               onChange={(e) => setCuisineType(e.target.value)}
             >
               <option value="">--Select--</option>
-              <option value="italian">Italian</option>
-              <option value="indian">Indian</option>
-              <option value="chinese">Chinese</option>
+              {
+                allCuisine?.map((item, index) => (
+                  <option key={index} value={item?._id}>{item?.name}</option>
+                ))
+              }
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="location">
+          {/* <Form.Group controlId="location">
             <Form.Label>Location</Form.Label>
             <Form.Control
               type="text"
@@ -151,7 +197,7 @@ const AddRestaurantModal = () => {
               value={location}
               onChange={handleLocationChange}
             />
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group controlId="address">
             <Form.Label>Address</Form.Label>
