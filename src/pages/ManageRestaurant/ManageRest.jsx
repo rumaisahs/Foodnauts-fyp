@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import "./Listings.css";
 import PageNav from "../../components/PageNav";
@@ -63,7 +63,7 @@ const ManageRest = () => {
     getAllCuisine();
     getAllAmbience();
   }, [search, selectCuisine, selectAmbience]);
-  
+
   return (
     <div className="container ">
       {/*Page Title */}
@@ -159,7 +159,7 @@ const ManageRest = () => {
           {/* <button className="btn button btn-sm text-light">
             <Link to="/addrestaurant">Add Restaurant</Link>
           </button> */}
-          <AddRestaurantModal/>
+          <AddRestaurantModal getAllRestaurants={getAllRestaurants} />
         </div>
         {/*Table Section*/}
         <table className="table table-hover my-4">
@@ -187,42 +187,44 @@ const ManageRest = () => {
                 User Name
               </th>
               <th className="col-1" scope="col">
-Reviews              </th>
+                Reviews
+              </th>
               <th className="col-1" scope="col">
                 Actions
               </th>
             </tr>
           </thead>
-          
+
           <tbody>
-            <tr>
+            {/* <tr>
               <td> <div
-                        className="fixed-size-container"
-                        style={{ width: "120px", height: "120px" }}
-                      >
-                        <img
-                          src={Img}
-                          className="object-fit-cover w-100 h-100"
-                          alt="review-img"
-                        />
-                      </div></td>
-            <td>657361861050f99f39716d69</td>
-                    <td className="">Collete</td>
-                    <td>SMCHS</td>
-                    <td>Fine-Dine</td>
-                    <td>Asian</td>
-                    <td>rayahrizz</td>
-                    <td>0</td>
-                    <td>
+                className="fixed-size-container"
+                style={{ width: "120px", height: "120px" }}
+              >
+                <img
+                  src={Img}
+                  className="object-fit-cover w-100 h-100"
+                  alt="review-img"
+                />
+              </div></td>
+              <td>657361861050f99f39716d69</td>
+              <td className="">Collete</td>
+              <td>SMCHS</td>
+              <td>Fine-Dine</td>
+              <td>Asian</td>
+              <td>rayahrizz</td>
+              <td>0</td>
+              <td>
                 <button className="btn button btn-sm text-light">Edit</button>
 
-                  <button className="btn button btn-sm text-light ms-2"><i class="bi bi-trash3-fill"></i></button>
-                </td>
-            </tr>
-            {restaurant.length > 0 &&
-              restaurant.map((dt) => {
+                <button className="btn button btn-sm text-light ms-2"><i class="bi bi-trash3-fill"></i></button>
+              </td>
+            </tr> */}
+            {restaurant?.length > 0 &&
+              restaurant?.map((dt) => {
                 return (
                   <tr>
+                    {console.log("dt",dt)}
                     <td>
                       <div
                         className="fixed-size-container"
@@ -241,6 +243,7 @@ Reviews              </th>
                     <td>{dt?.ambience_type?.name}</td>
                     <td>{dt?.cuisine_type?.name}</td>
                     <td>{dt?.created_by?.username}</td>
+                    <td>{dt?.reviews?.length}</td>
                     <td>
                       <a
                         // href={`/view-listing/${dt?._id}`}

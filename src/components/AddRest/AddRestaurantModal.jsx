@@ -4,7 +4,7 @@ import { GetAllCuisine } from '../../services/cuisine';
 import { GetAllAmbience } from '../../services/ambience/ambience';
 import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
 
-const AddRestaurantModal = () => {
+const AddRestaurantModal = ({getAllRestaurants}) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
   const [ambienceType, setAmbienceType] = useState('');
@@ -74,6 +74,7 @@ const AddRestaurantModal = () => {
       // Handle the response from the server
       if (response.ok) {
         const result = await response.json();
+        await getAllRestaurants()
         console.log(result);
         // Reset form fields or perform any other actions
         handleClose();
