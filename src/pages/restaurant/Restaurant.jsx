@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import "./restaurant.css";
-import Navbar from "../../components/navbar/Navbar";
-import MailList from "../../components/mailList/MailList";
+
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,7 +13,7 @@ import {
 import { Icon } from '@iconify/react';
 import { useState } from "react";
 import ReviewImg from "../../images/leave-a-review.png"
-import Influencer from "../../images/influence.jpeg"
+import Rumaisa from "../../images/rumaisa.jpg"
 import { getSingleAmbiance, getSingleCuisine, getSingleRestaurant, getSingleReview } from '../../services/restaurants';
 import { NavLink, useParams } from 'react-router-dom';
 import ImageUploadComp from '../../components/uploadImage';
@@ -174,7 +173,7 @@ const Restaurant = () => {
               ''
           }
           <span className=' float-end'>
-            <p className='d-inline pe-2'>{review?.rating}/5</p>
+            <p className='d-inline pe-2'>{review?.rating}4/5</p>
             <icon className="bi-star-fill text-warning" />
             <icon className="bi-star-fill text-warning" />
             <icon className="bi-star-fill text-warning" />
@@ -204,11 +203,11 @@ const Restaurant = () => {
           <div className='row bg-light mt-3 w-100 mx-auto justify-content-center shadow-sm'>
             <button
               type="button"
-              className="btn col-5 col-sm-4 col-md-3 col-lg-3 mx-3 my-2"
+              className="btn fs-5 col-5 col-sm-4 col-md-3 col-lg-3 mx-3 my-2"
             >
-              <icon className="bi-phone pe-1" />
+              <icon className="bi-phone pe-1 " />
               <a
-                className=" text-decoration-none text-black"
+                className=" text-decoration-none text-black fs-5"
                 href={`tel:03129238226`}
               >
                 (021) 34551096
@@ -221,9 +220,9 @@ const Restaurant = () => {
               <NavLink
                 to={data?.social_links?.length > 0 ? data?.social_links[0]?.url : 'https://www.google.com/'
                 }>
-              <icon className="bi-box-arrow-in-up-left pe-1" />
+              <icon className="bi-box-arrow-in-up-left pe-1 fs-5" />
               <a
-                className=" text-decoration-none text-black"
+                className=" text-decoration-none text-black fs-5"
              
               >
                 Website
@@ -238,7 +237,7 @@ const Restaurant = () => {
                 to={data?.menu_images?.length > 0 ? data?.menu_images[0] : 'facebook.com'
                 }>
 
-                <icon className=" bi-journal-text pe-1" />
+                <icon className=" bi-journal-text pe-1 fs-5" />
                 Menu
               </NavLink>
             </button>
@@ -249,7 +248,7 @@ const Restaurant = () => {
               <NavLink
                 to={data?.social_links?.length > 0 ? data?.social_links[1]?.url : 'https://www.facebook.com/'
                 }>
-                <icon className=" bi-facebook pe-1" />
+                <icon className=" bi-facebook pe-1  fs-5" />
               </NavLink>
             </button>
             <button
@@ -259,7 +258,7 @@ const Restaurant = () => {
             <NavLink
             to={data?.social_links?.length > 0 ? data?.social_links[2]?.url : 'https://www.instagram.com/'
             }>
-              <icon className=" bi-instagram pe-1" />
+              <icon className=" bi-instagram pe-1  fs-5" />
               {/* <a
                 className=" text-decoration-none text-black"
                 href={`https://www.instagram.com/xanderscafe/`}
@@ -275,7 +274,7 @@ const Restaurant = () => {
             to={data?.social_links?.length > 0 ? data?.social_links[3]?.url : 'https://www.foodpanda.pk/'
             }>
               
-                <Icon icon="simple-icons:foodpanda" style={{ color: 'black' }} />
+                <Icon icon="simple-icons:foodpanda  " style={{ color: 'blue'}} />
               </NavLink>
             </button>
 
@@ -288,16 +287,16 @@ const Restaurant = () => {
                     Opening hours
                     <icon className="ps-2 bi-info-circle" />
                   </h5>
-                  <p>{data?.opening_hours} - {data?.closing_hours}</p>
+                  <p>{data?.opening_hours} {data?.closing_hours}</p>
                   <h5>
                     Cuisine Type
                   </h5>
-                  <p>                    {cuisineType?.name}
+                  <p>italian  {cuisineType?.name}
                   </p>
                   <h5>
                     Ambience
                   </h5>
-                  <p>{ambianceType?.name}</p>
+                  <p>Casual{ambianceType?.name}</p>
                   <h5>
                     Meals
                   </h5>
@@ -318,7 +317,7 @@ const Restaurant = () => {
                   <h5>
                     Budget
                   </h5>
-                  <p>{`${data?.rupees} Rs./person`}</p>
+                  <p>{`2000 Rs./person`}</p>
                   <h5>
                     Discounts
                     <icon className="ps-2 bi-info-circle" />
@@ -336,21 +335,21 @@ const Restaurant = () => {
                       <icon className="pe-2 bi-check-circle" />
                       Hygiene
                     </h5>
-                    <p className='d-inline '>{review?.extras?.hygiene}/5</p>
+                    <p className='d-inline '>{review?.extras?.hygiene}4/5</p>
                   </span>
                   <span className='d-block'>
                     <h5 className='d-inline pe-5'>
                       <icon className="pe-2 bi-bell" />
                       Value
                     </h5>
-                    <p className='d-inline '>{review?.extras?.value}/5</p>
+                    <p className='d-inline '>{review?.extras?.value}3/5</p>
                   </span>
                   <span className='d-block'>
                     <h5 className='d-inline pe-5'>
                       <icon className="pe-2 bi-bell" />
                       Service
                     </h5>
-                    <p className='d-inline '>{review?.extras?.service}/5</p>
+                    <p className='d-inline '>{review?.extras?.service}4/5</p>
                   </span>
                   <h5 className='pt-3'>
                     Popular Dishes
@@ -378,12 +377,12 @@ const Restaurant = () => {
           <h1 className='my-3'><icon className="bi-chat-square-dots pe-2" />Read Reviews</h1>
           <div className='row border rounded-3 border-black border-1 p-3'>
             <div className='col-xl-1 col-sm-2 col-3'>
-              <img className='rounded-circle' src={Influencer} alt="" height={100} />
+              <img className='rounded-circle' src={Rumaisa} alt="" height={90} />
             </div>
             <div className='col-7'>
-              <p className='mb-0'>@rumees</p>
-              <p className=''>Reviewed on {formattedDate}</p>
-              <p>
+              <p className='mb-0 fs-5 fw-bold'>@rumees</p>
+              {/* <p className=''>Reviewed on {formattedDate}</p> */}
+              <p className='fs-5 pt-3'>
                 {review?.review}
                 Great experience the food was amazing 
               </p>

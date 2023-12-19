@@ -47,7 +47,7 @@ console.log(user,'user')
         </p>
     
           <button className="read-more border-0 bg-transparent" >
-            <FullBlogModal/> 
+            <FullBlogModal blogData={dt}/> 
           </button>
         
         <div className="thumbnail-container">  {

@@ -5,17 +5,18 @@
   import Image from 'react-bootstrap/Image';
   import Form from 'react-bootstrap/Form';
   import influencer from "../../images/rumaisa.jpg";
+  import DefaultImage from "../../images/defaultimage.png";
 
   import "./fullblogmodel.css";
   
-  function FullBlogModal() {
+  function FullBlogModal({ blogData }) {
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-  // Sample data
-  const blogData = {
+  //Sample data
+  const bD = {
     title: 'Recipe: Easy Peanut Butter Cups',
     user: {
       name: 'Rayah Rizvi',
@@ -32,7 +33,7 @@
    
 comments: [
       {
-        user: '@',
+        user: '@rumees',
         comment: 'Great content! Keep it up',
       },
      
@@ -53,13 +54,13 @@ comments: [
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-custom-modal-styling-title">
-            {blogData.title}
+            {blogData?.title}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body style={{ maxHeight: '85vh', overflowY: 'auto' }}>
           <div className="d-flex align-items-center">
             <Image
-              src={blogData.user.profilePicture}
+              src={blogData?.user?.profile_image || DefaultImage}
               roundedCircle
               width={50}
               height={50}
@@ -67,18 +68,18 @@ comments: [
               alt="User"
             />
             <div>
-              <p>{blogData.user.name}</p>
-              <p>{blogData.date}</p>
+              <p>{blogData?.user?.username}</p>
+              <p>{bD.date}</p>
             </div>
           </div>
           <Image
-            src={blogData.largePicture}
+            src={bD.largePicture}
             fluid
             className="mb-3"
             alt="Large Blog"
           />
           <div className="d-flex justify-content-start">
-            {blogData.smallPictures.map((smallPicture, index) => (
+            {bD.smallPictures.map((smallPicture, index) => (
               <Image
                 key={index}
                 src={smallPicture}
@@ -91,7 +92,7 @@ comments: [
             ))}
           </div>
           <hr />
-          <p className='fs-5'>{blogData.content}</p>
+          <p className='fs-5'>{bD.content}</p>
           {/* Comments section */}
           <hr />
           <div className="comment-section">
@@ -101,7 +102,7 @@ comments: [
               <button className='border-0 bg-transparent'><i class="bi bi-hand-thumbs-down fs-4 text-orange"></i></button> <span>0</span>
             </div>
           </div>
-          {blogData.comments.map((comment, index) => (
+          {bD.comments.map((comment, index) => (
             <div key={index} className="comment-container">
               <Image
                 src={influencer}

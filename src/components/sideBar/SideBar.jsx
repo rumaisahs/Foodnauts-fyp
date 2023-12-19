@@ -73,89 +73,77 @@ const SideBar = () => {
 
         <ul className="nav-list">
           <p className="ps">x</p>
-          <li className="sidebar-item">
+          <li className="sidebar-item my-3 mb-3 mb-3">
             <Link to="/">
-              <i className="bx bx-home-alt-2"></i>
-              <span className="link_name">Home</span>
+              <i className="bx bx-home-alt-2 fs-2"></i>
+              <span className="link_name fs-5">Home</span>
             </Link>
             <span className="tooltip">Home</span>
           </li>
 
-          <li className="sidebar-item">
+          <li className="sidebar-item my-3 mb-3 mb-3">
             <Link to="/community">
             <i class='bx bx-group'></i>
-              <span className="link_name">Community</span>
+              <span className="link_name fs-5">Community</span>
             </Link>
             <span className="tooltip">Community</span>
           </li>
 
-          <li className="sidebar-item">
+          <li className="sidebar-item my-3 mb-3 mb-3">
             <Link to="/allrest">
             <i class='bx bx-restaurant'></i>
-              <span className="link_name">Restaurants</span>
+              <span className="link_name fs-5">Restaurants</span>
             </Link>
             <span className="tooltip">Restaurants</span>
           </li>
 
        
-              {/* <li className="sidebar-item">
-                <Link to="/">
-                <i class='bx bxs-bell-ring' ></i>
-                  <span className="link_name">Notifications</span>
-                </Link>
-                <span className="tooltip">Notifications</span>
-              </li> */}
+             
 
-              <li className="sidebar-item">
-                <Link to="/myblog/mygigs">
+              <li className="sidebar-item my-3 mb-3 mb-3">
+                <Link to="/myblog">
                   <i className="bx bx-edit"></i>
-                  <span className="link_name">Manage Blogs</span>
+                  <span className="link_name fs-5 ">Manage Blogs</span>
                 </Link>
                 <span className="tooltip">Manage Blogs</span>
               </li>
 
-              <li className="sidebar-item">
+              <li className="sidebar-item my-3 mb-3 mb-3">
               <Link to="/mygigs">
                 <i class='bx bxs-dock-left' ></i>
-                  <span className="link_name">Manage Collab</span>
+                  <span className="link_name fs-5">Manage Collab</span>
                 
                 <span className="tooltip">Manage Collab</span>
               </Link> 
 </li>
-              <li className="sidebar-item">
+              <li className="sidebar-item my-3 mb-3 mb-3">
                 <Link to="/managerest">
                   <i className="bx bx-list-check"></i>
-                  <span className="link_name">Manage Restaurants</span>
+                  <span className="link_name fs-5">Manage Restaurants</span>
                 </Link>
                 <span className="tooltip">Manage Restaurants</span>
               </li>
 
-               <li className="sidebar-item">
-                <a>
-                  <i className="bx bx-timer"></i>
-                  <span className="link_name">My Seller Profile</span>
-                </a>
-                <span className="tooltip">My Seller Profile</span>
-              </li> 
+             
 
-           <li className="sidebar-item">
+           <li className="sidebar-item my-3 mb-3 mb-3">
                 <p className="ps">x</p>
                 <Link to="ownprofile" className="sidebar-item">
                 <i class='bx bx-user-circle' ></i>
-                  <span className="link_name">Profile</span>
+                  <span className="link_name fs-5">Profile</span>
                 </Link>
                 <span className="tooltip">Profile</span>
               </li> 
             <p className="ps">x</p>
-              <li className="sidebar-item">
+              <li className="sidebar-item my-3 mb-3 mb-3">
                 <Link to="/editProfile">
                 <i class='bx bx-cog' ></i>
-                  <span className="link_name">Settings</span>
+                  <span className="link_name fs-5">Settings</span>
                 </Link>
                 <span className="tooltip"> Setting</span>
               </li> 
 
-            <li className="sidebar-item">
+            <li className="sidebar-item my-3 mb-3 mb-3">
                 <NavLink
                   exact
                   to={"/login"}
@@ -165,31 +153,31 @@ const SideBar = () => {
                   activeClassName="activeClicked"
                 >
                <i class='bx bx-log-out' ></i>
-                  <span className="link_name">Logout</span>
+                  <span className="link_name fs-5">Logout</span>
                 </NavLink>
                 <span className="tooltip">Logout</span>
               </li>
-              {/* <li className="sidebar-item">
-                <Link to="/login">
-                <i class='bx bx-log-in' ></i>
-                  <span className="link_name">Login</span>
-                </Link>
-                <span className="tooltip"> Login</span>
-              </li> */}
-              {/* <li className="sidebar-item">
-                <Link to="/signup">
-                <i class='bx bxs-user-plus' ></i>
-                  <span className="link_name">Signup</span>
-                </Link>
-                <span className="tooltip"> SignUp</span>
-              </li> */}
-         
-        
 
-          <li className="sidebar-item">
+             ?
+          
+          {/* <li className="sidebar-item">
+                <a>
+                  <i className="bx bx-timer"></i>
+                  <span className="link_name">My Seller Profile</span>
+                </a>
+                <span className="tooltip">My Seller Profile</span>
+              </li>  */}
+ {/* <li className="sidebar-item">
+                <Link to="/">
+                <i class='bx bxs-bell-ring' ></i>
+                  <span className="link_name">Notifications</span>
+                </Link>
+                <span className="tooltip">Notifications</span>
+              </li> */}
+          <li className="sidebar-item my-3 mb-3 mb-3">
             <a>
             <i class='bx bx-support' ></i>
-              <span className="link_name">Help Centre</span>
+              <span className="link_name fs-5">Help Centre</span>
             </a>
             <span className="tooltip">Help Centre</span>
           </li>

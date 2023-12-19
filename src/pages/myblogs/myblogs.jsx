@@ -68,6 +68,19 @@ function MyBlogs() {
                     </button>
                   </td>
                 </tr>
+                <tr>
+                  <td >3</td>
+                  <td>abc</td>
+                  <td>abc</td>
+                  <td className='text-center'>0</td>
+                  <td  className='text-center'>0</td>
+                  <td  className='text-center'>0</td>
+                  <td className="d-flex">
+                    <button className="btn button btn-sm text-light ms-2">
+                      <i className="bi bi-trash3-fill"></i>
+                    </button>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

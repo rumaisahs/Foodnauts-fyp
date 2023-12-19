@@ -1,13 +1,12 @@
-import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import BloggerIcon from "../../components/bloggerIcon/bloggerIcon";
 import { GetAllUser } from "../../services/user/user";
 import { useState, useEffect } from "react";
 import { GetAllBlogs } from "../../services/blog/blog";
-import Blog from "../../components/blog/blog";
 import CarouselImg1 from "../../images/blogad.jpg";
 import CarouselImg2 from "../../images/blogad.jpg";
 import Desc from "../../images/blogdesc.jpg";
+import FullBlogModal from "../../components/fullblogmodal/FullBlogModal";
 
 
 const FoodCommunity = () => {
@@ -114,11 +113,9 @@ const FoodCommunity = () => {
                       <h5 className="card-title">{blog.title}</h5>
                       <p className="card-text">{blog.postDate}</p>
                       <p className="card-text overflow-hidden" style={{ WebkitBoxOrient: 'vertical', maxHeight: '3.6em', overflow: 'hidden', textOverflow: 'ellipsis' }}>{blog.description}</p>
-                      <a href="#" className="btn btn-primary">
-                        Read More
-                      </a>
+                      <FullBlogModal/>
                       <p className="card-text mt-2">
-                        <small className="text-muted">by author{blog.author}</small>
+                        <small className="text-muted">by rayahrizz{blog.author}</small>
                       </p>
                     </div>
                   </div>
@@ -130,21 +127,21 @@ const FoodCommunity = () => {
             </div>
           </div>
       {/* New Section */}
-      <div className="row mt-5">
-            <div className="col-md-6">
-              <p className="fs-3 font-weight-bold">
-                Are you passionate about food and storytelling? Join our vibrant food community!
+      <div className="row mt-5 align-items-center mb-5">
+            <div className="txt col-md-6 px-5">
+              <p className="fs-2 fw-bold">
+                Are you passionate about food and storytelling?<br/> Join our vibrant food community!
               </p>
-              <p className="">
+              <p className="fs-4">
                 Share your culinary adventures, discover new recipes, and connect with fellow food enthusiasts.
                 Let your voice be heard in the world of flavors!
               </p>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 ">
             <img
                   src={Desc}  // Replace with your image path
                 alt="Food Blogging"
-                className="img-fluid rounded"
+                className="img-fluid "
                 style={{ maxHeight: '500px' }} // Adjust the max height as needed
               />
             </div>

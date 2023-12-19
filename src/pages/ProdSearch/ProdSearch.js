@@ -1,6 +1,6 @@
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
-import desktop from "../../images/searchresult.png";
+import desktop from "../../images/ser.png";
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import fetchData from "../../utils/fetchData";

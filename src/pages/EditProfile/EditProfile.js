@@ -1,4 +1,4 @@
-import MKBHD from "../../images/influence.jpeg";
+import MKBHD from "../../images/defaultimage.png";
 import Footer from "../../components/footer/Footer";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";

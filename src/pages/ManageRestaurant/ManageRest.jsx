@@ -9,6 +9,7 @@ import { getRestaurant } from "../../services/restaurants";
 import { GetAllCuisine } from "../../services/cuisine";
 import { GetAllAmbience } from "../../services/ambience/ambience";
 import AddRestaurantModal from "../../components/AddRest/AddRestaurantModal";
+import Img from "../../images/colette.jpg";
 
 const ManageRest = () => {
   const [restaurant, setRestaurant] = useState([]);
@@ -170,7 +171,7 @@ const ManageRest = () => {
               <th className="col-1" scope="col">
                 ID
               </th>
-              <th className="title-column" scope="col">
+              <th className="col-1" scope="col">
                 Name
               </th>
               <th className="col-1" scope="col">
@@ -180,17 +181,44 @@ const ManageRest = () => {
                 Ambience
               </th>
               <th className="col-1" scope="col">
-                Cuisine-Type
+                Cuisine
               </th>
               <th className="col-1" scope="col">
                 User Name
               </th>
               <th className="col-1" scope="col">
+Reviews              </th>
+              <th className="col-1" scope="col">
                 Actions
               </th>
             </tr>
           </thead>
+          
           <tbody>
+            <tr>
+              <td> <div
+                        className="fixed-size-container"
+                        style={{ width: "120px", height: "120px" }}
+                      >
+                        <img
+                          src={Img}
+                          className="object-fit-cover w-100 h-100"
+                          alt="review-img"
+                        />
+                      </div></td>
+            <td>657361861050f99f39716d69</td>
+                    <td className="">Collete</td>
+                    <td>SMCHS</td>
+                    <td>Fine-Dine</td>
+                    <td>Asian</td>
+                    <td>rayahrizz</td>
+                    <td>0</td>
+                    <td>
+                <button className="btn button btn-sm text-light">Edit</button>
+
+                  <button className="btn button btn-sm text-light ms-2"><i class="bi bi-trash3-fill"></i></button>
+                </td>
+            </tr>
             {restaurant.length > 0 &&
               restaurant.map((dt) => {
                 return (

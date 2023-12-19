@@ -15,8 +15,8 @@ export const Login = () => {
   const [email, setEmail] = useState("")
   const [error, setError] = useState('');
   const navigate = useNavigate()
-
-
+  const [showEmailForm, setShowEmailForm] = useState(true);
+  const [loading, setLoading] = useState(false);
   const login = async () => {
     try {
       const res = await Signin(
@@ -70,7 +70,57 @@ export const Login = () => {
               <br />
               <input onChange={(e) => setPassword(e.target.value)} required type="password" />
               {error && <p className="text-danger">{error}</p>}
-              <Link to="/forgotpass"><p className='text-end'>forgot password?</p></Link>
+              <div className="text-end">
+                  <button
+                    type="button"
+                    className="border-0 bg-transparent"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                  >
+                    <p className="text-end pt-2 register">Forgot password ?</p>
+                  </button>
+                </div>              {/* Forget Password Modal */}
+              <div
+                  className="modal fade"
+                  id="staticBackdrop"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <button
+                          className={`border-0 bg-transparent ${
+                            showEmailForm ? "d-none" : "d-block"
+                          }`}
+                        >
+                          <i type="button" className="bi bi-arrow-left fs-3" />
+                        </button>
+                        <h5
+                          className="modal-title ms-auto"
+                          id="staticBackdropLabel"
+                        >
+                          Forgot Password
+                        </h5>
+                        <button
+                          type="button"
+                          className="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                     
+
+                        {loading && (
+                          <div className="pt-2">
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
               <p className='pt-2 text-center'>
                 <Link className='text-decoration-none'><button onClick={login} className='btn text-white login-btn px-4'>Log In</button></Link>
               </p>

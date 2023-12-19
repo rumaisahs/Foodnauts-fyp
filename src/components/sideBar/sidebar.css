@@ -18,7 +18,10 @@
     border-bottom: 1px solid #555;
   }
   
-
+  .txt{
+    margin-top:5rem
+    
+    }
 
   @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
@@ -124,7 +127,7 @@
 }
 
 .sidebar.open {
-  width: 260px;
+  width: 300px;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
 
@@ -209,7 +212,7 @@
 }
 .sidebar.open lis img{
   height: auto;
-  width: 60px;
+  width: 70px;
   line-height: 50px;
   font-size: 18px;
   margin-right: 70px;

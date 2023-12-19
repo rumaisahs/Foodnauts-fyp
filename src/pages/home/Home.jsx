@@ -163,9 +163,9 @@ const Home = () => {
         </div>
       </div>
       <MailList />
-      <Footer />
+      
 
-    </div></div></>
+    </div><Footer /></div></>
   );
 };
 

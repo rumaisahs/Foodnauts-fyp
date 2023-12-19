@@ -1,7 +1,7 @@
 import "./navbar.css"
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import Logo from "../../images/foodnauts 2.png"
+import Logo from "../../images/foodnauts2.png"
 import fetchData from "../../utils/fetchData";
 
 

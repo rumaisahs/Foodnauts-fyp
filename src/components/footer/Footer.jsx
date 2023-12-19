@@ -1,40 +1,62 @@
-import "./footer.css";
-
+import React from 'react';
+import logo from "../../images/foodnauts2.png";
+import gplay from "../../images/playstore2.png";
+import aplay from "../../images/appstore1.png";
+import { Link } from 'react-router-dom';
 const Footer = () => {
+
+  const textItemStyle = {
+    margin: '5px 0',
+    color: 'white', 
+  };
+
+  const headingStyle = {
+    fontWeight: 'bold',
+    fontFamily: 'Raleway, sans-serif', 
+  };
+
+  const paragraphStyle = {
+    fontWeight: 400, 
+    fontFamily: 'Raleway, sans-serif', 
+    fontSize: '20px',
+  };
+
   return (
-    <div className="footer p-5">
-      <div className="fLists">
-        <ul className="fList">
-          <li className="fListItem">Countries</li>
-          <li className="fListItem">Regions</li>
-          <li className="fListItem">Cities</li>
-        
-        </ul>
-        <ul className="fList">
-          <li className="fListItem">Restaurants </li>
-          <li className="fListItem">Bloggers </li>
-          <li className="fListItem">Recommended </li>
-          <li className="fListItem">Villas</li>
-    
-        </ul>
-        <ul className="fList">
-          <li className="fListItem">Unique places to dine </li>
-          <li className="fListItem">Reviews</li>
-          <li className="fListItem">Recommendations </li>
-          <li className="fListItem">Foodie communities </li>
-          <li className="fListItem">Top Restaurants </li>
-        </ul>
-        <ul className="fList">
-          <li className="fListItem">Curtomer Service</li>
-          <li className="fListItem">Guidlines</li>
-          <li className="fListItem">Careers</li>
-          <li className="fListItem">Press center</li>
-          <li className="fListItem">Terms & conditions</li>
-        </ul>
+    <footer className="bg-black text-white">
+      <div className="container p-4">
+        <div className="row">
+          <div className="col-md-3 d-flex flex-column align-items-center">
+            <div>
+              <img src={logo} alt="Logo" style={{ width: '200px', height: 'auto', marginBottom: '30px' }} className="logo-img" />
+            </div>
+          </div>
+          <div className="col-md-3 d-flex flex-column align-items-center">
+            <h5 style={headingStyle}>Company</h5>
+            <div style={textItemStyle}>About</div>
+            <div style={textItemStyle}>Blogs</div>
+          </div>
+          <div className="col-md-3 d-flex flex-column align-items-center">
+            <h5 style={headingStyle}>Contact us</h5>
+            <div style={textItemStyle}>Career</div>
+            <div style={textItemStyle}>About</div>
+            <div style={textItemStyle}>How we Work</div>
+            <div style={textItemStyle}>Career</div>
+          </div>
+          <div className="col-md-3 d-flex flex-column align-items-center">
+            <h5 style={headingStyle}>Learn</h5>
+            <div style={textItemStyle}>Privacy</div>
+            <div style={textItemStyle}>Terms</div>
+            <div style={textItemStyle}>FAQs</div>
+          </div>
+        </div>
+        <div className="row" style={{ borderTop: '4px solid white', paddingTop: '1rem' }}>
+          <div className="col-md-12 text-center">
+            <p style={paragraphStyle}>Espace © 2023 All Rights Reserved.</p>
+          </div>
+        </div>
       </div>
-      <div className="fText">Copyright © 2023 Foodies</div>
-    </div>
+    </footer>
   );
-};
+}
 
 export default Footer;

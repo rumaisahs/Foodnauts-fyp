@@ -217,7 +217,6 @@ const PostGigModal = () => {
     const isTitleValid = title.trim() !== '';
     const isDescriptionValid = description.length >= 10;
     const isDeliverablesValid = deliverables.trim() !== '';
-    const isDurationValid = /^\d+$/.test(duration);
     const isPromotionChannelsValid = promotionChannels.trim() !== '';
     const isTermsAndConditionsValid = termsAndConditions.trim() !== '';
     const isPhoneValid = /^\d{10}$/.test(phone);
@@ -228,7 +227,6 @@ const PostGigModal = () => {
     setTitleError(isTitleValid ? '' : 'Title is required');
     setDescriptionError(isDescriptionValid ? '' : 'Description should have at least 10 characters');
     setDeliverablesError(isDeliverablesValid ? '' : 'Deliverables are required');
-    setDurationError(isDurationValid ? '' : 'Please enter a valid duration');
     setPromotionChannelsError(isPromotionChannelsValid ? '' : 'Promotion channels are required');
     setTermsAndConditionsError(isTermsAndConditionsValid ? '' : 'Terms and conditions are required');
     setPhoneError(isPhoneValid ? '' : 'Please enter a valid phone number');
@@ -240,7 +238,6 @@ const PostGigModal = () => {
       isTitleValid &&
       isDescriptionValid &&
       isDeliverablesValid &&
-      isDurationValid &&
       isPromotionChannelsValid &&
       isTermsAndConditionsValid &&
       isPhoneValid &&
@@ -268,6 +265,15 @@ const PostGigModal = () => {
                 placeholder="Enter title..."
                 value={title}
                 onChange={handleTitleChange}
+              />
+              <div className="error-message">{titleError}</div>
+            </Form.Group>
+            <Form.Group controlId="price">
+              <Form.Label>Price</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter Price..."
+             
               />
               <div className="error-message">{titleError}</div>
             </Form.Group>
@@ -315,7 +321,6 @@ const PostGigModal = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter duration..."
-                value={duration}
                 onChange={handleDurationChange}
               />
               <div className="error-message">{durationError}</div>

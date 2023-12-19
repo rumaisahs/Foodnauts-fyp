@@ -50,10 +50,10 @@ function MyGigs () {
                   Value
                 </th>
                 <th className="col-3" scope="col">
-                  Status
+                  Date
                 </th>
                 <th className="col-1" scope="col">
-                  Date
+                  Status
                 </th>
                 <th className="col-1" scope="col">
                   Actions
@@ -87,7 +87,18 @@ function MyGigs () {
                   <button className="btn button btn-sm text-light ms-2"><i class="bi bi-trash3-fill"></i></button>
                 </td>
               </tr>
-          
+              <tr>
+                <td>3</td>
+                <td>abcd</td>
+                <td>abcdabcdabcd</td>
+                <td>3000</td>
+                <td>12/12/2023</td>
+                <td>Disabled</td>
+                <td className="d-flex"> 
+                  <button className="btn button btn-sm text-light">Edit</button>
+                  <button className="btn button btn-sm text-light ms-2"><i class="bi bi-trash3-fill"></i></button>
+                </td>
+              </tr>
             </tbody>
           </table>
           <button className="btn button px-4">Add</button>
