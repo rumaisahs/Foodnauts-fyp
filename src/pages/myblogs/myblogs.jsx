@@ -1,9 +1,46 @@
 import Footer from '../../components/footer/Footer';
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import Blog from '../../components/blog/blog';
 import BlogModal from '../../components/blog/BlogModal';
+import { GetAllBlogs } from '../../services/blog/blog';
+import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
+import { GetSingleUser, UserFollowers } from '../../services/user/user';
 
 function MyBlogs() {
+  const authUser = GetAuthUserLocalStorage()
+  const [user, setUser] = useState(null);
+  const [blogData, setBlogData] = useState([]);
+  
+  useEffect(() => {
+    const getAllBlogs = async () => {
+      const params = {
+        user: authUser._id,
+        paginate: false,
+        sort: 'desc',
+        sortBy: 'createdAt',
+      }
+      const res = await GetAllBlogs(params)
+      setBlogData(res?.data?.data)
+    }
+    getSingleUser()
+    getAllBlogs()
+
+  }, [])
+    const getSingleUser = async () => {
+      const res = await GetSingleUser(authUser._id)
+      setUser(res?.data?.data)
+    }
+  const getAllBlogs = async () => {
+    try {
+      const res = await GetAllBlogs();
+      setBlogData(res?.data?.data);
+      console.log(blogData);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+console.log(blogData)
+
   return (<>
     <div className='row justify-content-end min-vh-100 m-5'>
 
@@ -19,21 +56,24 @@ function MyBlogs() {
               <thead className="table-dark">
                 <tr className='text-center'>
                   <th className="col-1" scope="col">
-                    #
+                    Image
                   </th>
-                  <th className="col-5" scope="col">
+                  <th className="col-2" scope="col">
+                    ID
+                  </th>
+                  <th className="col-2" scope="col">
                     Title
                   </th>
-                  <th className="col-5" scope="col">
+                  <th className="col-3" scope="col">
                     Description
                   </th>
-                  <th className="col-2" scope="col">
+                  <th className="col-1" scope="col">
                     Likes
                   </th>
-                  <th className="col-2" scope="col">
+                  <th className="col-1" scope="col">
                     Dislikes
                   </th>
-                  <th className="col-3" scope="col">
+                  <th className="col-1" scope="col">
                     Comments
                   </th>
                   <th className="col-1" scope="col">
@@ -42,10 +82,27 @@ function MyBlogs() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>A PLANT-BASED COMMUNITY FOCUSE...</td>
-                  <td>The Food Studio is a community-bas...</td>
+              {blogData?.length > 0 &&
+              blogData?.map((dt, index) => {
+                return (
+                <tr key={index}>
+                  {console.log("dt",dt)}
+                  <td>
+                      <div
+                        className="fixed-size-container"
+                        style={{ width: "120px", height: "120px" }}
+                      >
+                        <img
+                          src={dt?.images[0]}
+                          className="object-fit-cover w-100 h-100"
+                          alt="review-img"
+                        />
+                      </div>
+                    </td>
+                    <td>{dt?._id}</td>
+
+                    <td className="">{dt?.title}</td>
+                  <td  style={{ maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{dt?.description}</td>
                   <td  className='text-center'>0</td>
                   <td  className='text-center'>0</td>
                   <td  className='text-center'>2</td>
@@ -55,32 +112,9 @@ function MyBlogs() {
                     </button>
                   </td>
                 </tr>
-                <tr>
-                  <td >2</td>
-                  <td>Recipe: Easy Peanut Butter Cups</td>
-                  <td>These little cups of delight are so eas...</td>
-                  <td className='text-center'>0</td>
-                  <td  className='text-center'>0</td>
-                  <td  className='text-center'>0</td>
-                  <td className="d-flex">
-                    <button className="btn button btn-sm text-light ms-2">
-                      <i className="bi bi-trash3-fill"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td >3</td>
-                  <td>abc</td>
-                  <td>abc</td>
-                  <td className='text-center'>0</td>
-                  <td  className='text-center'>0</td>
-                  <td  className='text-center'>0</td>
-                  <td className="d-flex">
-                    <button className="btn button btn-sm text-light ms-2">
-                      <i className="bi bi-trash3-fill"></i>
-                    </button>
-                  </td>
-                </tr>
+                 );
+                })}
+         
               </tbody>
             </table>
           </div>

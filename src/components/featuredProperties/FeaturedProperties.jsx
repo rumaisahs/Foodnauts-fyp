@@ -45,7 +45,7 @@ const FeaturedProperties = (props) => {
                               <p className="fpAddress text-grey"> <i className="bi bi-geo-alt-fill pe-1" />{dt?.address}
                               </p>
                               {/* <span className="fpAmbience">Cafe</span> */}
-                              <p className="fpAmbience d-inline pe-1 card-text text-grey">{dt?.cuisine_type?.nae}</p>
+                              <p className="fpAmbience d-inline pe-1 card-text text-grey">{dt?.cuisine_type?.name}</p>
                               <p className="fpAmbience d-inline pe-1 card-text text-grey">.</p>
                               <p className="fpCuisine d-inline card-text text-grey">{dt?.ambience_type?.name}</p>
                               <p className="fpPrice d-inline card-text">$$$</p>

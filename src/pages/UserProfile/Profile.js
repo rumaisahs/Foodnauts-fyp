@@ -117,7 +117,7 @@ console.log(user,'user')
               <div className="col-12 text-center">
                 <h2>{user?.name}</h2>
                 <h6 className="fw-light">
-                  @{user?.username}
+                  @username
                   <i class="bi bi-patch-check-fill ps-2 text-orange"></i>
                 </h6>
                 <h6 className="fw-light p-4 px-5">
@@ -131,8 +131,8 @@ console.log(user,'user')
                   Follow
                 </button>
               </Link>
-              <h6>{followers?.length} Followers</h6>
-              <p>Member Since {moment(user?.createdAt).format('YYYY')}</p>
+              <h6> Followers</h6>
+              <p>Member Since </p>
             </div>
 
             <div className="row text-center mt-3">
@@ -208,66 +208,7 @@ console.log(user,'user')
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-4 col-6">
-                  <div class="card shadow-sm">
-                    <img
-                      src={Product04}
-                      class="card-img-top r-card-height"
-                      alt="img-name"
-                    />
-                    <div class="py-2 card-body">
-                      <h5 class="card-title text-truncate fs-5">
-                        Asus TUF VG27AQ 27" IPS 165Hz Gaming Monitor
-                      </h5>
-                      <p className="card-text text-truncate mb-0 text-orange">
-                        Rs. 45,000
-                      </p>
-                      <p className="card-text text-truncate mb-0 text-muted">
-                        Karachi, Sindh <i className=" bi-geo-alt-fill" />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-4 col-6">
-                  <div class="card shadow-sm">
-                    <img
-                      src={Product05}
-                      class="card-img-top r-card-height"
-                      alt="img-name"
-                    />
-                    <div class="py-2 card-body">
-                      <h5 class="card-title text-truncate fs-5">
-                        Dell Alienware AW988 Wireless Gaming Headset
-                      </h5>
-                      <p className="card-text text-truncate mb-0 text-orange">
-                        Rs. 45,000
-                      </p>
-                      <p className="card-text text-truncate mb-0 text-muted">
-                        Karachi, Sindh <i className=" bi-geo-alt-fill" />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-4 col-6">
-                  <div class="card shadow-sm">
-                    <img
-                      src={Product06}
-                      class="card-img-top r-card-height"
-                      alt="img-name"
-                    />
-                    <div class="py-2 card-body">
-                      <h5 class="card-title text-truncate fs-5">
-                        Macbook Air Midnight Blue M2 13.6" 2TB SSD
-                      </h5>
-                      <p className="card-text text-truncate mb-0 text-orange">
-                        Rs. 45,000
-                      </p>
-                      <p className="card-text text-truncate mb-0 text-muted">
-                        Karachi, Sindh <i className=" bi-geo-alt-fill" />
-                      </p>
-                    </div>
-                  </div>
-                </div>
+         
               </div>
             </div>
             <div className={`bg-white rounded-bottom-3 pt-5 ${isReviewsVisible ? 'd-none' : 'd-block'}`} >

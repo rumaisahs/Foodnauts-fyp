@@ -170,7 +170,7 @@ console.log(user,'user')
             {blogData.length === 0 ? (
                 <div className="text-center">
                   <img src={NoPost} alt="No blogs found" className="mb-3" style={{ width: '400px', height: '400px' }} />
-                  <p className="fs-5 fw-bold">No blogs found</p>
+                  <p className="fs-5 fw-bold">No Gigs found</p>
                 </div>
               ) : (
               <div className="row pb-5 justify-content-start mx-auto row-gap-4">
@@ -214,33 +214,7 @@ console.log(user,'user')
                     </div>
                   </div>
                 </div>
-                <div className="row pb-5 justify-content-start mx-auto row-gap-4">
-            
-                  <div className="col-lg-3 col-md-4 col-6" >
-                   
-                      <div className="card shadow-sm ">
-                        <img
-                          src={NoPost}
-                          className="card-img-top r-card-height"
-                       
-                        />
-                        <div className="py-2 card-body">
-                          <h5 className="card-title text-truncate fs-5">
-                            title
-                          </h5>
-                          <p className="card-text text-truncate mb-0 text-purple">
-                            Rs. 8000
-                          </p>
-                          <p className="card-text text-truncate mb-0 text-muted">
-                         location{" "}
-                            <i className=" bi-geo-alt-fill" />
-                          </p>
-                        </div>
-                      </div>
-                  
-                  </div>
-              
-              </div>
+             
               </div>
                )}
             </div>
