@@ -6,8 +6,10 @@ import fetchData from "../../utils/fetchData";
 
 
 const Navbar = () => {
-const navigate = useNavigate();
-const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  let isLogged = localStorage.getItem('foodnauts-token')
+
   const handleSearch = (e) => {
     e.preventDefault();
     // Redirect to prodsearch page with the search query
@@ -21,13 +23,13 @@ const [searchQuery, setSearchQuery] = useState('');
         <Link to='/' className='text-decoration-none navbar-brand fw-medium fs-4 text-orange'>Foodnauts</Link>
         <div className="dropdown ms-auto">
           <a href="#" className="text-decoration-none pe-2 d-lg-none" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-              <i className="bi bi-person-fill fs-1 text-orange"></i>
+            <i className="bi bi-person-fill fs-1 text-orange"></i>
           </a>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{ left: 'auto', right: '0' }}>
             <li>
               <Link className="dropdown-item">
                 <i className="bi bi-person-square pe-2 text-orange"></i>
-               Register
+                Register
               </Link>
             </li>
             <li>
@@ -59,28 +61,27 @@ const [searchQuery, setSearchQuery] = useState('');
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button  type="submit" className="border-0 bg-transparent position-absolute" style={{ right: "4%" }} ><icon className="bi-search text-orange" /></button>
+            <button type="submit" className="border-0 bg-transparent position-absolute" style={{ right: "4%" }} ><icon className="bi-search text-orange" /></button>
           </form>
           <div className="dropdown">
-          <a href="#" role="button" className="text-decoration-none d-none d-sm-none d-lg-flex" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" >
+            <a href="#" role="button" className="text-decoration-none d-none d-sm-none d-lg-flex" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" >
               <i className="bi bi-person-fill ps-1 fs-1 text-orange" ></i>
-          </a>
-
-          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{ left: 'auto', right: '0' }}>
-            <li>
-              <Link to="/signup" className="dropdown-item">
-                <i className="bi bi-person-square pe-2 text-orange"></i>
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link to="/login" className="dropdown-item" >
-                <i className="bi bi-box-arrow-left pe-2 text-orange"></i>
-                Login
-              </Link>
-            </li>
-          </ul>
-        </div>
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{ left: 'auto', right: '0' }}>
+              <li>
+                <Link to="/signup" className="dropdown-item">
+                  <i className="bi bi-person-square pe-2 text-orange"></i>
+                  Register
+                </Link>
+              </li>
+              <li>
+                <Link to="/login" className="dropdown-item" >
+                  <i className="bi bi-box-arrow-left pe-2 text-orange"></i>
+                  Login
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>

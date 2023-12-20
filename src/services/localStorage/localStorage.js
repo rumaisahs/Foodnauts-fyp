@@ -1,8 +1,10 @@
-import {constant} from "../../utils/constants"
+import { constant } from "../../utils/constants"
+
 
 const storageToken = constant.LOCAL_STORAGE_TOKEN;
 const storageUser = constant.LOCAL_STORAGE_USER;
 const storageRole = constant.LOCAL_STORAGE_ROLE;
+
 
 export const SetTokenLocalStorage = (token) => {
     localStorage.setItem(storageToken, token)
@@ -44,4 +46,5 @@ export const EmptyLocalStorage = () => {
     localStorage.removeItem(storageUser)
     localStorage.removeItem(storageToken)
     localStorage.removeItem(storageRole)
+    window.location.reload()
 }
