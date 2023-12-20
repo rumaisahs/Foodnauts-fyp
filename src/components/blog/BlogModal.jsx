@@ -4,8 +4,10 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill-emoji/dist/quill-emoji.css';
 import './blogmodal.css'; // Add the CSS file for styling
+import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
 
-const BlogModal = () => {
+
+const BlogModal = ({getAllBlogs}) => {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -39,13 +41,42 @@ const BlogModal = () => {
     setAdditionalImages(updatedImages);
   };
 
-  const handlePublish = () => {
-    // Implement publishing logic here
-    console.log('Title:', title);
-    console.log('Content:', content);
-    console.log('Main Image:', mainImage);
-    console.log('Additional Images:', additionalImages);
-    handleClose();
+  const handlePublish = async() => {
+    try {
+   
+
+      // Prepare form data
+      const formData = {
+        title: title,
+        description: content,
+     images:mainImage,
+      };
+
+      // Make a POST request to the backend endpoint
+      const response = await fetch('http://localhost:4000/blog', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Handle the response from the server
+      if (response.ok) {
+        const result = await response.json();
+        await getAllBlogs()
+        console.log(result);
+        // Reset form fields or perform any other actions
+        handleClose();
+      } else {
+        // Handle errors from the server
+        const errorData = await response.json();
+        console.error(errorData);
+        // Update UI to show error messages
+      }
+    } catch (error) {
+      console.error('Error adding blog:', error);
+    }
   };
 
   return (

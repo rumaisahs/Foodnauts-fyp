@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import "./restaurant.css";
+import ReviewImg1 from "../../images/leave-a-review.png"
 
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -367,9 +368,9 @@ const Restaurant = () => {
               <span className='justify-content-center d-flex'>
                 <iframe className='rounded-4' src={`https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d115837.64059160984!2d${data?.location?.coordinates[1]}!3d${data?.location?.coordinates[0]}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s${encodeURIComponent(data?.address)}!2s!3m2!1d${data?.location?.coordinates[0]}!2d${data?.location?.coordinates[1]}!5e0!3m2!1sen!2s!4v1698236935806!5m2!1sen!2s`} width="350" height="200" style={{ border: "0" }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </span>
-              <h3 className='p-3 pb-2 mb-0'>Other Branches</h3>
+              {/* <h3 className='p-3 pb-2 mb-0'>Other Branches</h3>
               <p className='px-3 my-0'>{data?.name} Clifton</p>
-              <p className='px-3 my-0 pb-3'>{data?.name} DHA Bukhari</p>
+              <p className='px-3 my-0 pb-3'>{data?.name} DHA Bukhari</p> */}
             </div>
 
           </div>
@@ -385,8 +386,8 @@ const Restaurant = () => {
               <p className='fs-5 pt-3'>
                 {review?.review}
               </p>
-              {/* <img className='pe-2 object-fit-contain' src={ReviewImg1} height={130} alt="" />
-              <img className='pe-2 object-fit-contain' src={ReviewImg2} height={130} alt="" />
+              <img className='pe-2 object-fit-contain' src={ReviewImg1} height={30} alt="" />
+              {/* <img className='pe-2 object-fit-contain' src={ReviewImg2} height={130} alt="" />
               <img className='pe-2 object-fit-contain' src={ReviewImg3} height={130} alt="" /> */}
             </div>
             <div className='col-3 justify-content-end d-flex'>

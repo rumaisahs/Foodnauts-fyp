@@ -42,11 +42,7 @@ const AddRestaurantModal = ({getAllRestaurants}) => {
 
   const handleAddRestaurant = async () => {
     try {
-      // Validate that longitude and latitude are numbers
-      // if (isNaN(longitude) || isNaN(latitude)) {
-      //   console.error('Invalid longitude or latitude');
-      //   return;
-      // }
+   
 
       // Prepare form data
       const formData = {
