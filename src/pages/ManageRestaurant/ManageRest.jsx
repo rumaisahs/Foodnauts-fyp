@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import "./Listings.css";
 import PageNav from "../../components/PageNav";
-// import ReviewImg01 from "../../images/espresso.jpg";
-// import ReviewImg02 from "../../images/review-img-02.jpg";
-// import ReviewImg03 from "../../images/review-img-03.jpg";
 import { getRestaurant } from "../../services/restaurants";
 import { GetAllCuisine } from "../../services/cuisine";
 import { GetAllAmbience } from "../../services/ambience/ambience";
@@ -13,7 +10,6 @@ import Img from "../../images/colette.jpg";
 
 const ManageRest = () => {
   const [restaurant, setRestaurant] = useState([]);
-
   const [search, setSearch] = useState("");
   const [select, setSelect] = useState("");
   const [cuisine, setCuisine] = useState([]);
@@ -40,7 +36,7 @@ const ManageRest = () => {
       console.log(e.message);
     }
   };
-
+console.log(restaurant)
   const getAllCuisine = async () => {
     try {
       let res = await GetAllCuisine();
@@ -58,6 +54,7 @@ const ManageRest = () => {
       console.log(e.message);
     }
   };
+  
   useEffect(() => {
     getAllRestaurants();
     getAllCuisine();
@@ -72,8 +69,7 @@ const ManageRest = () => {
         <hr />
         <div className="d-flex mb-3">
           <h6 className="me-5">Total Listings: 0</h6>
-          <h6 className="me-5">Active Listings: 0</h6>
-          <h6 className="me-5">Disabled Listings: 0</h6>
+     
         </div>
         <div className="row align-items-center mb-3">
           <div className="col-8 col-xxl-6 d-flex pe-0">
@@ -196,30 +192,7 @@ const ManageRest = () => {
           </thead>
 
           <tbody>
-            {/* <tr>
-              <td> <div
-                className="fixed-size-container"
-                style={{ width: "120px", height: "120px" }}
-              >
-                <img
-                  src={Img}
-                  className="object-fit-cover w-100 h-100"
-                  alt="review-img"
-                />
-              </div></td>
-              <td>657361861050f99f39716d69</td>
-              <td className="">Collete</td>
-              <td>SMCHS</td>
-              <td>Fine-Dine</td>
-              <td>Asian</td>
-              <td>rayahrizz</td>
-              <td>0</td>
-              <td>
-                <button className="btn button btn-sm text-light">Edit</button>
-
-                <button className="btn button btn-sm text-light ms-2"><i class="bi bi-trash3-fill"></i></button>
-              </td>
-            </tr> */}
+        
             {restaurant?.length > 0 &&
               restaurant?.map((dt) => {
                 return (
