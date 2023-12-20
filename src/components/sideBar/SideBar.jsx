@@ -159,8 +159,9 @@ const SideBar = () => {
                 <span className="tooltip">Logout</span>
               </li>
 
-             ?
-          
+            </>
+          }
+
           {/* <li className="sidebar-item">
                 <a>
                   <i className="bx bx-timer"></i>
