@@ -162,20 +162,7 @@ const SideBar = () => {
             </>
           }
 
-          {/* <li className="sidebar-item">
-                <a>
-                  <i className="bx bx-timer"></i>
-                  <span className="link_name">My Seller Profile</span>
-                </a>
-                <span className="tooltip">My Seller Profile</span>
-              </li>  */}
-          {/* <li className="sidebar-item">
-                <Link to="/">
-                <i class='bx bxs-bell-ring' ></i>
-                  <span className="link_name">Notifications</span>
-                </Link>
-                <span className="tooltip">Notifications</span>
-              </li> */}
+     
           <li className="sidebar-item my-3 mb-3 mb-3">
             <a>
               <i class='bx bx-support' ></i>

@@ -2,23 +2,30 @@ import axios from 'axios';
 
 const fetchData = async (searchQuery) => {
   try {
-    // Define the base URL for your API
-    console.log(searchQuery)
     const baseUrl = 'https://fyp-ml-backend.onrender.com';
     // const baseUrl = 'http://localhost:40001';
-    
-    // Define the endpoint for the specific GET request, including the search query
-    const endpoint =`/recommend?description=${searchQuery}` ;
+    const endpoint = `/recommend?description=${searchQuery}`;
     
     // Make the GET request using axios
     const response = await axios.get(baseUrl + endpoint);
 
-    // Assuming the response contains data property with the fetched data
-    const data = response.data.list_of_restaurants;
+    // Check if the response contains the expected data structure
+    if (response.data && response.data.list_of_restaurants) {
+      // Assuming the response contains data property with the fetched data
+      const data = response.data.list_of_restaurants;
 
-    // You can return or process the data as needed
-    console.log(data)
-    return data;
+      // Log the data for debugging
+      console.log('Fetched Data:', data);
+
+      // Return the data
+      return data;
+    } else {
+      // Log an error if the data structure is not as expected
+      console.error('Invalid API Response:', response.data);
+
+      // Return an empty array or handle it based on your needs
+      return [];
+    }
   } catch (error) {
     // Handle specific errors
     if (axios.isAxiosError(error)) {

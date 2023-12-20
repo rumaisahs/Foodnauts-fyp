@@ -85,27 +85,26 @@ const BlogModal = ({getAllBlogs}) => {
         Post Blog
       </Button>
 
-      <Modal show={show} onHide={handleClose} 
-         dialogClassName="custom-modal-width">
+      <Modal show={show} onHide={handleClose}  dialogClassName="custom-modal-width">
         <Modal.Header closeButton>
           <Modal.Title>Create Blog</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={(e) => { e.preventDefault(); handlePublish(); }}>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter title..."
                 value={title}
-                onChange={handleTitleChange}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="content">
               <Form.Label>Content</Form.Label>
               <ReactQuill
                 value={content}
-                onChange={handleContentChange}
+                onChange={(e) => setContent(e.target.value)}
                 placeholder="Write your blog post..."
               />
             </Form.Group>
