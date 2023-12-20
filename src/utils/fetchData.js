@@ -5,6 +5,7 @@ const fetchData = async (searchQuery) => {
     // Define the base URL for your API
     console.log(searchQuery)
     const baseUrl = 'https://fyp-ml-backend.onrender.com';
+    // const baseUrl = 'http://localhost:40001';
     
     // Define the endpoint for the specific GET request, including the search query
     const endpoint =`/recommend?description=${searchQuery}` ;
