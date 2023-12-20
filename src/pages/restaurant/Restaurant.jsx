@@ -377,14 +377,13 @@ const Restaurant = () => {
           <h1 className='my-3'><icon className="bi-chat-square-dots pe-2" />Read Reviews</h1>
           <div className='row border rounded-3 border-black border-1 p-3'>
             <div className='col-xl-1 col-sm-2 col-3'>
-              <img className='rounded-circle' src={Rumaisa} alt="" height={90} />
+              <img className='rounded-circle' src={review?.user?.profile_image} alt="" height={90} />
             </div>
             <div className='col-7'>
-              <p className='mb-0 fs-5 fw-bold'>@rumees</p>
+              <p className='mb-0 fs-5 fw-bold'>@ {review?.user?.username}</p>
               {/* <p className=''>Reviewed on {formattedDate}</p> */}
               <p className='fs-5 pt-3'>
                 {review?.review}
-                Great experience the food was amazing 
               </p>
               {/* <img className='pe-2 object-fit-contain' src={ReviewImg1} height={130} alt="" />
               <img className='pe-2 object-fit-contain' src={ReviewImg2} height={130} alt="" />
@@ -392,14 +391,12 @@ const Restaurant = () => {
             </div>
             <div className='col-3 justify-content-end d-flex'>
               <div>
-                <p className='fs-5 fw-light d-inline pe-2'>{review?.rating}4/5</p>
+                <p className='fs-5 fw-light d-inline pe-2'>{review?.rating}/5</p>
                 <span>
                   <icon className="bi-star-fill text-warning" />
                  
                 </span>
-                <p className='mb-0'><icon className="bi-check2 pe-2" />Hygiene</p>
-                <p className='mb-0'><icon className="bi-check2 pe-2" />Value</p>
-                <p className='mb-0'><icon className="bi-check2 pe-2" />Service</p>
+               
               </div>
 
             </div>

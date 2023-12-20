@@ -18,7 +18,7 @@ import { GetSingleUser, UserFollowers } from '../../services/user/user';
 import { GetAllMedia } from '../../services/media/media';
 // import {GetSingleUser}from '../../services/user/user';
 import BlogModal from '../../components/blog/BlogModal';
-export const OwnProfile = () => {
+export const Profile = () => {
   const authUser = GetAuthUserLocalStorage()
   const [isReviewsColorVisible, setisReviewsColorVisible] = useState(false);
   const [isReviewsVisible, setisReviewsVisible] = useState(false);
@@ -151,11 +151,7 @@ console.log(user,'user')
                 <icon className="bi-instagram text-orange fs-2 pe-2" />
               </div>
             </div>
-            {/* <div className="bg-orange text-white text-center py-5 my-3">
-            <h5>LOOKING FOR STARTING A BUSINESS?</h5>
-            <h1 className="fw-bold mb-4">BECOME A SELLER</h1>
-            <Link to="/profile_verification" className=" text-decoration-none"><btn className="bg-white text-orange fs-4 p-2 px-3 rounded-1">Register</btn></Link>
-        </div> */}
+      
             <div className="row mt-3 ps-0">
               <p className={`fs-5 col-4 col-sm-3 col-lg-2 py-2 ps-4 mb-0 text-start rounded-0 btn  ${isReviewsColorVisible ? 'border-b-orange' : ''}`} onClick={handleButtonClick}>
                 Collaborations
@@ -305,4 +301,4 @@ console.log(user,'user')
   );
 };
 
-export default OwnProfile;
+export default Profile;

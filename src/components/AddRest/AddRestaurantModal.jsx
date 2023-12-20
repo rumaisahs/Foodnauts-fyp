@@ -190,16 +190,6 @@ const AddRestaurantModal = ({getAllRestaurants}) => {
             </Form.Control>
           </Form.Group>
 
-          {/* <Form.Group controlId="location">
-            <Form.Label>Location</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter location..."
-              value={location}
-              onChange={handleLocationChange}
-            />
-          </Form.Group> */}
-
           <Form.Group controlId="address">
             <Form.Label>Address</Form.Label>
             <Form.Control
