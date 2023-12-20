@@ -3,8 +3,9 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { GetAllCuisine } from '../../services/cuisine';
 import { GetAllAmbience } from '../../services/ambience/ambience';
 import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
+import { UploadImage } from '../../services/uploadImage';
 
-const AddRestaurantModal = ({getAllRestaurants}) => {
+const AddRestaurantModal = ({ getAllRestaurants }) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
   const [ambienceType, setAmbienceType] = useState('');
@@ -38,13 +39,26 @@ const AddRestaurantModal = ({getAllRestaurants}) => {
     setMeals(selectedMeals);
   };
 
-  console.log(user,'=-=-=-')
 
   const handleAddRestaurant = async () => {
     try {
-   
+      // Validate that longitude and latitude are numbers
+      // if (isNaN(longitude) || isNaN(latitude)) {
+      //   console.error('Invalid longitude or latitude');
+      //   return;
+      // }
+      const imgFormData = new FormData();
 
       // Prepare form data
+      let urls = []
+      if (menuImages?.length > 0) {
+        for (let i = 0; i < menuImages?.length; i++) {
+          imgFormData.append('file', menuImages[i])
+          const res = await UploadImage(imgFormData)
+          urls.push(res?.data?.data)
+        }
+      }
+
       const formData = {
         name,
         ambience_type: ambienceType,
@@ -53,7 +67,7 @@ const AddRestaurantModal = ({getAllRestaurants}) => {
         latitude: parseFloat(longitude),
         address,
         meals,
-        menu_images: menuImages,
+        menu_images: urls,
         popular_dishes: popularDishes,
         created_by: user?._id
       };
@@ -212,10 +226,10 @@ const AddRestaurantModal = ({getAllRestaurants}) => {
 
           <Form.Group controlId="menuImages">
             <Form.Label>Menu Images</Form.Label>
-            <Form.Control type="file" multiple />
+            <Form.Control type="file" multiple onChange={(e) => setMenuImages([...menuImages, ...e.target.files])} />
             <Form.Text className="text-danger">{menuImagesError}</Form.Text>
             <div className="thumbnail-container">
-              {menuImages.map((image, index) => (
+              {menuImages?.map((image, index) => (
                 <div key={index} className="thumbnail">
                   <img src={URL.createObjectURL(image)} alt={`Image-${index}`} />
                 </div>
