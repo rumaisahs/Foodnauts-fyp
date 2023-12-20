@@ -3,6 +3,8 @@ import axios from 'axios';
 const fetchData = async (searchQuery) => {
   try {
     const baseUrl = 'https://fyp-ml-backend.onrender.com';
+    // const baseUrl = 'http://127.0.0.1:5000';
+   
     // const baseUrl = 'http://localhost:40001';
     const endpoint = `/recommend?description=${searchQuery}`;
     
