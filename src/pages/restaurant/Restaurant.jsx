@@ -326,9 +326,9 @@ const Restaurant = () => {
                       {data?.opening_hours} {data?.closing_hours}
                     </p>
                     <h5>Cuisine Type</h5>
-                    <p>italian {cuisineType?.name}</p>
+                    <p> {cuisineType?.name}</p>
                     <h5>Ambience</h5>
-                    <p>Casual{ambianceType?.name}</p>
+                    <p>{ambianceType?.name}</p>
                     <h5>Meals</h5>
                     <p>
                       {data?.meals && data?.meals

@@ -122,7 +122,7 @@ const Home = () => {
           <div className="container pb-5">
             <h3>Famous Food Bloggers</h3>
             <div className="d-flex flex-row flex-nowrap gap-4 overflow-x-auto pe-4 py-5 hidden-scrollbar">
-              <BloggerIcon defaultData={blogerData} />
+              <BloggerIcon defaultData={blogerData.slice(0, 5)} />
             </div>
           </div>
           <div className="row py-5 pt-5  mb-5">
