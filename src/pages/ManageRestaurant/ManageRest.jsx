@@ -61,6 +61,12 @@ console.log(restaurant)
     getAllAmbience();
   }, [search, selectCuisine, selectAmbience]);
 
+  const getImageUrl = (filename) => {
+    const serverUrl = "http://localhost:4000";
+    console.log( `${serverUrl}/${filename}`)
+    return `${serverUrl}${filename}`;
+  };
+
   return (
     <div className="container ">
       {/*Page Title */}
@@ -195,6 +201,7 @@ console.log(restaurant)
         
             {restaurant?.length > 0 &&
               restaurant?.map((dt) => {
+                {console.log("Location",dt.images)}
                 return (
                   <tr>
                     {console.log("dt",dt)}
@@ -204,7 +211,7 @@ console.log(restaurant)
                         style={{ width: "120px", height: "120px" }}
                       >
                         <img
-                          src={dt?.images[0]}
+                          src={getImageUrl(dt?.images[0])}
                           className="object-fit-cover w-100 h-100"
                           alt="review-img"
                         />

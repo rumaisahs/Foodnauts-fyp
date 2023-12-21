@@ -5,6 +5,9 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 import axios from "axios";
+import PageNav from "../../components/PageNav";
+
+import axios from "axios";
 import { constant } from "../../utils/constants";
 
 export const ProdSearch = () => {

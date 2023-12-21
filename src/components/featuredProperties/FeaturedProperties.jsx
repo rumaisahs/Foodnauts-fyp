@@ -10,7 +10,11 @@ import { Link } from 'react-router-dom';
 
 const FeaturedProperties = (props) => {
   const defaultData = props?.defaultData
-
+  const getImageUrl = (filename) => {
+    const serverUrl = "http://localhost:4000";
+    console.log( `${serverUrl}/${filename}`)
+    return `${serverUrl}${filename}`;
+  };
   return (
     <body className=' min-vh-100'>
       <div className="row justify-content-center py-5">
@@ -27,7 +31,7 @@ const FeaturedProperties = (props) => {
                           <Link to={`/restaurants/${dt?._id}`} >
 
                             <img
-                              src={dt?.images[0]}
+                              src={getImageUrl(dt?.images[0])}
                               alt=""
                               class="rounded-5 card-img-top"
                             />
