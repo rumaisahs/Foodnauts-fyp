@@ -1,23 +1,15 @@
 import "./searchItem.css";
-import Xanders from "../../images/xanders.jpg"
+import Xanders from "../../images/xanders.jpg";
 
 const SearchItem = () => {
   return (
     <div className="searchItem">
-      <img
-        src={Xanders}
-        alt=""
-        className="siImg"
-      />
+      <img src={Xanders} alt="" className="siImg" />
       <div className="siDesc">
         <h1 className="siTitle">Xanders</h1>
         <span className="siDistance">Tipu Sultan / E st / Bukhari</span>
-        <span className="siFeatures">
-          Cafe • Bakery • Fine-Dine
-        </span>
-        <span className="siCancelOpSubtitle">
-          Discounts on Visa Card
-        </span>
+        <span className="siFeatures">Cafe • Bakery • Fine-Dine</span>
+        <span className="siCancelOpSubtitle">Discounts on Visa Card</span>
       </div>
       <div className="siDetails">
         <div className="siRating">
