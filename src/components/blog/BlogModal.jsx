@@ -13,15 +13,16 @@ const BlogModal = ({getAllBlogs}) => {
   const [content, setContent] = useState('');
   const [mainImage, setMainImage] = useState(null);
   const [additionalImages, setAdditionalImages] = useState([]);
-
+  const user = GetAuthUserLocalStorage()
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+console.log(user)
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
 
-  const handleContentChange = (value) => {
+  const handleContentChange = (value, delta, source, editor) => {
     setContent(value);
   };
 
@@ -50,6 +51,8 @@ const BlogModal = ({getAllBlogs}) => {
         title: title,
         description: content,
      images:mainImage,
+     user: user?._id
+
       };
 
       // Make a POST request to the backend endpoint
@@ -103,10 +106,10 @@ const BlogModal = ({getAllBlogs}) => {
             <Form.Group controlId="content">
               <Form.Label>Content</Form.Label>
               <ReactQuill
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Write your blog post..."
-              />
+  value={content}
+  onChange={handleContentChange}
+  placeholder="Write your blog post..."
+/>
             </Form.Group>
             <Form.Group controlId="mainImage">
               <Form.Label>Main Image</Form.Label>

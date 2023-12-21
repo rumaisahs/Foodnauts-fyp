@@ -122,7 +122,7 @@ const Home = () => {
         <h1 className="text-black text-start pb-4 fs-3">Restaurants</h1>
 
         <div className=" justify-content-start d-flex container">
-        <FeaturedProperties defaultData={resData} />
+        <FeaturedProperties defaultData={resData.slice(0, 10)} />
         </div>
       </div>
       <div className="container pb-5">

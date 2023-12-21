@@ -14,6 +14,7 @@ const AddRestaurantModal = ({ getAllRestaurants }) => {
   const [address, setAddress] = useState('');
   const [meals, setMeals] = useState([]);
   const [menuImages, setMenuImages] = useState([]);
+  const [mainImages, setMainImages] = useState([]);
   const [popularDishes, setPopularDishes] = useState('');
   const [longitude, setLongitude] = useState(0); // Set initial values as needed
   const [latitude, setLatitude] = useState(0);   // Set initial values as needed
@@ -47,31 +48,41 @@ const AddRestaurantModal = ({ getAllRestaurants }) => {
       //   console.error('Invalid longitude or latitude');
       //   return;
       // }
-      const imgFormData = new FormData();
-
-      // Prepare form data
-      let urls = []
-      if (menuImages?.length > 0) {
-        for (let i = 0; i < menuImages?.length; i++) {
-          imgFormData.append('file', menuImages[i])
-          const res = await UploadImage(imgFormData)
-          urls.push(res?.data?.data)
-        }
+  
+      // Prepare form data for menu images
+      const menuImgFormData = new FormData();
+      for (const image of menuImages) {
+        menuImgFormData.append('file', image);
       }
-
+  
+      // Prepare form data for main images
+      const mainImgFormData = new FormData();
+      for (const image of mainImages) {
+        mainImgFormData.append('file', image);
+      }
+  
+      // Upload menu images
+      const menuImgResponse = await UploadImage(menuImgFormData);
+      const menuImageUrls = menuImgResponse?.data?.data || [];
+  
+      // Upload main images
+      const mainImgResponse = await UploadImage(mainImgFormData);
+      const mainImageUrls = mainImgResponse?.data?.data || [];
+  
       const formData = {
         name,
         ambience_type: ambienceType,
         cuisine_type: cuisineType,
         longitude: parseFloat(longitude),
-        latitude: parseFloat(longitude),
+        latitude: parseFloat(latitude), // corrected from longitude
         address,
         meals,
-        menu_images: urls,
+        menu_images: menuImageUrls,
+        images: mainImageUrls,
         popular_dishes: popularDishes,
         created_by: user?._id
       };
-
+  
       // Make a POST request to the backend endpoint
       const response = await fetch('http://localhost:4000/restaurant', {
         method: 'POST',
@@ -80,11 +91,11 @@ const AddRestaurantModal = ({ getAllRestaurants }) => {
         },
         body: JSON.stringify(formData),
       });
-
+  
       // Handle the response from the server
       if (response.ok) {
         const result = await response.json();
-        await getAllRestaurants()
+        await getAllRestaurants();
         console.log(result);
         // Reset form fields or perform any other actions
         handleClose();
@@ -107,6 +118,7 @@ const AddRestaurantModal = ({ getAllRestaurants }) => {
     setAddress('');
     setMeals([]);
     setMenuImages([]);
+    setMainImages([]);
     setPopularDishes('');
     setNameError('');
     setMenuImagesError('');
@@ -126,6 +138,7 @@ const AddRestaurantModal = ({ getAllRestaurants }) => {
     getCusines()
     getAmbience()
   }, [])
+
 
   return (
     <>
@@ -235,6 +248,20 @@ const AddRestaurantModal = ({ getAllRestaurants }) => {
                 </div>
               ))}
             </div>
+            
+          </Form.Group>
+          <Form.Group controlId="mainImages">
+            <Form.Label>Main Images</Form.Label>
+            <Form.Control type="file" multiple onChange={(e) =>setMainImages([...mainImages, ...e.target.files]) } />
+            <Form.Text className="text-danger">{menuImagesError}</Form.Text>
+            <div className="thumbnail-container">
+              {mainImages?.map((image, index) => (
+                <div key={index} className="thumbnail">
+                  <img src={URL.createObjectURL(image)} alt={`Image-${index}`} />
+                </div>
+              ))}
+            </div>
+            
           </Form.Group>
 
           <Form.Group controlId="popularDishes">

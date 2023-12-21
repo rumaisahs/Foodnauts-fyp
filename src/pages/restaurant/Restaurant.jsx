@@ -137,6 +137,11 @@ const Restaurant = () => {
     month: 'long',
     day: 'numeric',
   });
+  const getImageUrl = (filename) => {
+    const serverUrl = "http://localhost:4000";
+    console.log( `${serverUrl}/${filename}`)
+    return `${serverUrl}${filename}`;
+  };
 
   return (
     <>
@@ -183,15 +188,15 @@ const Restaurant = () => {
             <p className='text-end'>Reviews({data?.reviews?.length})</p>
           </span>
 
-          <div className="hotelImages pt-2 w-100">
+          <div className="hotelImages pt-2 w-100"> 
+          {console.log("Location",data.images)}
             {data?.images && data?.images?.map((dt, i) => {
-              console.log(dt, 'dddds');
               return (
                 <>
                   <div className="hotelImgWrapper" key={i}>
                     <img
                       onClick={() => handleOpen(i)}
-                      src={dt}
+                      src={getImageUrl(dt)}
                       alt=""
                       className="hotelImg"
                     />
