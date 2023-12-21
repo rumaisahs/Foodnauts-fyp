@@ -124,9 +124,6 @@ const SideBar = () => {
                 </Link>
                 <span className="tooltip">Manage Restaurants</span>
               </li>
-
-
-
               <li className="sidebar-item my-3 mb-3 mb-3">
                 <p className="ps">x</p>
                 <Link to="ownprofile" className="sidebar-item">

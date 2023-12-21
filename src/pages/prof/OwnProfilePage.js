@@ -235,9 +235,7 @@ console.log(user,'user')
 
                     </div>
                   </div>
-
                 </div>
-
               </div>
             </div>
           </div>
