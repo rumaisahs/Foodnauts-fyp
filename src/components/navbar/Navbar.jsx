@@ -67,20 +67,21 @@ const Navbar = () => {
             <a href="#" role="button" className="text-decoration-none d-none d-sm-none d-lg-flex" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" >
               <i className="bi bi-person-fill ps-1 fs-1 text-orange" ></i>
             </a>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{ left: 'auto', right: '0' }}>
-              <li>
-                <Link to="/signup" className="dropdown-item">
-                  <i className="bi bi-person-square pe-2 text-orange"></i>
-                  Register
-                </Link>
-              </li>
-              <li>
-                <Link to="/login" className="dropdown-item" >
-                  <i className="bi bi-box-arrow-left pe-2 text-orange"></i>
-                  Login
-                </Link>
-              </li>
-            </ul>
+
+              <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{ left: 'auto', right: '0' }}>
+                <li>
+                  <Link to="/signup" className="dropdown-item">
+                    <i className="bi bi-person-square pe-2 text-orange"></i>
+                    Register
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" className="dropdown-item" >
+                    <i className="bi bi-box-arrow-left pe-2 text-orange"></i>
+                    Login
+                  </Link>
+                </li>
+              </ul>
           </div>
         </div>
       </div>
