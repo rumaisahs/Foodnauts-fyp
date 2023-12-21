@@ -1,6 +1,6 @@
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
-import desktop from "../../images/ser.png";
+import search from "../../images/ser.png";
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import fetchData from "../../utils/fetchData";
@@ -148,21 +148,21 @@ export const ProdSearch = () => {
               <h2 className="fw-light">Results for <h2 className="d-inline">"{searchQuery}"</h2></h2>
             </div>
             {searchResults.slice(0, 10).map((restaurant) => (
-              <div key={restaurant.id} className="row justify-content-center  p-lg-4 pt-lg-0 pb-3">
-                <div className="col-4 col-sm-3 col-md-3 p-md-0 pe-0 rounded-start-4">
-                  <img
-                    src={desktop}
-                    className="rounded-start-4 object-fit-cover h-100 w-100 border-start border-bottom border-top border-black border-1"
+              <div key={restaurant.id} className="row justify-content-center p-lg-4 pt-lg-0 pb-3 text-decoration-none text-black"  style={{ height: "250px" }}>
+<div className="card-aspect col-4 col-sm-3 col-md-3 h-100 p-md-0 pe-0 rounded-start-4">          
+        <img 
+                    src={restaurant.images_1 || search}
+                    className="card-aspect pt-0 mt-0 rounded-start-4 w-100 h-100 object-fit-cover border-start border-bottom border-top border-black border-1"
                   />
                 </div>
-                <div className="col-8 d-flex p-4 flex-column  justify-content-center rounded-end-4 bg-light border-end border-bottom border-top border-black border-1">
+                <div className="col-8 d-flex flex-column justify-content-between rounded-end-4 bg-light border-end border-bottom border-top border-black border-1">
                   <div className="row h-100 ">
                     <div className="col-10">
-                      <h5 class=" fs-4 ">{restaurant.name}</h5>
+                      <h5 class=" fs-4 pt-3">{restaurant.name}</h5>
                       <p className="fpAddress text-grey">
                         {" "}
                         <i className="bi bi-geo-alt-fill pe-1" />
-                        {restaurant.location}
+                        {restaurant.address}
                       </p>
                       {/* <span className="fpAmbience">Cafe</span> */}
                       <p className="fpAmbience d-inline pe-1  text-grey">
@@ -179,9 +179,9 @@ export const ProdSearch = () => {
                           {restaurant.rate}
 
                         </p>
-                        <span className="text-grey">Review</span>
+                        <span className="text-grey">Reviews {restaurant.votes}</span>
                       </div>
-                      <div>Discounts</div>
+                      <div className='text-success'>Discounts on {restaurant.discounts}</div>
                     </div>
                     <div className="col-2 justify-content-end d-flex align-items-center">
                       <button className=" rounded-5  border-1 text-orange bg-transparent px-3 border-orange" style={{ height: '200px' }}>

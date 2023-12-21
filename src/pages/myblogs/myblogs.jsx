@@ -5,6 +5,7 @@ import BlogModal from '../../components/blog/BlogModal';
 import { GetAllBlogs } from '../../services/blog/blog';
 import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
 import { GetSingleUser, UserFollowers } from '../../services/user/user';
+import PageNav from "../../components/PageNav";
 
 function MyBlogs() {
   const authUser = GetAuthUserLocalStorage()
@@ -49,7 +50,7 @@ console.log(blogData)
           {/*Page Title */}
           <h1 className="fw-bold pb-3">My Blogs</h1>
           <hr />
-<BlogModal/>
+<BlogModal getAllBlogs={getAllBlogs}/>
           {/*Table Section*/}
           <div className=" ms-auto pt-3">
             <table className=" table table-hover mt-2 mb-4 custom-table">
@@ -117,6 +118,7 @@ console.log(blogData)
          
               </tbody>
             </table>
+            <PageNav />
           </div>
         </div>
       </div>

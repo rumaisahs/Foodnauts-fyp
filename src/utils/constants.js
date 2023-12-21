@@ -7,7 +7,7 @@ export const constant = {
     BASE_URL: "http://localhost:4000/",
     IMAGE_DIR_NAME: "images",
     VIDEO_DIR_NAME: "videos",
-   
+
 }
 
 export const apiUrl = {
@@ -21,7 +21,8 @@ export const apiUrl = {
     cuisine: 'cuisine',
     ambience: 'ambience',
     review: 'review',
-    media:"/media",
-    userFollowers:"/user/followers"
+    media: "/media",
+    userFollowers: "/user/followers",
+    uploadFile: "/upload-file"
 }
 

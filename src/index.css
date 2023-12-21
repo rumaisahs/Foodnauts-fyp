@@ -38,4 +38,25 @@ code {
   -webkit-box-orient: vertical;
 }
 
+.r-card-height{
+  height:150px !important;
+}
+@media screen and (max-width: 600px) {
+ 
+
+  .r-card-height{
+    height:150px !important;
+  }
+}
+@media screen and (min-width: 600px) {
+  .r-card-height{
+    height:180px !important;
+  }
+}
+@media screen and (min-width: 992px) {
+ 
+  .r-card-height{
+    height:200px !important;
+  }
+}
 
