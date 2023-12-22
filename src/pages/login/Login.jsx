@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../../components/footer/Footer'
 import { Link, useNavigate } from 'react-router-dom'
 import LoginImg from '../../images/login-img.png'
 import Google from '../../images/googlelogo.png'
 import Facebook from '../../images/facebook.png'
+import axios from 'axios'
 
 import "./login.css"
-import { Signin, SocialLogin } from '../../services/auth/auth'
+import { Signin, SocialLogin, ForgotPassword } from '../../services/auth/auth'
 import { GetAuthUserLocalStorage, SetAuthUserLocalStorage, SetTokenLocalStorage } from '../../services/localStorage/localStorage'
 
 export const Login = () => {
@@ -52,6 +53,169 @@ export const Login = () => {
     const res = await SocialLogin(data)
     console.log(res);
   }
+
+
+  const [isEmailVisible, setEmailVisible] = useState(false);
+  const [isChangePassVisible, setChangePassVisible] = useState(false);
+  const [isMessageVisible, setMessageVisible] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+
+  const [verificationFormData, setVerificationFormData] = useState({
+    vemail: "",
+    vcode: "",
+  });
+
+  const [timer, setTimer] = useState(120); // Initial timer value in seconds
+  const [disableVerifyButton, setDisableVerifyButton] = useState(false);
+
+  const [changePassFormData, setChangePassFormData] = useState({
+    email: "",
+    newPassword: "",
+  });
+
+
+  const validatePassword = (password) => {
+    const passwordPattern =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+~`\-={}[\]:;"'<>,.?/])(?!.*\s).{8,}$/;
+    return passwordPattern.test(password);
+  };
+
+  const handleChange = (event) => {
+    setChangePassFormData({
+      ...changePassFormData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleChangePassword = async () => {
+    if (!validatePassword(changePassFormData.newPassword)) {
+      // Password doesn't match the required pattern
+      // Show an error message or perform other actions
+      setPasswordError(
+        "Password must contain:\nMinimum 8 characters\nAt least 1 Uppercase Letter\nAt least 1 Number\nAt least 1 Special character !@#$%^&*()_+  "
+      );
+      return;
+    }
+
+    setPasswordError("");
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/reset-password",
+        {
+          email: changePassFormData.email,
+          password: changePassFormData.newPassword,
+          confirmPassword: changePassFormData.newPassword,
+        }
+      );
+
+      setMessageVisible(!isMessageVisible);
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
+  };
+
+  // forget password submit
+  const handleSubmit = async () => {
+    try {
+      if (showEmailForm) {
+        setLoading(true);
+        // API request to send email and receive OTP
+        const response = await ForgotPassword(
+          {
+            email: verificationFormData.vemail,
+          }
+        );
+        // Handle success
+        setLoading(false);
+        setShowEmailForm(false);
+        setEmailVisible(true);
+        // You may update the UI or show a success message here
+        // Reset form data and UI state
+      } else {
+        // API request to verify the entered code
+        setLoading(true);
+        const response = await axios.post(
+          "http://localhost:4000/verify-otp",
+          {
+            email: verificationFormData.vemail,
+            otp: verificationFormData.vcode,
+          }
+        );
+
+        // Handle success
+        setLoading(false);
+        // You may update the UI or show a success message here
+        setShowEmailForm(false);
+        setEmailVisible(false);
+        setChangePassVisible(!isChangePassVisible);
+        return;
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setLoading(false);
+    }
+    resetTimer(); // Reset the timer on form submission
+  };
+
+  const handleBack = () => {
+    setShowEmailForm(true);
+    setEmailVisible(false);
+    setChangePassVisible(false);
+    setMessageVisible(false);
+
+    // Reset state variables for email verification
+    setVerificationFormData({
+      vemail: "",
+      vcode: "",
+    });
+
+    // Reset state variables for change password
+    setChangePassFormData({
+      email: "",
+      newPassword: "",
+    });
+    resetTimer(); // Reset the timer on going back
+  };
+
+  const resetTimer = () => {
+    setTimer(120); // Reset the timer to 120 seconds
+    setDisableVerifyButton(false); // Enable the "Verify" button
+  };
+
+  useEffect(() => {
+    let countdown;
+
+    if (timer > 0 && isEmailVisible) {
+      countdown = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+    } else {
+      setDisableVerifyButton(true); // Disable the "Verify" button when the timer reaches 0
+    }
+
+    return () => {
+      clearInterval(countdown); // Cleanup the interval when the component unmounts or timer reaches 0
+    };
+  }, [timer, isEmailVisible]);
+
+  const handleResend = async () => {
+    setLoading(true);
+    // API request to send email and receive OTP
+    const response = await axios.post("http://localhost:4000/forgot-password", {
+      email: verificationFormData.vemail,
+    });
+    // Handle success
+    setLoading(false);
+    // Your logic to resend OTP
+    setTimer(120); // Reset the timer
+    setDisableVerifyButton(false);
+    // Add logic to send a new OTP
+  };
+
+  const formatTime = (value) => String(value).padStart(2, "0");
+
+  
+
   return (
     <>
       
@@ -113,10 +277,147 @@ export const Login = () => {
                           aria-label="Close"
                         ></button>
                       </div>
-                     
+                      <div className="modal-body text-center">
+                        <div
+                          className={`${isEmailVisible ? "d-none" : ""} ${
+                            showEmailForm ? "" : "d-none"
+                          }`}
+                        >
+                          <p>Enter your email address to receive OTP</p>
+                          <form>
+                            <input
+                              type="email"
+                              value={verificationFormData.vemail}
+                              onChange={(event) =>
+                                setVerificationFormData({
+                                  ...verificationFormData,
+                                  vemail: event.target.value, // Use 'vemail' as the key
+                                })
+                              }
+                              className="w-75"
+                            />
+                            <button
+                              type="button"
+                              className="btn btn-primary d-block mx-auto mt-3"
+                              onClick={handleSubmit}
+                            >
+                              Submit
+                            </button>
+                          </form>
+                        </div>
+
+                        <div
+                          className={`${isEmailVisible ? "" : "d-none"} ${
+                            isChangePassVisible ? "d-none" : ""
+                          }`}
+                        >
+                          <p className="fw-bold">
+                            An OTP has been sent to your email address
+                          </p>
+                          <p>Enter the OTP</p>
+                          <input
+                            type="text"
+                            value={verificationFormData.vcode}
+                            onChange={(event) =>
+                              setVerificationFormData({
+                                ...verificationFormData,
+                                vcode: event.target.value, // Use 'vcode' as the key
+                              })
+                            }
+                            className="w-75"
+                          />
+                          {isEmailVisible && (
+                            <>
+                              <button
+                                type="button"
+                                className="border-0 bg-transparent d-block ms-auto pe-5"
+                                onClick={handleResend}
+                              >
+                                <p className="text-end pt-2 register">
+                                  Resend OTP
+                                </p>
+                              </button>
+                              <div className="text-danger pb-3">{`Time remaining: ${Math.floor(
+                                timer / 60
+                              )}:${formatTime(timer % 60)}`}</div>
+                            </>
+                          )}
+                          <button
+                            className="btn btn-primary d-block mx-auto mt-1"
+                            onClick={handleSubmit}
+                            disabled={disableVerifyButton}
+                          >
+                            Verify
+                          </button>
+                        </div>
+
+                        <div
+                          className={`w-50 mx-auto ${
+                            isChangePassVisible ? "" : "d-none"
+                          } ${isMessageVisible ? "d-none" : ""}`}
+                        >
+                          <h2>Change Password</h2>
+                          <form>
+                            <label
+                              htmlFor="email"
+                              className="d-flex justify-content-start"
+                            >
+                              Email:
+                            </label>
+                            <input
+                              className="d-flex justify-content-start"
+                              type="email"
+                              id="email"
+                              name="email"
+                              value={changePassFormData.email}
+                              onChange={handleChange}
+                            />
+                            <label
+                              htmlFor="newPassword"
+                              className="d-flex justify-content-start"
+                            >
+                              New Password:
+                            </label>
+                            <input
+                              className={`d-flex justify-content-start ${
+                                passwordError ? "is-invalid" : ""
+                              }`}
+                              type="password"
+                              id="newPassword"
+                              name="newPassword"
+                              value={changePassFormData.newPassword}
+                              onChange={handleChange}
+                            />
+                            {passwordError && (
+                              <div
+                                className="invalid-feedback text-start"
+                                style={{ whiteSpace: "pre-line" }}
+                              >
+                                {passwordError}
+                              </div>
+                            )}
+                            <br />
+                            <button
+                              className="btn btn-primary mt-3"
+                              type="button"
+                              onClick={handleChangePassword}
+                            >
+                              Change Password
+                            </button>
+                          </form>
+                        </div>
+
+                        <div className={`${isMessageVisible ? "" : "d-none"}`}>
+                          <p>
+                            Your password has been changed successfully{" "}
+                            <i className="bi bi-check-circle text-success" />{" "}
+                          </p>
+                        </div>
+                      </div>
 
                         {loading && (
-                          <div className="pt-2">
+                          <div className="py-3 text-center">
+                            Sending email 
                           </div>
                         )}
                       </div>

@@ -63,7 +63,7 @@ export const ProdSearch = () => {
 
   // const showSearchData = async () => {
   //   const response = await axios.get(
-  //     `${constant?.BASE_URL}search-restaurant?resturant_name=`
+  //     ${constant?.BASE_URL}search-restaurant?resturant_name=
   //   );
   // };
 

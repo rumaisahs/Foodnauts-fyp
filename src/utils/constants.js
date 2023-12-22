@@ -13,6 +13,7 @@ export const apiUrl = {
   login: "/login",
   signup: "/register",
   socialLogin: "/social-login",
+  forgotPassword: "/forgot-password",
   ambience: "/ambience",
   user: "user",
   blogs: "blog",

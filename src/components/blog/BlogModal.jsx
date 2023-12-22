@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 import 'react-quill-emoji/dist/quill-emoji.css';
 import './blogmodal.css'; // Add the CSS file for styling
 import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
-
+import { UploadImage } from '../../services/uploadImage';
 
 const BlogModal = ({getAllBlogs}) => {
   const [show, setShow] = useState(false);
@@ -13,28 +13,17 @@ const BlogModal = ({getAllBlogs}) => {
   const [content, setContent] = useState('');
   const [mainImage, setMainImage] = useState(null);
   const [additionalImages, setAdditionalImages] = useState([]);
+  const [blogImages, setBlogImages] = useState([]);
   const user = GetAuthUserLocalStorage()
   
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-console.log(user)
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
+  const handleClose = () => {
+    setShow(false);
+    resetForm();
   };
-
+  const handleShow = () => setShow(true);
   const handleContentChange = (value, delta, source, editor) => {
     setContent(value);
-  };
-
-  const handleMainImageChange = (e) => {
-    const file = e.target.files[0];
-    setMainImage(file);
-  };
-
-  const handleAdditionalImagesChange = (e) => {
-    const files = Array.from(e.target.files);
-    setAdditionalImages([...additionalImages, ...files]);
-  };
+  }; 
 
   const handleRemoveImage = (index) => {
     const updatedImages = [...additionalImages];
@@ -42,19 +31,29 @@ console.log(user)
     setAdditionalImages(updatedImages);
   };
 
-  const handlePublish = async() => {
+  const handlePublish = async () => {
     try {
-   
-
-      // Prepare form data
+      
+      // Prepare form data for main images
+  const blogFormData = new FormData();
+  for (const image of blogImages) {
+    blogFormData.append('file', image);
+  }
+      // Prepare form data for all images
+      const allImagesFormData = new FormData();
+      additionalImages.forEach((image) => allImagesFormData.append('file', image));
+  
+      const imgResponse = await UploadImage(blogFormData);
+      const imageUrls =imgResponse?.data?.data || [];
+  
+      // Prepare form data for blog post
       const formData = {
         title: title,
         description: content,
-     images:mainImage,
-     user: user?._id
-
+        images: imageUrls,
+        user: user?._id,
       };
-
+  
       // Make a POST request to the backend endpoint
       const response = await fetch('http://localhost:4000/blog', {
         method: 'POST',
@@ -63,11 +62,11 @@ console.log(user)
         },
         body: JSON.stringify(formData),
       });
-
+  
       // Handle the response from the server
       if (response.ok) {
         const result = await response.json();
-        await getAllBlogs()
+        await getAllBlogs();
         console.log(result);
         // Reset form fields or perform any other actions
         handleClose();
@@ -80,6 +79,12 @@ console.log(user)
     } catch (error) {
       console.error('Error adding blog:', error);
     }
+  };
+
+  
+  const resetForm = () => {
+    setTitle('');
+    setContent('');
   };
 
   return (
@@ -111,16 +116,16 @@ console.log(user)
   placeholder="Write your blog post..."
 />
             </Form.Group>
-            <Form.Group controlId="mainImage">
+            {/* <Form.Group controlId="mainImage">
               <Form.Label>Main Image</Form.Label>
               <Form.Control type="file" onChange={handleMainImageChange} />
               {mainImage && <img src={URL.createObjectURL(mainImage)} alt="Main" />}
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group controlId="additionalImages">
               <Form.Label>Additional Images</Form.Label>
-              <Form.Control type="file" onChange={handleAdditionalImagesChange} multiple />
+              <Form.Control type="file"  onChange={(e) => setBlogImages([...blogImages, ...e.target.files])} multiple />
               <div className="thumbnail-container">
-                {additionalImages.map((image, index) => (
+                {blogImages.map((image, index) => (
                   <div key={index} className="thumbnail">
                     <img src={URL.createObjectURL(image)} alt={`Image-${index}`} />
                     <span className="remove-icon" onClick={() => handleRemoveImage(index)}>
@@ -134,7 +139,7 @@ console.log(user)
        
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handlePublish}>
+          <Button variant="primary" type='submit' onClick={handlePublish}>
             Post
           </Button>
         </Modal.Footer>

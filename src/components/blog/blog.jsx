@@ -3,13 +3,13 @@ import { GetSingleUser} from '../../services/user/user';
 import { GetAuthUserLocalStorage } from '../../services/localStorage/localStorage';
 import React, { useState, useEffect } from 'react';
 import './blog.css';
-// import ReviewImg1 from "../../images/review-img-1.png";
-// import ReviewImg2 from "../../images/review-img-2.png";
-// import ReviewImg3 from "../../images/review-img-3.png";
-// import Influencer from "../../images/influence.jpeg";
 import moment from 'moment';
-import DefaultImage from "../../images/defaultimage.png"
-import FullBlogModal from "../fullblogmodal/FullBlogModal";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Image from 'react-bootstrap/Image';
+import Form from 'react-bootstrap/Form';
+import influencer from "../../images/rumaisa.jpg";
+import DefaultImage from "../../images/defaultimage.png";
 
 export const Blog = ({ data: dt }) => {
   const authUser = GetAuthUserLocalStorage()
@@ -17,6 +17,10 @@ export const Blog = ({ data: dt }) => {
 console.log(user,'user')
   const [showComment, setShowComment] = useState(true);
   const [showFullContent, setShowFullContent] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   useEffect(() => {
     const getSingleUser = async () => {
       const res = await GetSingleUser(authUser._id)
@@ -33,6 +37,23 @@ console.log(user,'user')
     setShowFullContent(true);
   };
 
+  const getImageUrl = (filename) => {
+    const serverUrl = "http://localhost:4000";
+    console.log( `${serverUrl}/${filename}`)
+    return `${serverUrl}${filename}`;
+  };
+
+  const bD = {
+
+    largePicture: 'https://www.vegkit.com/app/uploads/2023/10/peanut_butter_cups_1.jpg', // Replace with the actual URL
+    smallPictures: [
+      'https://www.vegkit.com/app/uploads/2023/10/peanut_butter_cups_1.jpg', // Replace with the actual URL
+      'https://www.vegkit.com/app/uploads/2023/09/tim_tam_1.jpg', // Replace with the actual URL
+    ],
+
+   
+
+  };
   return (
     <div className="my-3 container mx-auto row border rounded-3 border-black border-1 p-3">
       <div className="col-xl-1 col-sm-2 col-3">
@@ -45,13 +66,100 @@ console.log(user,'user')
         <p className="description">
           {showFullContent ? dt?.description : dt?.description.split('\n').slice(0, 1).join('\n')}
         </p>
-    
           <button className="read-more border-0 bg-transparent" >
-            <FullBlogModal blogData={dt}/> 
+          <button className='text-orange bg-transparent border-0' onClick={handleShow}>
+        Read More
+      </button>
+             <Modal
+        show={show}
+        onHide={handleClose}
+        dialogClassName="custom-modal-width"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-custom-modal-styling-title">
+          {dt?.title}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{ maxHeight: '85vh', overflowY: 'auto' }}>
+          <div className="d-flex align-items-center">
+            <Image
+             src={user?.profile_image || DefaultImage}
+              roundedCircle
+              width={50}
+              height={50}
+              className="me-2"
+              alt="User"
+            />
+            <div>
+              <p>{dt?.user?.username}</p>
+              <p>{new Date(dt?.createdAt).toLocaleDateString()}</p>
+            </div>
+          </div>
+          <img
+                          src={getImageUrl(dt?.images[0])}
+                          className="object-fit-cover w-100 h-100"
+                          alt="review-img"
+                        />
+          <div className="d-flex justify-content-start">
+            {bD.smallPictures.map((smallPicture, index) => (
+              <Image
+                key={index}
+                src={smallPicture}
+                rounded
+                width={50}
+                height={50}
+                className="me-2"
+                alt={`Small Blog ${index + 1}`}
+              />
+            ))}
+          </div>
+          <hr />
+          <p className='fs-5'>{dt?.description}</p>
+          {/* Comments section */}
+          <hr />
+          <div className="comment-section">
+            <h5>Comments</h5>
+            <div className="comment-buttons">
+              <button className='border-0 bg-transparent'><i class="bi bi-hand-thumbs-up fs-4 text-orange"></i></button> <span>1</span>
+              <button className='border-0 bg-transparent'><i class="bi bi-hand-thumbs-down fs-4 text-orange"></i></button> <span>0</span>
+            </div>
+          </div>
+       
+          {
+              dt?.comments?.length <= 0 ?
+              "No comments found"
+              :
+              dt?.comments?.map((item, index) => (
+            <div key={index} className="comment-container">
+              <Image
+                  src={item?.user?.profile_image || DefaultImage}
+                roundedCircle
+                width={30}
+                height={30}
+              
+              />
+              <div>
+                <strong>@{item?.user?.username}:</strong> {item?.comment}
+              </div>
+            </div>
+          ))}
+          {/* Comment form */}
+          <Form>
+            <Form.Group controlId="commentForm">
+              <Form.Label>Add a Comment</Form.Label>
+              <Form.Control as="textarea" rows={3} placeholder="Write your comment..." />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Post Comment
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal> 
           </button>
         
-        <div className="thumbnail-container">  {
-          dt?.images && dt?.images.length > 0 ?
+        <div className="thumbnail-container">  
+        { dt?.images && dt?.images.length > 0 ?
             dt?.images.map((img, index) => {
               return (
                 <>
@@ -59,7 +167,7 @@ console.log(user,'user')
                   <img
                     className="pe-2 object-fit-contain thumbnail"
                     key={index}
-                    src={img}
+                    src={getImageUrl(img)}
                     alt=""
                   />
            
@@ -107,7 +215,6 @@ console.log(user,'user')
                   <p className=" justify-content-start">
                   {item?.comment}
                   </p>
-                  <p className="text-start">{moment(item?.comment?.createdAt).from(moment())}</p>
                 </div>
               </div>
             ))

@@ -170,9 +170,7 @@ console.log(restaurant)
               <th className="col-1" scope="col">
                 Thumbnail
               </th>
-              <th className="col-1" scope="col">
-                ID
-              </th>
+              
               <th className="col-1" scope="col">
                 Name
               </th>
@@ -217,7 +215,6 @@ console.log(restaurant)
                         />
                       </div>
                     </td>
-                    <td>{dt?._id}</td>
                     <td className="">{dt?.name}</td>
                     <td>{dt?.address}</td>
                     <td>{dt?.ambience_type?.name}</td>
